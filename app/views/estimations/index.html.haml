@@ -1,0 +1,21 @@
+%h1 Список оценок теста
+
+%table
+  %tr
+    %th Процент сданых тем
+    %th Процент сданых вопросов
+    %th
+    %th
+    %th
+
+  - @estimations.each do |estimation|
+    %tr
+      %td= estimation.theme_pct
+      %td= estimation.question_pct
+      %td= link_to 'Подробнее', estimation
+      %td= link_to 'Редактировать', edit_estimation_path(estimation)
+      %td= link_to 'Удалить', estimation, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Новая оценка теста', new_estimation_path

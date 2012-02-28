@@ -1,0 +1,31 @@
+%p
+  %b Название:
+  = @script.name
+%p
+  %b Порядок вопросов:
+  = @script.order
+%p
+  %b Страница перенаправления:
+  = @script.redirect_page
+%p
+  %b Время теста:
+  = @script.time
+%p
+  %b Заблокирован:
+  = @script.blocked
+%p
+  %b Тест:
+  = @script.test.name
+%p
+  %b Процент сданых вопросов:
+  = @script.procents
+%p
+  %b Процент сданых тем:
+  = @script.passed_themes
+%p
+  %b Детальный отчет:
+  = @script.detalized
+
+= link_to 'Редактировать', edit_script_path(@script)
+\|
+= link_to 'Назад', scripts_path

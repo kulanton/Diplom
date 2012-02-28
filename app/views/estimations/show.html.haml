@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Процент сданых тем:
+  = @estimation.theme_pct
+%p
+  %b Процент сданых вопросов:
+  = @estimation.question_pct
+
+= link_to 'Редактировать', edit_estimation_path(@estimation)
+\|
+= link_to 'Назад', estimations_path

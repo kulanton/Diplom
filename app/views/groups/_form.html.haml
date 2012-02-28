@@ -1,0 +1,22 @@
+= form_for @group do |f|
+  -if @group.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
+      %ul
+        - @group.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :year
+    %br
+    = f.text_field :year
+  .field
+    =f.label :discipline_tokens, "Дисциплины"
+    %br
+    =f.text_field :discipline_tokens,"data-pre"=>@group.disciplines.map(&:attributes).to_json
+  .actions
+    = f.submit 'Сохранить'

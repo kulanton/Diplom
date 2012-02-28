@@ -1,0 +1,19 @@
+%h1 Список тестов
+
+%table
+  %tr
+    %th Список тестов
+    %th Список сценариев
+    %th Действия
+  - @tests.each do |test|
+    %tr
+      %td= link_to test.name, test
+      %td
+        - test.scripts.each do |script|
+          = link_to script.name, script
+          %br
+      %td= link_to 'Удалить', test, :confirm => 'Вы уверены?', :method => :delete
+
+%br
+
+= link_to 'Новый тест', new_test_path

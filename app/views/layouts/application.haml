@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Редактор сценариев тестирования
+    = stylesheet_link_tag 'reset', 'application', 'main', '2col', 'style', 'mystyle', 'scaffold', 'token-input-facebook'
+    = javascript_include_tag 'jquery', 'jquery.tokeninput', 'application'
+    = csrf_meta_tag
+  %body
+    #main
+      = render 'layouts/tray'
+      %hr.noscreen
+      #cols.box
+        = render 'layouts/aside'
+        %hr.noscreen
+        #content.box
+          -unless notice.blank?
+            .msg.done=notice
+          -unless flash[:error].blank?
+            .msg.error=flash[:error]
+          = yield
+      %hr.noscreen
+      = render 'layouts/footer'

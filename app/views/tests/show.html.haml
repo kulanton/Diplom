@@ -1,0 +1,52 @@
+%p
+  %b Название:
+  = @test.name
+%p
+  %b Необходимость:
+  = @test.necessary
+%p
+  %b Блокирован:
+  = @test.block
+%p
+  %b Количество попыток:
+  = @test.num_try
+%p
+  %b Период пересдачи:
+  = @test.period
+%p
+  %b Тип:
+  = @test.type
+%p
+  %b Тип авторизации:
+  = @test.auth_type
+%p
+  %b С ключем:
+  = @test.w_key
+%p
+  %b Доступен извне:
+  = @test.ext_access
+%p
+  %b Доступен в МГИУ:
+  = @test.msiu_access
+%p
+  %b Дисциплина-Группа:
+  = @test.disc_group_id
+%p
+  %b Порядок:
+  = @test.oder
+%p
+  %b Процент тем
+  = @test.theme_pct
+%p
+  %b Процент вопросов
+  = @test.question_pct
+%table
+  %tr
+    %th Список сценариев
+  - @test.scripts.each do |script|
+    %tr
+      %td=script.name
+
+= link_to 'Редактировать', edit_test_path(@test)
+\|
+= link_to 'Назад', tests_path

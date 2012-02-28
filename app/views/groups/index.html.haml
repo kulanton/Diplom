@@ -1,0 +1,21 @@
+%h1 Список групп
+
+%table
+  %tr
+    %th Номер
+    %th Год обучения
+    %th
+    %th
+    %th
+
+  - @groups.each do |group|
+    %tr
+      %td= link_to group.name, :controller => 'tests', :discipline => params['discipline'], :group => group
+      %td= group.year
+      %td= link_to 'Подробнее', group
+      %td= link_to 'Редактировать', edit_group_path(group)
+      %td= link_to 'Удалить', group, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Новая группа', new_group_path

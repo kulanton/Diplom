@@ -1,0 +1,66 @@
+= form_for @test do |f|
+  -if @test.errors.any?
+    #error_explanation
+      %h2= "При сохранении произошли ошибки"
+      %ul
+        - @test.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :necessary
+    %br
+    = f.check_box :necessary
+  .field
+    = f.label :block
+    %br
+    = f.check_box :block
+  .field
+    = f.label :num_try
+    %br
+    = f.number_field :num_try
+  .field
+    = f.label :period
+    %br
+    = f.number_field :period
+  .field
+    = f.label :type
+    %br
+    = f.text_field :type
+  .field
+    = f.label :auth_type
+    %br
+    = f.number_field :auth_type
+  .field
+    = f.label :w_key
+    %br
+    = f.check_box :w_key
+  .field
+    = f.label :ext_access
+    %br
+    = f.check_box :ext_access
+  .field
+    = f.label :msiu_access
+    %br
+    = f.check_box :msiu_access
+  .field
+    = f.label :disc_group_id
+    %br
+    = f.select :disc_group_id, DisciplinesGroups.includes(:discipline, :group).all.map{|dg| [dg.discipline.name+" - "+dg.group.name, dg.id]}
+  .field
+    = f.label :oder
+    %br
+    = f.number_field :oder
+  .field
+    = f.label :theme_pct
+    %br
+    = f.number_field :theme_pct
+  .field
+    = f.label :question_pct
+    %br
+    = f.number_field :question_pct
+  .actions
+    = f.submit 'Сохранить'

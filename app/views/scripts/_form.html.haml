@@ -1,0 +1,38 @@
+= form_for @script do |f|
+  -if @script.errors.any?
+    #error_explanation
+      %h2= "При сохранении произошли ошибки"
+      %ul
+        - @script.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :order
+    = f.check_box :order
+  .field
+    = f.label :redirect_page
+    = f.text_field :redirect_page
+  .field
+    = f.label :time
+    = f.number_field :time
+  .field
+    = f.label :blocked
+    = f.check_box :blocked
+  .field
+    = f.label :test_id
+    = f.select :test_id, Test.all.map{|t| [t.name, t.id]}
+  .field
+    Варианты вывода результатов:
+    = f.label :procents
+    = f.check_box :procents
+  .field
+    = f.label :passed_themes
+    = f.check_box :passed_themes
+  .field
+    = f.label :detalized
+    = f.check_box :detalized
+  .actions
+    = f.submit 'Сохранить'

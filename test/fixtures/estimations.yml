@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  theme_pct: 1
+  question_pct: 1
+
+two:
+  theme_pct: 1
+  question_pct: 1

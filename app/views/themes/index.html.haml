@@ -1,0 +1,21 @@
+%h1 Список тем
+
+%table
+  %tr
+    %th Название
+    %th Сценарий
+    %th
+    %th
+    %th
+
+  - @themes.each do |theme|
+    %tr
+      %td= theme.name
+      %td= theme.script.name
+      %td= link_to 'Подробнее', theme
+      %td= link_to 'Редактировать', edit_theme_path(theme)
+      %td= link_to 'Удалить', theme, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Новая тема', new_theme_path

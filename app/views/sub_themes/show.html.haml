@@ -1,0 +1,26 @@
+%p#notice= notice
+
+%p
+  %b Название:
+  = @sub_theme.name
+%p
+  %b Выдавать вопросы
+  %br
+  %b С:
+  = @sub_theme.start_num
+  %br
+  %b По:
+  = @sub_theme.end_num
+%p
+  %b Выдать вопросов:
+  = @sub_theme.questions
+%p
+  %b Ждать ответов:
+  = @sub_theme.answers
+%p
+  %b Тема:
+  = @sub_theme.theme.name
+
+= link_to 'Редактировать', edit_sub_theme_path(@sub_theme)
+\|
+= link_to 'Назад', sub_themes_path

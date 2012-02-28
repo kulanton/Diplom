@@ -1,0 +1,15 @@
+%p
+  %b Номер:
+  = @group.name
+%p
+  %b Год:
+  = @group.year
+%p
+  %b Дисциплины:
+  - @group.disciplines.each do |discipline|
+    = discipline.name
+    %br
+
+= link_to 'Редактировать', edit_group_path(@group)
+\|
+= link_to 'Назад', groups_path
