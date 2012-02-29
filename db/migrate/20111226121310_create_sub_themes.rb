@@ -7,6 +7,7 @@ class CreateSubThemes < ActiveRecord::Migration
       t.integer :theme_id
       t.integer :questions
       t.integer :answers
+      t.boolean :order
 
       t.timestamps
     end

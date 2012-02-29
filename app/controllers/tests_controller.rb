@@ -1,55 +1,29 @@
 class TestsController < ApplicationController
-  # GET /tests
-  # GET /tests.json
+
   def index
     if params[:discipline].nil? and params[:group].nil?
       @tests = Test.all
-    elsif params[:discipline].nil?
-      #dgs = DisciplinesGroups.where(:group_id => params[:group])
-      #@tests = Test.includes(:disciplines_groups).where("disciplines_groups.group_id = ?", params[:group])
-    elsif params[:group].nil?
-      #dgs = DisciplinesGroups.where(:discipline_id => params[:discipline])
-      #@tests = Test.where("disc_group_id in ?", dgs.ids)
     else
-      #dgs = DisciplinesGroups.where(:discipline_id => params[:discipline], :group_id => params[:group])
-      @tests = Test.includes(:disciplines_groups).where("disciplines_groups.discipline_id = ?", params[:discipline])
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @tests }
+      @tests = Test.includes(:disciplines_groups).where("disciplines_groups.discipline_id = ? AND disciplines_groups.group_id = ?", params[:discipline], params[:group])
     end
   end
 
-  # GET /tests/1
-  # GET /tests/1.json
+
   def show
     @test = Test.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @test }
-    end
   end
 
-  # GET /tests/new
-  # GET /tests/new.json
+
   def new
     @test = Test.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @test }
-    end
   end
 
-  # GET /tests/1/edit
+
   def edit
     @test = Test.find(params[:id])
   end
 
-  # POST /tests
-  # POST /tests.json
+
   def create
     @test = Test.new(params[:test])
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120228164840) do
+ActiveRecord::Schema.define(:version => 20120229085606) do
 
   create_table "disciplines", :force => true do |t|
     t.string   "name"
@@ -37,13 +37,18 @@ ActiveRecord::Schema.define(:version => 20120228164840) do
     t.string   "name"
     t.string   "redirect_page"
     t.integer  "time"
-    t.integer  "blocked"
-    t.integer  "test_id"
+    t.boolean  "blocked"
     t.boolean  "procents"
     t.boolean  "passed_themes"
     t.boolean  "detalized"
+    t.integer  "test_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "scripts_themes", :id => false, :force => true do |t|
+    t.integer "script_id"
+    t.integer "theme_id"
   end
 
   create_table "sub_themes", :force => true do |t|
@@ -53,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120228164840) do
     t.integer  "theme_id"
     t.integer  "questions"
     t.integer  "answers"
+    t.boolean  "order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,15 +66,15 @@ ActiveRecord::Schema.define(:version => 20120228164840) do
   create_table "tests", :force => true do |t|
     t.string   "name"
     t.integer  "necessary"
-    t.integer  "block"
+    t.boolean  "block"
     t.integer  "num_try"
     t.integer  "period"
     t.string   "type"
     t.integer  "auth_type"
-    t.integer  "w_key"
-    t.integer  "ext_access"
-    t.integer  "msiu_access"
-    t.integer  "oder"
+    t.boolean  "w_key"
+    t.boolean  "ext_access"
+    t.boolean  "msiu_access"
+    t.integer  "order"
     t.integer  "disciplines_groups_id"
     t.integer  "theme_pct"
     t.integer  "question_pct"
@@ -78,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20120228164840) do
 
   create_table "themes", :force => true do |t|
     t.string   "name"
-    t.integer  "scenary_id"
+    t.integer  "discipline_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

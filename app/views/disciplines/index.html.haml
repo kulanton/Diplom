@@ -5,12 +5,10 @@
     %th Название
     %th
     %th
-    %th
 
   - @disciplines.each do |discipline|
     %tr
       %td= link_to discipline.name, :controller => 'groups', :action => 'index', :discipline => discipline
-      %td= link_to 'Подробнее', discipline
       %td= link_to 'Редактировать', edit_discipline_path(discipline)
       %td= link_to 'Удалить', discipline, :confirm => 'Вы уверены?', :method => :delete
 

@@ -3,7 +3,7 @@
 %table
   %tr
     %th Название
-    %th Порядок вопросов
+    %th Порядок
     %th Страница перенаправления
     %th Время теста
     %th Заблокирован
@@ -15,7 +15,7 @@
   - @scripts.each do |script|
     %tr
       %td= script.name
-      %td= script.get_order
+      %td= script.order
       %td= script.redirect_page
       %td= script.time
       - if script.blocked

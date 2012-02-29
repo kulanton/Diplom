@@ -5,11 +5,11 @@ class CreateScripts < ActiveRecord::Migration
       t.string :name
       t.string :redirect_page
       t.integer :time
-      t.integer :blocked
-      t.integer :test_id
+      t.boolean :blocked
       t.boolean :procents
       t.boolean :passed_themes
       t.boolean :detalized
+      t.integer :test_id
 
       t.timestamps
     end

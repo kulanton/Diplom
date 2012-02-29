@@ -1,44 +1,22 @@
 class ScriptsController < ApplicationController
-  # GET /scripts
-  # GET /scripts.json
+
   def index
     @scripts = Script.includes(:test).all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @scripts }
-    end
   end
 
-  # GET /scripts/1
-  # GET /scripts/1.json
   def show
     @script = Script.includes(:test).find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @script }
-    end
   end
 
-  # GET /scripts/new
-  # GET /scripts/new.json
   def new
     @script = Script.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @script }
-    end
+    theme = @script.themes.build
   end
 
-  # GET /scripts/1/edit
   def edit
     @script = Script.find(params[:id])
   end
 
-  # POST /scripts
-  # POST /scripts.json
   def create
     @script = Script.new(params[:script])
 
@@ -53,8 +31,6 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # PUT /scripts/1
-  # PUT /scripts/1.json
   def update
     @script = Script.find(params[:id])
 
@@ -69,8 +45,6 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # DELETE /scripts/1
-  # DELETE /scripts/1.json
   def destroy
     @script = Script.find(params[:id])
     @script.destroy

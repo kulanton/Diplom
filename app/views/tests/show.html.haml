@@ -30,10 +30,10 @@
   = @test.msiu_access
 %p
   %b Дисциплина-Группа:
-  = @test.disc_group_id
+  = @test.disciplines_groups_id
 %p
   %b Порядок:
-  = @test.oder
+  = @test.order
 %p
   %b Процент тем
   = @test.theme_pct
@@ -45,7 +45,7 @@
     %th Список сценариев
   - @test.scripts.each do |script|
     %tr
-      %td=script.name
+      %td= link_to script.name, script
 
 = link_to 'Редактировать', edit_test_path(@test)
 \|

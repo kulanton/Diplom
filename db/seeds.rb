@@ -1,7 +1,51 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+u=User.new(:login=>"admin", :password=>"admin2", :password_confirmation=>"admin2", :email=>"admin@msiu.ru")
+u.save
+
+vvs=Discipline.create(:name => "Введение в специальность")
+pp=Discipline.create(:name => "Параллельное программирование")
+pirkis=Discipline.create(:name => "Проектирование и разработка корпоративных информационных систем")
+dm=Discipline.create(:name => "Дискретная математика")
+kg=Discipline.create(:name => "Компьютерная графика")
+ma=Discipline.create(:name => "Математический анализ")
+p=Discipline.create(:name => "Программирование")
+tvims=Discipline.create(:name => "Теория вероятностей и математическая статистика")
+bdisubd=Discipline.create(:name => "Базы данных и СУБД")
+os=Discipline.create(:name => "Операционные системы")
+sippo=Discipline.create(:name => "Системное и прикладное ПО")
+pnevm=Discipline.create(:name => "Практикум на ЭВМ")
+sevmit=Discipline.create(:name => "Сети ЭВМ и телекоммуникации")
+ml=Discipline.create(:name => "Математическая логика")
+vt=Discipline.create(:name => "Веб-технологии")
+
+g2361=Group.create(:name => "2361", :year => "2011/2012", :disciplines => [ma, dm, p])
+g2362=Group.create(:name => "2362", :year => "2011/2012", :disciplines => [ma, dm])
+g4361=Group.create(:name => "4361", :year => "2011/2012", :disciplines => [tvims, bdisubd, sippo])
+g4362=Group.create(:name => "4362", :year => "2011/2012", :disciplines => [os, pnevm])
+g6361=Group.create(:name => "6361", :year => "2011/2012", :disciplines => [ml, ma])
+g6362=Group.create(:name => "6362", :year => "2011/2012", :disciplines => [vt, sevmit])
+g8361=Group.create(:name => "8361", :year => "2011/2012", :disciplines => [kg])
+g8362=Group.create(:name => "8362", :year => "2011/2012", :disciplines => [pp, pirkis])
+
+test1=Test.create(:name => "Тест №1", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 1, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => kg.id, :group_id => g8361.id).first.id, :theme_pct => 0, :question_pct => 75)
+test2=Test.create(:name => "Тест №2", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 1, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => pp.id, :group_id => g8362.id).first.id, :theme_pct => 0, :question_pct => 75)
+test3=Test.create(:name => "Тест №3", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 2, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => pirkis.id, :group_id => g8362.id).first.id, :theme_pct => 0, :question_pct => 75)
+test4=Test.create(:name => "Тест №4", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 1, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => dm.id, :group_id => g2361.id).first.id, :theme_pct => 0, :question_pct => 75)
+test5=Test.create(:name => "Тест №5", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 2, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => dm.id, :group_id => g2361.id).first.id, :theme_pct => 0, :question_pct => 75)
+
+
+i=Theme.create(:name => "Интеграллы", :discipline => ma)
+s=Theme.create(:name => "Свет", :discipline => kg)
+f=Theme.create(:name => "Фигуры", :discipline => kg)
+g=Theme.create(:name => "Группы", :discipline => dm)
+k=Theme.create(:name => "Кольца", :discipline => dm)
+
+Script.create(:name => "Сценарий №1", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f])
+Script.create(:name => "Сценарий №2", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f])
+Script.create(:name => "Сценарий №3", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f])
+Script.create(:name => "Сценарий №4", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test2.id, :themes => [s, f])
+Script.create(:name => "Сценарий №5", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test3.id, :themes => [s, f])
+Script.create(:name => "Сценарий №6", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test3.id, :themes => [s, f])
+Script.create(:name => "Сценарий №7", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test4.id, :themes => [s, f])
+Script.create(:name => "Сценарий №8", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test4.id, :themes => [s, f])
+Script.create(:name => "Сценарий №9", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test4.id, :themes => [s, f])
+Script.create(:name => "Сценарий №10", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test5.id, :themes => [s, f])

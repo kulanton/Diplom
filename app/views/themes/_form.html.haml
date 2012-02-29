@@ -8,9 +8,11 @@
 
   .field
     = f.label :name
+    %br
     = f.text_field :name
   .field
-    = f.label :script_id
-    = f.select :script_id, Script.all.map{|s| [s.name, s.id]}  
+    = f.label :discipline_id
+    %br
+    = f.select :discipline_id, Discipline.all.map{|d| [d.name, s.id]}
   .actions
     = f.submit 'Save'

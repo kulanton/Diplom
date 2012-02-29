@@ -4,13 +4,5 @@ class Script < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :order, :presence => true
-  validates :time, :presence => true
-  validates :blocked, :presence => true
-  
-  ORDER = ["Вразброс", "По порядку"]
-  
-  def get_order()
-    ORDER[order]
-  end
-  
+  validates :time, :presence => true  
 end

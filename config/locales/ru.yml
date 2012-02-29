@@ -332,7 +332,7 @@ ru:
         w_key: "С ключем"
         ext_access: "Доступен извне"
         msiu_access: "Доступен в МГИУ"
-        disc_group_id: "Дисциплина-Группа"
+        disciplines_groups_id: "Дисциплина-Группа"
         oder: "Порядок"
         theme_pct: "Процент тем"
         question_pct: "Процент вопросов"

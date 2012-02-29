@@ -8,31 +8,47 @@
 
   .field
     = f.label :name
+    %br
     = f.text_field :name
   .field
     = f.label :order
+    %br
     = f.check_box :order
   .field
     = f.label :redirect_page
+    %br
     = f.text_field :redirect_page
   .field
     = f.label :time
+    %br
     = f.number_field :time
   .field
     = f.label :blocked
+    %br
     = f.check_box :blocked
   .field
     = f.label :test_id
+    %br
     = f.select :test_id, Test.all.map{|t| [t.name, t.id]}
   .field
     Варианты вывода результатов:
+    %br
     = f.label :procents
+    %br
     = f.check_box :procents
   .field
     = f.label :passed_themes
+    %br
     = f.check_box :passed_themes
   .field
     = f.label :detalized
+    %br
     = f.check_box :detalized
+  %p
+  =f.fields_for :themes do |builder|
+    .field
+      = builder.label :name, "Тема"
+      %br
+      = builder.text_field :name
   .actions
     = f.submit 'Сохранить'
