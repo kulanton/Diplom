@@ -8,15 +8,15 @@
 
   .field
     = f.label :name
-    %br
+    &nbsp;
     = f.text_field :name
   .field
     = f.label :year
-    %br
+    &nbsp;
     = f.text_field :year
   .field
     =f.label :discipline_tokens, "Дисциплины"
-    %br
-    =f.text_field :discipline_tokens,"data-pre"=>@group.disciplines.map(&:attributes).to_json
+    &nbsp;
+    =f.text_field :discipline_tokens, "data-pre"=>@group.disciplines.map(&:attributes).to_json
   .actions
     = f.submit 'Сохранить'

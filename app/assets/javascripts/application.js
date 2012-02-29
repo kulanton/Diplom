@@ -18,3 +18,14 @@ $(function() {
     searchingText: "Поиск..."
   });
 });
+
+$(function() {
+  $("#discipline_tokens").tokenInput("/disciplines.json", {
+    crossDomain: false,
+    prePopulate: $("#discipline_tokens").data("pre"),
+    theme: 'facebook',
+    hintText: 'Введите название дисциплины',
+    noResultsText: 'Не найдено',
+    searchingText: "Поиск..."
+  });
+});

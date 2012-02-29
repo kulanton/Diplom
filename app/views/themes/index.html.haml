@@ -9,7 +9,7 @@
 
   - @themes.each do |theme|
     %tr
-      %td= theme.name
+      %td= link_to theme.name, :controller => 'tests', :theme => theme
       %td= theme.discipline.name
       %td= link_to 'Редактировать', edit_theme_path(theme)
       %td= link_to 'Удалить', theme, :confirm => 'Вы уверены?', :method => :delete

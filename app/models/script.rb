@@ -1,5 +1,5 @@
 class Script < ActiveRecord::Base
-  has_many :themes
+  has_and_belongs_to_many :themes
   belongs_to :test
 
   validates :name, :presence => true

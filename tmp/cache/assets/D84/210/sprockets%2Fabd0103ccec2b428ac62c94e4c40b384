@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%62c9b70d23210e238df63799e039dec1"digest"%1bbe2d8a309ad589198f7a07d79fab31"lengthi�A"source"�A/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%c2185760fdd52eb0fec5915fc699804b"digest"%e256869d617595b9a0812c1febaee4f1"lengthi�B"source"�B/*!
  * jQuery JavaScript Library v1.5.2
  * http://jquery.com/
  *
@@ -9529,4 +9529,15 @@ $(function() {
     searchingText: "Поиск..."
   });
 });
-:@created_atf1330466651.9583099 T�
+
+$(function() {
+  $("#discipline_tokens").tokenInput("/disciplines.json", {
+    crossDomain: false,
+    prePopulate: $("#discipline_tokens").data("pre"),
+    theme: 'facebook',
+    hintText: 'Введите название дисциплины',
+    noResultsText: 'Не найдено',
+    searchingText: "Поиск..."
+  });
+});
+:@created_atf1330543308.361176 �

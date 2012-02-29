@@ -8,21 +8,27 @@
 
   .field
     = f.label :name
+    &nbsp;
     = f.text_field :name
   .field
     = f.label :start_num
+    &nbsp;
     = f.number_field :start_num
   .field
     = f.label :end_num
+    &nbsp;
     = f.number_field :end_num
   .field
     = f.label :questions
+    &nbsp;
     = f.number_field :questions
   .field
     = f.label :answers
+    &nbsp;
     = f.number_field :answers
   .field
     = f.label :theme_id
+    &nbsp;
     = f.select :theme_id, Theme.all.map{|t| [t.name, t.id]}
   .actions
     = f.submit 'Сохранить'

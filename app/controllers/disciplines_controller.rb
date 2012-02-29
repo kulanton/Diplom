@@ -1,11 +1,10 @@
 class DisciplinesController < ApplicationController
-  # GET /disciplines
-  # GET /disciplines.json
+
   def index
     @disciplines = Discipline.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json do
         @disciplines = Discipline.where("lower(name) LIKE lower(?)","%#{params[:q]}%").all
         render :json => @disciplines.map(&:attributes)
@@ -13,8 +12,7 @@ class DisciplinesController < ApplicationController
     end
   end
 
-  # GET /disciplines/1
-  # GET /disciplines/1.json
+
   def show
     @discipline = Discipline.find(params[:id])
 
@@ -24,8 +22,7 @@ class DisciplinesController < ApplicationController
     end
   end
 
-  # GET /disciplines/new
-  # GET /disciplines/new.json
+
   def new
     @discipline = Discipline.new
 

@@ -324,16 +324,16 @@ ru:
       test:
         name: "Название"
         necessary: "Необходимость"
-        block: "С блокировкой"
+        block: "С блокировкой?"
         num_try: "Количество попыток"
         period: "Период пересдачи"
         type: "Тип теста"
         auth_type: "Тип авторизации"
-        w_key: "С ключем"
-        ext_access: "Доступен извне"
-        msiu_access: "Доступен в МГИУ"
+        w_key: "С ключем?"
+        ext_access: "Доступен извне?"
+        msiu_access: "Доступен в МГИУ?"
         disciplines_groups_id: "Дисциплина-Группа"
-        oder: "Порядок"
+        order: "Порядок"
         theme_pct: "Процент тем"
         question_pct: "Процент вопросов"
       script:
@@ -349,6 +349,7 @@ ru:
       theme:
         name: "Название"
         script_id: "Сценарий"
+        discipline_id: "Дисциплина"
       sub_theme:
         name: "Название"
         start_num: "Начальный индекс вопросов"

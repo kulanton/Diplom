@@ -8,59 +8,59 @@
 
   .field
     = f.label :name
-    %br
+    &nbsp;
     = f.text_field :name
   .field
     = f.label :necessary
-    %br
+    &nbsp;
     = f.check_box :necessary
   .field
     = f.label :block
-    %br
+    &nbsp;
     = f.check_box :block
   .field
     = f.label :num_try
-    %br
+    &nbsp;
     = f.number_field :num_try
   .field
     = f.label :period
-    %br
+    &nbsp;
     = f.number_field :period
   .field
     = f.label :type
-    %br
-    = f.text_field :type
+    &nbsp;
+    = f.select :type, @test.types
   .field
     = f.label :auth_type
-    %br
-    = f.number_field :auth_type
+    &nbsp;
+    = f.select :auth_type, @test.auth_types
   .field
     = f.label :w_key
-    %br
+    &nbsp;
     = f.check_box :w_key
   .field
     = f.label :ext_access
-    %br
+    &nbsp;
     = f.check_box :ext_access
   .field
     = f.label :msiu_access
-    %br
+    &nbsp;
     = f.check_box :msiu_access
   .field
     = f.label :disciplines_groups_id
-    %br
-    = f.select :disciplines_groups_id, DisciplinesGroups.includes(:discipline, :group).all.map{|dg| [dg.discipline.name+" - "+dg.group.name, dg.id]}
+    &nbsp;
+    = f.select :disciplines_groups_id, DisciplinesGroups.includes(:discipline, :group).all.map{|dg| [dg.discipline.name+" - "+dg.group.name+" - "+dg.group.year, dg.id]}
   .field
     = f.label :order
-    %br
+    &nbsp;
     = f.number_field :order
   .field
     = f.label :theme_pct
-    %br
+    &nbsp;
     = f.number_field :theme_pct
   .field
     = f.label :question_pct
-    %br
+    &nbsp;
     = f.number_field :question_pct
   .actions
     = f.submit 'Сохранить'

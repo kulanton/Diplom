@@ -8,11 +8,11 @@
 
   .field
     = f.label :name
-    %br
+    &nbsp;
     = f.text_field :name
   .field
     = f.label :discipline_id
-    %br
-    = f.select :discipline_id, Discipline.all.map{|d| [d.name, s.id]}
+    &nbsp;
+    = f.select :discipline_id, Discipline.all.map{|d| [d.name, d.id]}
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохранить'
