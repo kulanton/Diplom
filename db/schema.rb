@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20120229085606) do
   create_table "themes", :force => true do |t|
     t.string   "name"
     t.integer  "discipline_id"
+    t.integer  "script_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

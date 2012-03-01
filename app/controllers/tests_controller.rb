@@ -3,6 +3,8 @@ class TestsController < ApplicationController
   def index
     if params[:discipline].nil? and params[:group].nil?
       @tests = Test.all
+    elsif !params[:group].nil?
+      @tests = Test.includes(:disciplines_groups).where("disciplines_groups.group_id = ?", params[:group])
     else
       @tests = Test.includes(:disciplines_groups).where("disciplines_groups.discipline_id = ? AND disciplines_groups.group_id = ?", params[:discipline], params[:group])
     end

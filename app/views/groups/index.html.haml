@@ -13,6 +13,25 @@
       %td= group.year
       %td= link_to 'Редактировать', edit_group_path(group)
       %td= link_to 'Удалить', group, :confirm => 'Вы уверены?', :method => :delete
+      
+- if @tests
+  %h1 Список тестов
+  %table
+    %tr
+      %th Список тестов
+      %th Группа
+      %th Список сценариев
+      %th Действия
+
+    - @tests.each do |test|
+      %tr
+        %td= link_to test.name, test
+        %td= test.disciplines_groups.group.name + " - " + test.disciplines_groups.group.year
+        %td
+          - test.scripts.each do |script|
+            = link_to script.name, script
+            %br
+        %td= link_to 'Удалить', test, :confirm => 'Вы уверены?', :method => :delete
 
 %br
 

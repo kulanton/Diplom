@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
       @groups = Group.all
     else
       @groups = Group.includes(:disciplines).where("disciplines.id = ?", params[:discipline])
-      @themes = Theme.where(:discipline_id => params[:discipline])
+      @tests = Test.includes(:disciplines_groups).where("disciplines_groups.discipline_id = ?", params[:discipline])
     end
 
     respond_to do |format|
