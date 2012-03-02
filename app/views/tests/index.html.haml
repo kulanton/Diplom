@@ -21,4 +21,4 @@
 
 %br
 
-= link_to 'Новый тест', new_test_path
+= link_to 'Новый тест', :action => 'new', :discipline => params[:discipline], :group => params[:group]

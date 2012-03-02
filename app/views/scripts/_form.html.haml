@@ -44,11 +44,11 @@
     = f.label :detalized
     &nbsp;
     = f.check_box :detalized
-  %p
-  =f.fields_for :themes do |builder|
-    .field
-      = builder.label :name, "Тема"
-      &nbsp;
-      = builder.text_field :name
+  -#%p
+  -#=f.fields_for :themes do |builder|
+  .field
+    = f.label :theme_tokens, "Темы"
+    &nbsp;
+    = f.text_field :theme_tokens, "data-pre"=>@script.themes.map(&:attributes).to_json
   .actions
     = f.submit 'Сохранить'

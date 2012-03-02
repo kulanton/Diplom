@@ -18,6 +18,9 @@ class TestsController < ApplicationController
 
   def new
     @test = Test.new
+    if !params[:discipline].nil? and !params[:group].nil?
+      @dg = DisciplinesGroups.where("discipline_id = ? AND group_id = ?", params[:discipline], params[:group]).first
+    end
   end
 
 

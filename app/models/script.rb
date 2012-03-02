@@ -4,5 +4,11 @@ class Script < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :order, :presence => true
-  validates :time, :presence => true  
+  validates :time, :presence => true
+  
+  attr_reader :theme_tokens
+  
+  def theme_tokens=(ids)
+    self.theme_ids = ids.split(",")
+  end
 end

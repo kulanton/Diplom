@@ -12,8 +12,25 @@ $(function() {
   $("#group_discipline_tokens").tokenInput("/disciplines.json", {
     crossDomain: false,
     prePopulate: $("#group_discipline_tokens").data("pre"),
+    preventDuplicates: true,
     theme: 'facebook',
     hintText: 'Введите название дисциплины',
+    noResultsText: 'Не найдено',
+    searchingText: "Поиск..."
+  });
+});
+
+$(function() {
+  $("#script_theme_tokens").tokenInput("/themes.json", {
+    crossDomain: false,
+    prePopulate: $("#script_theme_tokens").data("pre"),
+    //tokenLimit: 1,
+    //onAdd: function() {
+	//  alert("Hello!");
+	//},
+    preventDuplicates: true,
+    theme: 'facebook',
+    hintText: 'Введите название темы',
     noResultsText: 'Не найдено',
     searchingText: "Поиск..."
   });

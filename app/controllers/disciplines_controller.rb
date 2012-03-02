@@ -1,7 +1,7 @@
 class DisciplinesController < ApplicationController
 
   def index
-    @disciplines = Discipline.all
+    @disciplines = Discipline.all.sort_by(&:name)
 
     respond_to do |format|
       format.html
