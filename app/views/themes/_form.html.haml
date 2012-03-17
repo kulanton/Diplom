@@ -11,8 +11,8 @@
     &nbsp;
     = f.text_field :name
   .field
-    = f.label :discipline_id
+    = f.label :discipline_token, "Дисциплина"
     &nbsp;
-    = f.select :discipline_id, Discipline.all.map{|d| [d.name, d.id]}
+    = f.text_field :discipline_token, "data-pre"=>@theme.discipline.to_a.map(&:attributes).to_json
   .actions
     = f.submit 'Сохранить'

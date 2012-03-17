@@ -3,20 +3,20 @@
 %table
   %tr
     %th Список тестов
+    %th Список сценариев
     %th Дисциплина
     %th Группа
-    %th Список сценариев
     %th Действия
 
   - @tests.each do |test|
     %tr
       %td= link_to test.name, test
-      %td= test.disciplines_groups.discipline.name
-      %td= test.disciplines_groups.group.name + " - " + test.disciplines_groups.group.year
       %td
         - test.scripts.each do |script|
           = link_to script.name, script
           %br
+      %td= test.disciplines_groups.discipline.name
+      %td= test.disciplines_groups.group.name + " - " + test.disciplines_groups.group.year
       %td= link_to 'Удалить', test, :confirm => 'Вы уверены?', :method => :delete
 
 %br

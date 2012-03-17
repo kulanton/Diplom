@@ -3,11 +3,11 @@
 %table
   %tr
     %th Название
+    %th Тема
     %th Начальный индекс вопросов
     %th Конечный индекс вопросов
     %th Выдать вопросов
     %th Ожидать ответов
-    %th Тема
     %th
     %th
     %th
@@ -15,11 +15,11 @@
   - @sub_themes.each do |sub_theme|
     %tr
       %td= sub_theme.name
+      %td= sub_theme.theme.name
       %td= sub_theme.start_num
       %td= sub_theme.end_num
       %td= sub_theme.questions
       %td= sub_theme.answers
-      %td= sub_theme.theme.name
       %td= link_to 'Подробнее', sub_theme
       %td= link_to 'Редактировать', edit_sub_theme_path(sub_theme)
       %td= link_to 'Удалить', sub_theme, :confirm => 'Вы уверены?', :method => :delete

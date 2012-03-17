@@ -1,5 +1,8 @@
 Scenario::Application.routes.draw do
 
+  get "disciplines_groups/index"
+  #resource :disciplines_groups, :only => [:index]
+
   resources :users
 
   resource :session, :only => [:new, :create, :destroy]

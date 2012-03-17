@@ -1,6 +1,6 @@
 = form_for @test do |f|
   -if @test.errors.any?
-    #error_explanation
+    .div.error
       %h2= "При сохранении произошли ошибки"
       %ul
         - @test.errors.full_messages.each do |msg|
@@ -46,10 +46,14 @@
     = f.label :msiu_access
     &nbsp;
     = f.check_box :msiu_access
+  -#.field
+  -#  = f.label :disciplines_groups_id
+  -#  &nbsp;
+  -#  = f.select :disciplines_groups_id, DisciplinesGroups.includes(:discipline, :group).all.map{|dg| [dg.discipline.name+" - "+dg.group.name+" - "+dg.group.year, dg.id]}
   .field
-    = f.label :disciplines_groups_id
+    = f.label :disciplines_groups_token, "Дисциплина - Группа"
     &nbsp;
-    = f.select :disciplines_groups_id, DisciplinesGroups.includes(:discipline, :group).all.map{|dg| [dg.discipline.name+" - "+dg.group.name+" - "+dg.group.year, dg.id]}
+    = f.text_field :disciplines_groups_token, "data-pre"=>@test.disciplines_groups.to_a.map(&:attributes).to_json
   .field
     = f.label :order
     &nbsp;

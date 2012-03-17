@@ -1,6 +1,6 @@
 = form_for @script do |f|
   -if @script.errors.any?
-    #error_explanation
+    .div.error
       %h2= "При сохранении произошли ошибки"
       %ul
         - @script.errors.full_messages.each do |msg|
@@ -30,22 +30,20 @@
     = f.label :test_id
     &nbsp;
     = f.select :test_id, Test.all.map{|t| [t.name, t.id]}
-  .field
+  %p
     Варианты вывода результатов:
-  .field
-    = f.label :procents
-    &nbsp;
-    = f.check_box :procents
-  .field
-    = f.label :passed_themes
-    &nbsp;
-    = f.check_box :passed_themes
-  .field
-    = f.label :detalized
-    &nbsp;
-    = f.check_box :detalized
-  -#%p
-  -#=f.fields_for :themes do |builder|
+    .field
+      = f.label :procents
+      &nbsp;
+      = f.check_box :procents
+    .field
+      = f.label :passed_themes
+      &nbsp;
+      = f.check_box :passed_themes
+    .field
+      = f.label :detalized
+      &nbsp;
+      = f.check_box :detalized
   .field
     = f.label :theme_tokens, "Темы"
     &nbsp;

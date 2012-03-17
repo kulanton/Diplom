@@ -1,7 +1,7 @@
 = form_for @discipline do |f|
   -if @discipline.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@discipline.errors.count, "error")} prohibited this discipline from being saved:"
+    .div.error
+      %h2= "При сохранении произошли ошибки"
       %ul
         - @discipline.errors.full_messages.each do |msg|
           %li= msg

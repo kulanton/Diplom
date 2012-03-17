@@ -11,10 +11,10 @@ class Test < ActiveRecord::Base
   validates :period, :numericality => {:only_integer=>true,:greater_than=>0},:allow_blank => false
   validates :order, :numericality => {:only_integer=>true,:greater_than=>0},:allow_blank => false
   
-  attr_reader :discipline_tokens
+  attr_reader :disciplines_groups_token
   
-  def discipline_tokens=(ids)
-    self.discipline_ids = ids.split(",")
+  def disciplines_groups_token=(id)
+    self.disciplines_groups_id = id
   end
   
   TYPES = [["Тип 1", 1], ["Тип 2", 2], ["Тип 3", 3]]
