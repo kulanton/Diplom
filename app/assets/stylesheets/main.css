@@ -20,7 +20,11 @@ h1, h2, h3, h4, h5, h6, address, blockquote, dl, fieldset, ol, p, table, ul {mar
 #content table {margin:0; border-collapse:collapse;}
 #content table.width100 {width:100%;}
 #content table th, #content table td {padding:5px 5px;}
+#content table td {vertical-align:middle;}
 #content table th {text-align:left; vertical-align:middle; font-weight:bold;}
+#content table td.edit-delete {text-align:center; width:190px}
+#content table td.edit {text-align:center; width:115px}
+#content table td.delete {text-align:center; width:75px}
 #content ul {margin:15px 0; list-style:none;}
 #content ul li {padding-left:15px; background:url("ul.gif") 0 4px no-repeat;}
 #content ul ul {margin:0 0 0 10px;}

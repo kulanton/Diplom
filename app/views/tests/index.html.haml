@@ -1,6 +1,6 @@
 %h1 Список тестов
 
-%table
+%table.table.table-striped
   %tr
     %th Список тестов
     %th Список сценариев
@@ -17,8 +17,8 @@
           %br
       %td= test.disciplines_groups.discipline.name
       %td= test.disciplines_groups.group.name + " - " + test.disciplines_groups.group.year
-      %td= link_to 'Удалить', test, :confirm => 'Вы уверены?', :method => :delete
+      %td.delete= link_to 'Удалить', test, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
 
 %br
 
-= link_to 'Новый тест', :action => 'new', :discipline => params[:discipline], :group => params[:group]
+= link_to 'Новый тест', new_test_path, :class => 'btn'

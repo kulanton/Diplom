@@ -357,6 +357,7 @@ ru:
         questions: "Задать вопросов"
         answers: "Ожидать ответов"
         theme_id: "Тема"
+        order: "Вопросы по порядку?"
       discipline:
         name: "Название"
       group:

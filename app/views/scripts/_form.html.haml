@@ -1,4 +1,4 @@
-= form_for @script do |f|
+= form_for @script, :html => {:class => 'form-horizontal'} do |f|
   -if @script.errors.any?
     .div.error
       %h2= "При сохранении произошли ошибки"
@@ -6,47 +6,53 @@
         - @script.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    &nbsp;
-    = f.text_field :name
-  .field
-    = f.label :order
-    &nbsp;
-    = f.check_box :order
-  .field
-    = f.label :redirect_page
-    &nbsp;
-    = f.text_field :redirect_page
-  .field
-    = f.label :time
-    &nbsp;
-    = f.number_field :time
-  .field
-    = f.label :blocked
-    &nbsp;
-    = f.check_box :blocked
-  .field
-    = f.label :test_id
-    &nbsp;
-    = f.select :test_id, Test.all.map{|t| [t.name, t.id]}
-  %p
-    Варианты вывода результатов:
-    .field
-      = f.label :procents
-      &nbsp;
-      = f.check_box :procents
-    .field
-      = f.label :passed_themes
-      &nbsp;
-      = f.check_box :passed_themes
-    .field
-      = f.label :detalized
-      &nbsp;
-      = f.check_box :detalized
-  .field
-    = f.label :theme_tokens, "Темы"
-    &nbsp;
-    = f.text_field :theme_tokens, "data-pre"=>@script.themes.map(&:attributes).to_json
-  .actions
-    = f.submit 'Сохранить'
+  %fieldset
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        = f.text_field :name, :class => 'input-xlarge'
+    .control-group
+      = f.label :order, :class => 'control-label'
+      .controls
+        = f.check_box :order, :class => 'checkbox'
+    .control-group
+      = f.label :redirect_page, :class => 'control-label'
+      .controls
+        = f.text_field :redirect_page, :class => 'input-xlarge'
+    .control-group
+      = f.label :time, :class => 'control-label'
+      .controls
+        = f.number_field :time, :class => 'input-xlarge'
+    .control-group
+      = f.label :blocked, :class => 'control-label'
+      .controls
+        = f.check_box :blocked, :class => 'checkbox'
+    .control-group
+      = f.label :test_id, :class => 'control-label'
+      .controls
+        = f.select :test_id, Test.all.map{|t| [t.name, t.id]}
+    %p
+      Варианты вывода результатов:
+      .control-group
+        = f.label :procents, :class => 'control-label'
+        .controls
+          = f.check_box :procents, :class => 'checkbox'
+      .control-group
+        = f.label :passed_themes, :class => 'control-label'
+        .controls
+          = f.check_box :passed_themes, :class => 'checkbox'
+      .control-group
+        = f.label :detalized, :class => 'control-label'
+        .controls
+          = f.check_box :detalized, :class => 'checkbox'
+    .control-group
+      = f.label :theme_tokens, "Темы", :class => 'control-label'
+      .controls
+        = f.text_field :theme_tokens, "data-pre"=>@script.themes.map(&:attributes).to_json
+    .control-group
+      = f.label :sub_theme_tokens, "Подтемы", :class => 'control-label'
+      .controls
+        = f.text_field :sub_theme_tokens, "data-pre"=>@script.sub_themes.map(&:attributes).to_json
+    .form-actions
+      = f.submit 'Сохранить', :class => 'btn btn-primary'
+      = link_to 'Назад', scripts_path, :class => 'btn'

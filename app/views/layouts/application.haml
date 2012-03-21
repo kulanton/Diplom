@@ -2,8 +2,9 @@
 %html
   %head
     %title Редактор сценариев тестирования
-    = stylesheet_link_tag 'reset', 'main', '2col', 'style', 'mystyle', 'token-input-facebook', 'bootstrap'
-    = javascript_include_tag 'jquery', 'jquery.tokeninput', 'application', 'bootstrap'
+    = stylesheet_link_tag 'token-input-facebook', 'bootstrap', 'reset', 'main', '2col', 'mystyle', 'style'
+    -#, 'application'
+    = javascript_include_tag 'jquery.tokeninput', 'bootstrap', 'application'
     = csrf_meta_tag
   %body
     #main

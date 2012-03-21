@@ -8,9 +8,9 @@
     %th Конечный индекс вопросов
     %th Выдать вопросов
     %th Ожидать ответов
+    %th Вопросы по порядку?
     %th
-    %th
-    %th
+
 
   - @sub_themes.each do |sub_theme|
     %tr
@@ -20,10 +20,12 @@
       %td= sub_theme.end_num
       %td= sub_theme.questions
       %td= sub_theme.answers
-      %td= link_to 'Подробнее', sub_theme
-      %td= link_to 'Редактировать', edit_sub_theme_path(sub_theme)
-      %td= link_to 'Удалить', sub_theme, :confirm => 'Вы уверены?', :method => :delete
+      %td= sub_theme.order ? "ДА" : "НЕТ"
+      %td.edit
+        = link_to 'Редактировать', edit_sub_theme_path(sub_theme), :class => 'btn'
+        %br
+        = link_to 'Удалить', sub_theme, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
 
 %br
 
-= link_to 'Новая подтема', new_sub_theme_path
+= link_to 'Новая подтема', new_sub_theme_path, :class => 'btn'

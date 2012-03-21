@@ -31,15 +31,22 @@ test2=Test.create(:name => "Тест №2", :necessary => true, :block => true, 
 test3=Test.create(:name => "Тест №3", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 2, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => pirkis.id, :group_id => g8362.id).first.id, :theme_pct => 0, :question_pct => 75)
 test4=Test.create(:name => "Тест №4", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 1, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => dm.id, :group_id => g2361.id).first.id, :theme_pct => 0, :question_pct => 75)
 test5=Test.create(:name => "Тест №5", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 2, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => dm.id, :group_id => g2361.id).first.id, :theme_pct => 0, :question_pct => 75)
+test6=Test.create(:name => "Тест №6", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 2, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => kg.id, :group_id => g8361.id).first.id, :theme_pct => 0, :question_pct => 75)
+test7=Test.create(:name => "Тест №7", :necessary => true, :block => true, :num_try => 2, :period => 5, :type => 1, :auth_type => 1, :w_key => true, :ext_access => false, :msiu_access => true, :order => 3, :disciplines_groups_id => DisciplinesGroups.where(:discipline_id => kg.id, :group_id => g8361.id).first.id, :theme_pct => 75, :question_pct => 0)
+
 
 
 i=Theme.create(:name => "Интеграллы", :discipline => ma)
+noi = SubTheme.create(:name => "Неопределенные интегралы", :start_num => 1, :end_num => 50, :theme => i, :questions => 3, :answers => 2, :order => 1)
+oi = SubTheme.create(:name => "Определенные интегралы", :start_num => 51, :end_num => 100, :theme => i, :questions => 3, :answers => 2, :order => 1)
 s=Theme.create(:name => "Свет", :discipline => kg)
 f=Theme.create(:name => "Фигуры", :discipline => kg)
+f2d = SubTheme.create(:name => "2D", :start_num => 1, :end_num => 50, :theme => f, :questions => 3, :answers => 2, :order => 1)
+f3d = SubTheme.create(:name => "3D", :start_num => 51, :end_num => 100, :theme => f, :questions => 3, :answers => 2, :order => 1)
 g=Theme.create(:name => "Группы", :discipline => dm)
 k=Theme.create(:name => "Кольца", :discipline => dm)
 
-Script.create(:name => "Сценарий №1", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f])
+Script.create(:name => "Сценарий №1", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f], :sub_themes => [f2d, f3d])
 Script.create(:name => "Сценарий №2", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f])
 Script.create(:name => "Сценарий №3", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test1.id, :themes => [s, f])
 Script.create(:name => "Сценарий №4", :order => 1, :redirect_page => "http://www.main.msiu.ru", :time => 1500, :blocked => false, :procents => true, :passed_themes => true, :detalized => true, :test_id => test2.id, :themes => [s, f])

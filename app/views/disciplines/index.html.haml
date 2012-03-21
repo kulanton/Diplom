@@ -1,17 +1,17 @@
 %h1 Список дисциплин
 
-%table
+%table.table.table-striped
   %tr
-    %th
-    %th
-    %th
+    %th.center Название
+    %th.center Действия
 
   - @disciplines.each do |discipline|
     %tr
       %td= link_to discipline.name, :controller => 'groups', :action => 'index', :discipline => discipline
-      %td= link_to 'Редактировать', edit_discipline_path(discipline)
-      %td= link_to 'Удалить', discipline, :confirm => 'Вы уверены?', :method => :delete
+      %td.edit-delete
+        = link_to 'Редактировать', edit_discipline_path(discipline), :class => 'btn'
+        = link_to 'Удалить', discipline, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
 
 %br
 
-= link_to 'Новая дисциплина', new_discipline_path
+= link_to 'Новая дисциплина', new_discipline_path, :class => 'btn'

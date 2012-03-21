@@ -11,21 +11,30 @@
   %b Время теста:
   = @script.time
 %p
-  %b Заблокирован:
-  = @script.blocked
+  %b Заблокирован?:
+  = @script.blocked ? "ДА" : "НЕТ"
 %p
   %b Тест:
-  = @script.test.name
+  = link_to @script.test.name, @script.test
 %p
-  %b Процент сданых вопросов:
-  = @script.procents
+  %b Вывод результатов тестирования:
+  - if @script.procents or @script.passed_themes or @script.detalized
+    %pre
+      = ""
+      - if @script.procents
+        %b Процент сданых вопросов
+      - if @script.passed_themes
+        %b Процент сданых тем
+      - if @script.detalized
+        %b Детальный отчет
 %p
-  %b Процент сданых тем:
-  = @script.passed_themes
+  %b Темы:
+  -@script.themes.each do |theme|
+    = link_to theme.name, theme
 %p
-  %b Детальный отчет:
-  = @script.detalized
+  %b Подтемы:
+  -@script.sub_themes.each do |sub_theme|
+    = link_to sub_theme.name, sub_theme
 
-= link_to 'Редактировать', edit_script_path(@script)
-\|
-= link_to 'Назад', scripts_path
+= link_to 'Редактировать', edit_script_path(@script), :class => 'btn'
+= link_to 'Назад', scripts_path, :class => 'btn'

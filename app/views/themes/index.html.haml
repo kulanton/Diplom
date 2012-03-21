@@ -1,19 +1,19 @@
 %h1 Список тем
 
-%table
+%table.table.table-striped
   %tr
     %th Название
     %th Дисциплина
-    %th
     %th
 
   - @themes.each do |theme|
     %tr
       %td= link_to theme.name, :controller => 'tests', :theme => theme
       %td= theme.discipline.name
-      %td= link_to 'Редактировать', edit_theme_path(theme)
-      %td= link_to 'Удалить', theme, :confirm => 'Вы уверены?', :method => :delete
+      %td.edit-delete
+        = link_to 'Редактировать', edit_theme_path(theme), :class => 'btn'
+        = link_to 'Удалить', theme, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
 
 %br
 
-= link_to 'Новая тема', new_theme_path
+= link_to 'Новая тема', new_theme_path, :class => 'btn'

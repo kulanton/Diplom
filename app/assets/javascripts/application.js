@@ -24,7 +24,6 @@ $(function() {
   $("#theme_discipline_token").tokenInput("/disciplines.json", {
     crossDomain: false,
     prePopulate: $("#theme_discipline_token").data("pre"),
-    preventDuplicates: true,
     tokenLimit: 1,
     theme: 'facebook',
     hintText: 'Введите название дисциплины',
@@ -37,13 +36,27 @@ $(function() {
   $("#script_theme_tokens").tokenInput("/themes.json", {
     crossDomain: false,
     prePopulate: $("#script_theme_tokens").data("pre"),
-    //tokenLimit: 1,
     //onAdd: function() {
 	//  alert("Hello!");
 	//},
     preventDuplicates: true,
     theme: 'facebook',
     hintText: 'Введите название темы',
+    noResultsText: 'Не найдено',
+    searchingText: "Поиск..."
+  });
+});
+
+$(function() {
+  $("#script_sub_theme_tokens").tokenInput("/sub_themes.json", {
+    crossDomain: false,
+    prePopulate: $("#script_sub_theme_tokens").data("pre"),
+    //onAdd: function() {
+	//  alert("Hello!");
+	//},
+    preventDuplicates: true,
+    theme: 'facebook',
+    hintText: 'Введите название подтемы',
     noResultsText: 'Не найдено',
     searchingText: "Поиск..."
   });

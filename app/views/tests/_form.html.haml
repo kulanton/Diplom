@@ -1,4 +1,4 @@
-= form_for @test do |f|
+= form_for @test, :html => {:class => 'form-horizontal'} do |f|
   -if @test.errors.any?
     .div.error
       %h2= "При сохранении произошли ошибки"
@@ -6,65 +6,63 @@
         - @test.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    &nbsp;
-    = f.text_field :name
-  .field
-    = f.label :necessary
-    &nbsp;
-    = f.check_box :necessary
-  .field
-    = f.label :block
-    &nbsp;
-    = f.check_box :block
-  .field
-    = f.label :num_try
-    &nbsp;
-    = f.number_field :num_try
-  .field
-    = f.label :period
-    &nbsp;
-    = f.number_field :period
-  .field
-    = f.label :type
-    &nbsp;
-    = f.select :type, @test.types
-  .field
-    = f.label :auth_type
-    &nbsp;
-    = f.select :auth_type, @test.auth_types
-  .field
-    = f.label :w_key
-    &nbsp;
-    = f.check_box :w_key
-  .field
-    = f.label :ext_access
-    &nbsp;
-    = f.check_box :ext_access
-  .field
-    = f.label :msiu_access
-    &nbsp;
-    = f.check_box :msiu_access
-  -#.field
-  -#  = f.label :disciplines_groups_id
-  -#  &nbsp;
-  -#  = f.select :disciplines_groups_id, DisciplinesGroups.includes(:discipline, :group).all.map{|dg| [dg.discipline.name+" - "+dg.group.name+" - "+dg.group.year, dg.id]}
-  .field
-    = f.label :disciplines_groups_token, "Дисциплина - Группа"
-    &nbsp;
-    = f.text_field :disciplines_groups_token, "data-pre"=>@test.disciplines_groups.to_a.map(&:attributes).to_json
-  .field
-    = f.label :order
-    &nbsp;
-    = f.number_field :order
-  .field
-    = f.label :theme_pct
-    &nbsp;
-    = f.number_field :theme_pct
-  .field
-    = f.label :question_pct
-    &nbsp;
-    = f.number_field :question_pct
-  .actions
-    = f.submit 'Сохранить'
+  %fieldset
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        = f.text_field :name, :class => 'input-xlarge'
+    .control-group
+      = f.label :necessary, :class => 'control-label'
+      .controls
+        = f.check_box :necessary, :class => 'checkbox'
+    .control-group
+      = f.label :block, :class => 'control-label'
+      .controls
+        = f.check_box :block, :class => 'checkbox'
+    .control-group
+      = f.label :num_try, :class => 'control-label'
+      .controls
+        = f.number_field :num_try, :class => 'input-xlarge'
+    .control-group
+      = f.label :period, :class => 'control-label'
+      .controls
+        = f.number_field :period, :class => 'input-xlarge'
+    .control-group
+      = f.label :type, :class => 'control-label'
+      .controls
+        = f.select :type, @test.types, :class => 'span5'
+    .control-group
+      = f.label :auth_type, :class => 'control-label'
+      .controls
+        = f.select :auth_type, @test.auth_types, :class => 'span5'
+    .control-group
+      = f.label :w_key, :class => 'control-label'
+      .controls
+        = f.check_box :w_key, :class => 'checkbox'
+    .control-group
+      = f.label :ext_access, :class => 'control-label'
+      .controls
+        = f.check_box :ext_access, :class => 'checkbox'
+    .control-group
+      = f.label :msiu_access, :class => 'control-label'
+      .controls
+        = f.check_box :msiu_access, :class => 'checkbox'
+    .control-group
+      = f.label :disciplines_groups_token, "Дисциплина - Группа", :class => 'control-label'
+      .controls
+        = f.text_field :disciplines_groups_token, "data-pre"=>@test.disciplines_groups.to_a.map(&:attributes).to_json
+    .control-group
+      = f.label :order, :class => 'control-label'
+      .controls
+        = f.number_field :order, :class => 'input-xlarge'
+    .control-group
+      = f.label :theme_pct, :class => 'control-label'
+      .controls
+        = f.number_field :theme_pct, :class => 'input-xlarge'
+    .control-group
+      = f.label :question_pct, :class => 'control-label'
+      .controls
+        = f.number_field :question_pct, :class => 'input-xlarge'
+    .form-actions
+      = f.submit 'Сохранить', :class => 'btn btn-primary'
+      = link_to 'Назад', tests_path, :class => 'btn'

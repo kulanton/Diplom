@@ -1,18 +1,18 @@
 %h1 Список групп
 
-%table
+%table.table.table-striped
   %tr
     %th Номер
     %th Год обучения
-    %th
     %th
 
   - @groups.each do |group|
     %tr
       %td= link_to group.name, :controller => 'tests', :discipline => params['discipline'], :group => group
       %td= group.year
-      %td= link_to 'Редактировать', edit_group_path(group)
-      %td= link_to 'Удалить', group, :confirm => 'Вы уверены?', :method => :delete
+      %td.edit-delete
+        = link_to 'Редактировать', edit_group_path(group), :class => "btn"
+        = link_to 'Удалить', group, :confirm => 'Вы уверены?', :method => :delete, :class => "btn btn-danger"
       
 - if @tests
   %h1 Список тестов
@@ -35,4 +35,4 @@
 
 %br
 
-= link_to 'Новая группа', new_group_path
+= link_to 'Новая группа', new_group_path, :class => 'btn'

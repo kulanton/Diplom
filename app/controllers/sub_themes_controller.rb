@@ -6,7 +6,10 @@ class SubThemesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @sub_themes }
+      format.json do
+        @sub_themes = SubTheme.where("lower(name) LIKE lower(?)","%#{params[:q]}%").all
+        render :json => @sub_themes.map(&:attributes)
+      end
     end
   end
 

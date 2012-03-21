@@ -1,6 +1,6 @@
 %h1 Список сценариев
 
-%table
+%table.table.table-striped
   %tr
     %th Название
     %th Порядок
@@ -9,12 +9,10 @@
     %th Заблокирован
     %th Тест
     %th
-    %th
-    %th
 
   - @scripts.each do |script|
     %tr
-      %td= script.name
+      %td= link_to script.name, script
       %td= script.order
       %td= script.redirect_page
       %td= script.time
@@ -23,10 +21,8 @@
       - else
         %td НЕТ
       %td= script.test.name
-      %td= link_to 'Подробнее', script
-      %td= link_to 'Редактировать', edit_script_path(script)
-      %td= link_to 'Удалить', script, :confirm => 'Вы уверены?', :method => :delete
+      %td.delete= link_to 'Удалить', script, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
 
 %br
 
-= link_to 'Новый сценарий', new_script_path
+= link_to 'Новый сценарий', new_script_path, :class => 'btn'
