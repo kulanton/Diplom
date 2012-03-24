@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"digest"%4f888eaf5d839fd1a775cfbcffa50582"lengthin"_version"%d91b3fb66d0814a4979b2bf0315fb96e"source"n/* =============================================================================
+o: ActiveSupport::Cache::Entry	:@value{	"_version"%6608c63402f0bb3d1639fd29ea2f4f2c"digest"%9c008f4a82482de9cef864af5b6e4399"lengthi"source"/* =============================================================================
 
 	MAIN.CSS
 	version: 1.7
@@ -11,7 +11,7 @@ HTML - styles
 ============================================================================= */
 
 
-body {font:0.8em/1.5 "arial", sans-serif;}
+body {font:0.8em/1.5 "arial", sans-serif; margin-top: 50px}
 h1, h2, h3, h4, h5, h6, address, blockquote, dl, fieldset, ol, p, table, ul {margin:15px 0;}
 #content h1 {font-size:180%;}
 #content h2 {font-size:160%;}
@@ -133,4 +133,4 @@ FONT STYLES
 
 /* This line can be deleted */
 .tit {padding:10px; background:#f5f5f5;} .tag {background:#ffa;}
-:@created_atf1332321407.864614 UÖ
+:@compressedF:@created_atf1332513049.309099 ÈG:@expires_in0

@@ -1,0 +1,31 @@
+= form_for @script_sub_theme do |f|
+  -if @script_sub_theme.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@script_sub_theme.errors.count, "error")} prohibited this script_sub_theme from being saved:"
+      %ul
+        - @script_sub_theme.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.number_field :name
+  .field
+    = f.label :start_num
+    = f.number_field :start_num
+  .field
+    = f.label :end_num
+    = f.number_field :end_num
+  .field
+    = f.label :questions_to_pass
+    = f.number_field :questions_to_pass
+  .field
+    = f.label :questions_count
+    = f.number_field :questions_count
+  .field
+    = f.label :order_questions
+    = f.check_box :order_questions
+  .field
+    = f.label :script_theme_id
+    = f.number_field :script_theme_id
+  .actions
+    = f.submit 'Save'

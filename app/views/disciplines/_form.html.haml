@@ -11,6 +11,14 @@
       = f.label :name, :class => 'control-label'
       .controls
         = f.text_field :name, :class => 'input-xlarge'
+    .control-group
+      = f.label :repository_theme_tokens, "Темы", :class => 'control-label'
+      .controls
+        = f.text_field :repository_theme_tokens, "data-pre"=>@discipline.repository_themes.map(&:attributes).to_json
+    .control-group
+      = f.label :group_tokens, "Группы", :class => 'control-label'
+      .controls
+        = f.text_field :group_tokens, "data-pre"=>@discipline.groups.map(&:attributes).to_json
     .form-actions
       = f.submit 'Сохранить', :class => "btn btn-primary"
       = link_to 'Назад', disciplines_path, :class => 'btn'

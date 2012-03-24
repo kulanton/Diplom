@@ -1,5 +1,15 @@
 Scenario::Application.routes.draw do
 
+  get "subjects/index"
+
+  get "subject/index"
+
+  resources :script_sub_themes
+
+  resources :script_themes
+
+  resources :repository_themes
+
   get "disciplines_groups/index"
   #resource :disciplines_groups, :only => [:index]
 

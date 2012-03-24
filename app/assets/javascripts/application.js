@@ -6,12 +6,29 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.tokeninput
+// require bootstrap
+//= require rails.validations
 
 $(function() {
-  $("#group_discipline_tokens").tokenInput("/disciplines.json", {
+  $("#disciplines_search fieldset input").keyup(function() {
+    $.get($("#disciplines_search").attr("action"), $("#disciplines_search").serialize(), function(data) {
+	  $("#disciplines").html($(data).find("#disciplines"));
+    });
+    return false;
+  });
+  $("#disciplines_search").submit(function() {
+    $.get($("#disciplines_search").attr("action"), $("#disciplines_search").serialize(), function(data) {
+	  $("#disciplines").html($(data).find("#disciplines"));
+    });
+    return false;
+  });
+});
+
+$(function() {
+  $("#discipline_repository_theme_tokens").tokenInput("/repository_themes.json", {
     crossDomain: false,
-    prePopulate: $("#group_discipline_tokens").data("pre"),
+    prePopulate: $("#discipline_repository_theme_tokens").data("pre"),
     preventDuplicates: true,
     theme: 'facebook',
     hintText: 'Введите название дисциплины',
@@ -21,51 +38,21 @@ $(function() {
 });
 
 $(function() {
-  $("#theme_discipline_token").tokenInput("/disciplines.json", {
+  $("#discipline_group_tokens").tokenInput("/groups.json", {
     crossDomain: false,
-    prePopulate: $("#theme_discipline_token").data("pre"),
-    tokenLimit: 1,
-    theme: 'facebook',
-    hintText: 'Введите название дисциплины',
-    noResultsText: 'Не найдено',
-    searchingText: "Поиск..."
-  });
-});
-
-$(function() {
-  $("#script_theme_tokens").tokenInput("/themes.json", {
-    crossDomain: false,
-    prePopulate: $("#script_theme_tokens").data("pre"),
-    //onAdd: function() {
-	//  alert("Hello!");
-	//},
+    prePopulate: $("#discipline_group_tokens").data("pre"),
     preventDuplicates: true,
     theme: 'facebook',
-    hintText: 'Введите название темы',
+    hintText: 'Введите название группы',
     noResultsText: 'Не найдено',
     searchingText: "Поиск..."
   });
 });
 
 $(function() {
-  $("#script_sub_theme_tokens").tokenInput("/sub_themes.json", {
+  $("#test_subject_tokens").tokenInput("/subjects/index.json", {
     crossDomain: false,
-    prePopulate: $("#script_sub_theme_tokens").data("pre"),
-    //onAdd: function() {
-	//  alert("Hello!");
-	//},
-    preventDuplicates: true,
-    theme: 'facebook',
-    hintText: 'Введите название подтемы',
-    noResultsText: 'Не найдено',
-    searchingText: "Поиск..."
-  });
-});
-
-$(function() {
-  $("#test_disciplines_groups_token").tokenInput("/disciplines_groups/index.json", {
-    crossDomain: false,
-    prePopulate: $("#test_disciplines_groups_token").data("pre"),
+    prePopulate: $("#test_subject_tokens").data("pre"),
     theme: 'facebook',
     tokenLimit: 1,
     hintText: 'Введите название дисциплины или группы',

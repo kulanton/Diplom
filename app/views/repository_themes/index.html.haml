@@ -1,0 +1,23 @@
+%h1 Listing repository_themes
+
+%table
+  %tr
+    %th Name
+    %th Path
+    %th Count
+    %th
+    %th
+    %th
+
+  - @repository_themes.each do |repository_theme|
+    %tr
+      %td= repository_theme.name
+      %td= repository_theme.path
+      %td= repository_theme.count
+      %td= link_to 'Show', repository_theme
+      %td= link_to 'Edit', edit_repository_theme_path(repository_theme)
+      %td= link_to 'Destroy', repository_theme, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Repository theme', new_repository_theme_path

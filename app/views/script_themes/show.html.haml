@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @script_theme.name
+%p
+  %b Repository theme:
+  = @script_theme.repository_theme_id
+%p
+  %b Questions to pass:
+  = @script_theme.questions_to_pass
+%p
+  %b Subthemes to pass:
+  = @script_theme.subthemes_to_pass
+%p
+  %b Order subthemes:
+  = @script_theme.order_subthemes
+%p
+  %b Script:
+  = @script_theme.script_id
+
+= link_to 'Edit', edit_script_theme_path(@script_theme)
+\|
+= link_to 'Back', script_themes_path

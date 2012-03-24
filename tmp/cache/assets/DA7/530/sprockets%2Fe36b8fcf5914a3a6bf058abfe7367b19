@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{"	body"n/* =============================================================================
+o: ActiveSupport::Cache::Entry	:@value{"asset_paths["*$root/app/assets/stylesheets/main.css"	body"/* =============================================================================
 
 	MAIN.CSS
 	version: 1.7
@@ -11,7 +11,7 @@ HTML - styles
 ============================================================================= */
 
 
-body {font:0.8em/1.5 "arial", sans-serif;}
+body {font:0.8em/1.5 "arial", sans-serif; margin-top: 50px}
 h1, h2, h3, h4, h5, h6, address, blockquote, dl, fieldset, ol, p, table, ul {margin:15px 0;}
 #content h1 {font-size:180%;}
 #content h2 {font-size:160%;}
@@ -133,8 +133,8 @@ FONT STYLES
 
 /* This line can be deleted */
 .tit {padding:10px; background:#f5f5f5;} .tag {background:#ffa;}
-"
+"content_type"text/css"
 class"BundledAsset"
-mtime"2012-03-21T13:16:45+04:00"pathname"*$root/app/assets/stylesheets/main.css"content_type"text/css"id"%d91b3fb66d0814a4979b2bf0315fb96e"_version"%46dde6621c301f4928e3b34efee9e3b5"asset_paths["*$root/app/assets/stylesheets/main.css"dependency_paths[{"
-mtimeu:	Time©
-€  ÐB"	path"*$root/app/assets/stylesheets/main.css"hexdigest"%6ce25447d12917c6cede405e977e9621"logical_path"main.css:@created_atf1332321407.862123 -
+mtime"2012-03-23T14:33:07+04:00"_version"%46dde6621c301f4928e3b34efee9e3b5"id"%6608c63402f0bb3d1639fd29ea2f4f2c"dependency_paths[{"hexdigest"%fa7ea226b5f9bc569aeebddde168ccb7"
+mtimeIu:	Timeê
+€  p„:@marshal_with_utc_coercionF"	path"*$root/app/assets/stylesheets/main.css"pathname"*$root/app/assets/stylesheets/main.css"logical_path"main.css:@compressedF:@created_atf1332513049.2697351 CW:@expires_in0

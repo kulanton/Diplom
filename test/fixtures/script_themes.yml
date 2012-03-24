@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  repository_theme_id: 1
+  questions_to_pass: 1
+  subthemes_to_pass: 1
+  order_subthemes: false
+  script_id: 1
+
+two:
+  name: MyString
+  repository_theme_id: 1
+  questions_to_pass: 1
+  subthemes_to_pass: 1
+  order_subthemes: false
+  script_id: 1

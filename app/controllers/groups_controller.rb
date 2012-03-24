@@ -3,14 +3,18 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     if params[:discipline].nil?
-      @groups = Group.all
+      @groups = Group.order(:name)
+      @subjects = Subject.all
     else
       @groups = Group.includes(:disciplines).where("disciplines.id = ?", params[:discipline])
-      @tests = Test.includes(:disciplines_groups).where("disciplines_groups.discipline_id = ?", params[:discipline])
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
+      format.json do
+        @groups = Group.where("lower(name) LIKE lower(?)", "%#{params[:q]}%").all
+        render :json => @groups.map(&:attributes)
+      end
     end
   end
 

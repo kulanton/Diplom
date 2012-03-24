@@ -1,11 +1,13 @@
-#tray.box
-  %p.box.f-left
-    Редактор сценариев тестирования
-  %p.f-right
-    -if @current_user			
-      Вы:
-      %strong=@current_user.login
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      %strong=link_to "Выход",logout_path,:id=>"logout"
-    -else
-      %strong=link_to "Вход",login_path,:id=>"login"
+.navbar.navbar-fixed-top
+  .navbar-inner
+    #tray.box
+      %p.box.f-left
+        Редактор сценариев тестирования
+      %p.f-right
+        -if @current_user			
+          Вы:
+          %strong=@current_user.login
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          %strong=link_to "Выход",logout_path,:id=>"logout"
+        -else
+          %strong=link_to "Вход",login_path,:id=>"login"

@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @script_sub_theme.name
+%p
+  %b Start num:
+  = @script_sub_theme.start_num
+%p
+  %b End num:
+  = @script_sub_theme.end_num
+%p
+  %b Questions to pass:
+  = @script_sub_theme.questions_to_pass
+%p
+  %b Questions count:
+  = @script_sub_theme.questions_count
+%p
+  %b Order questions:
+  = @script_sub_theme.order_questions
+%p
+  %b Script theme:
+  = @script_sub_theme.script_theme_id
+
+= link_to 'Edit', edit_script_sub_theme_path(@script_sub_theme)
+\|
+= link_to 'Back', script_sub_themes_path

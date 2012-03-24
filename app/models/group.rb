@@ -1,5 +1,8 @@
 class Group < ActiveRecord::Base
-  has_and_belongs_to_many :disciplines
+  has_many :subjects, :dependent => :destroy
+  has_many :disciplines, :through => :subjects, :uniq => true
+  
+  validates_presence_of :name
   
   attr_reader :discipline_tokens
   

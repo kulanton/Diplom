@@ -29,31 +29,20 @@
   %b Доступен в МГИУ?:
   = @test.msiu_access ? "ДА" : "НЕТ"
 %p
-  %b Дисциплина:
-  = @test.disciplines_groups.discipline.name
-%p
-  %b Группа:
-  = @test.disciplines_groups.group.name + " - " + @test.disciplines_groups.group.year
-%p
   %b Порядок:
   = @test.order
-%p
-  %b Процент тем
-  = @test.theme_pct.to_s + "%"
-%p
-  %b Процент вопросов
-  = @test.question_pct.to_s + "%"
-%table
-  %tr
-    %th Список сценариев
-    %th Список тем
-  - @test.scripts.each do |script|
+- if !@test.scripts.blank?
+  %table
     %tr
-      %td= link_to script.name, script
-      %td
-        - script.themes.each do |theme|
-          = link_to theme.name, theme
-          %br
+      %th Список сценариев
+      %th Список тем
+    - @test.scripts.each do |script|
+      %tr
+        %td= link_to script.name, script
+        %td
+          - script.themes.each do |theme|
+            = link_to theme.name, theme
+            %br
 
 = link_to 'Редактировать', edit_test_path(@test)
 \|

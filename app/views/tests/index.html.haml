@@ -4,8 +4,6 @@
   %tr
     %th Список тестов
     %th Список сценариев
-    %th Дисциплина
-    %th Группа
     %th Действия
 
   - @tests.each do |test|
@@ -15,8 +13,6 @@
         - test.scripts.each do |script|
           = link_to script.name, script
           %br
-      %td= test.disciplines_groups.discipline.name
-      %td= test.disciplines_groups.group.name + " - " + test.disciplines_groups.group.year
       %td.delete= link_to 'Удалить', test, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
 
 %br

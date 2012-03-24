@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 1
+  start_num: 1
+  end_num: 1
+  questions_to_pass: 1
+  questions_count: 1
+  order_questions: false
+  script_theme_id: 1
+
+two:
+  name: 1
+  start_num: 1
+  end_num: 1
+  questions_to_pass: 1
+  questions_count: 1
+  order_questions: false
+  script_theme_id: 1

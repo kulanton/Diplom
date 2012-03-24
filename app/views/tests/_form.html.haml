@@ -48,21 +48,13 @@
       .controls
         = f.check_box :msiu_access, :class => 'checkbox'
     .control-group
-      = f.label :disciplines_groups_token, "Дисциплина - Группа", :class => 'control-label'
+      = f.label :subject_tokens, "Дисциплина - Группа", :class => 'control-label'
       .controls
-        = f.text_field :disciplines_groups_token, "data-pre"=>@test.disciplines_groups.to_a.map(&:attributes).to_json
+        = f.text_field :subject_tokens, "data-pre"=>@test.subjects.map(&:attributes).to_json
     .control-group
       = f.label :order, :class => 'control-label'
       .controls
         = f.number_field :order, :class => 'input-xlarge'
-    .control-group
-      = f.label :theme_pct, :class => 'control-label'
-      .controls
-        = f.number_field :theme_pct, :class => 'input-xlarge'
-    .control-group
-      = f.label :question_pct, :class => 'control-label'
-      .controls
-        = f.number_field :question_pct, :class => 'input-xlarge'
     .form-actions
       = f.submit 'Сохранить', :class => 'btn btn-primary'
       = link_to 'Назад', tests_path, :class => 'btn'

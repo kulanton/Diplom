@@ -1,0 +1,31 @@
+%h1 Listing script_sub_themes
+
+%table
+  %tr
+    %th Name
+    %th Start num
+    %th End num
+    %th Questions to pass
+    %th Questions count
+    %th Order questions
+    %th Script theme
+    %th
+    %th
+    %th
+
+  - @script_sub_themes.each do |script_sub_theme|
+    %tr
+      %td= script_sub_theme.name
+      %td= script_sub_theme.start_num
+      %td= script_sub_theme.end_num
+      %td= script_sub_theme.questions_to_pass
+      %td= script_sub_theme.questions_count
+      %td= script_sub_theme.order_questions
+      %td= script_sub_theme.script_theme_id
+      %td= link_to 'Show', script_sub_theme
+      %td= link_to 'Edit', edit_script_sub_theme_path(script_sub_theme)
+      %td= link_to 'Destroy', script_sub_theme, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Script sub theme', new_script_sub_theme_path

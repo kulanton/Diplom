@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @repository_theme.name
+%p
+  %b Path:
+  = @repository_theme.path
+%p
+  %b Count:
+  = @repository_theme.count
+
+= link_to 'Edit', edit_repository_theme_path(@repository_theme)
+\|
+= link_to 'Back', repository_themes_path
