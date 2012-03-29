@@ -1,9 +1,9 @@
 %table{:class => "table table-striped table-bordered"}
   %thead
     %tr
-      %th= t("activerecord.attributes.discipline.name", :default => t("activerecord.labels.name", :default => "Название"))
-      %th= t("activerecord.attributes.discipline.repository_themes", :default => t("activerecord.labels.repository_themes", :default => "Репоситорий тем"))
-      %th= t("activerecord.attributes.discipline.tests", :default => t("activerecord.labels.tests", :default => "Тесты"))
+      %th= t "activerecord.attributes.discipline.name"
+      %th= t "activerecord.attributes.discipline.repository_themes"
+      %th= t "activerecord.attributes.discipline.tests"
       - if @current_user && @current_user.admin?
         %th Действия
   %tbody

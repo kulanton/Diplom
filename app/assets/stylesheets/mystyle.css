@@ -3,6 +3,8 @@ h1 {margin-bottom: 10px;}
 td.actions, th.actions {width: 63px; vertical-align: middle;}
 td.id {width: 10px;}
 
+.container.center {width: 600px;}
+
 .field_with_errors .message {
 	color: #dc143c;
 	display: inline;

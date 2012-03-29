@@ -7,24 +7,15 @@
       %th Тесты
       %th Сценарии
   %tbody
-    /- @groups.each do |group|
     - @subjects.each do |bloc, subjects|
       %tr
         %td.id= bloc
         %td
-          /= link_to group.name, group_path(group)
           - subjects.each do |subject|
             = subject.group.name
             %br
           = link_to "<i class='icon-plus'></i>".html_safe, add_to_bloc_groups_path
         %td
-          /- group.subjects.each do |subject|
-          /  - subject.tests.each do |test|
-          /    = link_to test.name, test_path(test)
         %td
-          /- group.subjects.each do |subject|
-          /  - subject.tests.each do |test|
-          /    -test.scripts.each do |script|
-          /      = link_to script.name, script_path(script)
 
 .free-space

@@ -30,7 +30,9 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    redirect_back_or_default('/', :notice => "Выход выполнен.")
+    
+    render 'sessions/new', :layout => 'login'
+    #redirect_back_or_default('/', :notice => "Выход выполнен.")
   end
 
 protected

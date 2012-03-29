@@ -26,11 +26,11 @@
             %span.icon-bar
           %a.brand{:href => "/"}Scenario
           .container-fluid.nav-collapse
-            %ul.nav
+            /%ul.nav
+            /
               %li= link_to "Сценарии", scripts_path
               %li= link_to "Тесты", tests_path
               %li= link_to "Темы", repository_themes_path
-              %li= link_to "Группы", groups_path
               %li= link_to "Дисциплины", disciplines_path
             %p.navbar-text.pull-right
               -if @current_user
@@ -51,7 +51,6 @@
               %li= link_to "Сценарии", scripts_path
               %li= link_to "Тесты", tests_path
               %li= link_to "Темы", repository_themes_path
-              %li= link_to "Группы", groups_path
               %li= link_to "Дисциплины", disciplines_path
         .span10
           -unless notice.blank?

@@ -371,7 +371,7 @@ ru:
         order_themes: "Темы по порядку?"
       discipline:
         name: "Название"
-        repository_themes: "Репоситорий тем"
+        repository_themes: "Репозиторий тем"
         tests: "Тесты"
       group:
         name: "Номер"
