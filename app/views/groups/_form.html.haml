@@ -1,16 +1,10 @@
-= form_for @group, :html => {:class => 'form-horizontal'}, :validate => true do |f|
-  -if @group.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
-      %ul
-        - @group.errors.full_messages.each do |msg|
-          %li= msg
-
-  %fieldset
-    .control-group
-      = f.label :name, :class => 'control-label'
-      .controls
-        = f.text_field :name, :class => 'input-xlarge'
-    .form-actions
-      = f.submit 'Сохранить', :class => 'btn btn-primary'
-      = link_to 'Назад', groups_path, :class => 'btn'
+%fieldset
+  %legend
+    = t "controllers.#{controller_name}.#{action_name}"
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to "Отмена", groups_path, :class => 'btn'

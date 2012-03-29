@@ -18,11 +18,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
 
-gem 'client_side_validations'
+#gem 'client_side_validations'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

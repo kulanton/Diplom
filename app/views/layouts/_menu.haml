@@ -1,6 +1,0 @@
-#menu.box
-  %ul.box
-    %li{:id=>controller_name=='groups' ? "menu-active" : nil}=link_to content_tag(:span,"Группы"), groups_path
-    %li{:id=>controller_name=='disciplines' ? "menu-active" : nil}=link_to content_tag(:span,"Дисциплины"), disciplines_path
-    %li{:id=>controller_name=='scipts' ? "menu-active" : nil}=link_to content_tag(:span,"Сценарии"), scripts_path
-    %li{:id=>controller_name=='tests' ? "menu-active" : nil}=link_to content_tag(:span,"Тесты"), tests_path

@@ -1,11 +1,11 @@
 class Test < ActiveRecord::Base
-  has_many :scripts
   has_and_belongs_to_many :subjects
+  has_many :scripts, :dependent => :destroy
+  accepts_nested_attributes_for :scripts, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
-  validates_presence_of :name, :necessary, :block, :num_try, :order
-  validates :num_try, :numericality => {:only_integer=>true,:greater_than=>0},:allow_blank => false
-  validates :period, :numericality => {:only_integer=>true,:greater_than=>0},:allow_blank => false
-  validates :order, :numericality => {:only_integer=>true,:greater_than=>0},:allow_blank => false
+  validates_presence_of :name, :num_try, :test_type, :auth_type, :period
+  validates :num_try, :numericality=>{:only_integer=>true,:greater_than=>0},:allow_blank=>false
+  validates :period, :numericality=>{:only_integer=>true,:greater_than=>0},:allow_blank=>false
   
   attr_reader :subject_tokens
   
@@ -13,10 +13,8 @@ class Test < ActiveRecord::Base
     self.subject_ids = ids.split(",")
   end
   
-  TYPES = [["Тип 1", 1], ["Тип 2", 2], ["Тип 3", 3]]
-  
   def types
-	TYPES
+	[["Тип 1", 1], ["Тип 2", 2], ["Тип 3", 3]]
   end
   
   def auth_types

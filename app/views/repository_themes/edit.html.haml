@@ -1,7 +1,2 @@
-%h1 Editing repository_theme
-
-= render 'form'
-
-= link_to 'Show', @repository_theme
-\|
-= link_to 'Back', repository_themes_path
+= form_for @repository_theme, :html => { :class => "edit_repository_theme form-horizontal", :id => "edit_repository_theme" } do |f|
+  = render :partial => "form", :locals => {:f => f}

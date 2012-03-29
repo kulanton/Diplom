@@ -1,4 +1,5 @@
-o: ActiveSupport::Cache::Entry	:@value{"asset_paths["6$root/app/assets/javascripts/jquery.tokeninput.js"	body"χk/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{"asset_paths["6$root/app/assets/javascripts/jquery.tokeninput.js"
+mtime"2011-08-07T15:58:20+04:00"pathname"6$root/app/assets/javascripts/jquery.tokeninput.js"logical_path"jquery.tokeninput.js"_version"%46dde6621c301f4928e3b34efee9e3b5"	body"χk/*
  * jQuery Plugin: Tokenizing Autocomplete Text Entry
  * Version 1.6.0
  *
@@ -859,7 +860,6 @@ $.TokenList.Cache = function (options) {
     };
 };
 }(jQuery));
-"content_type"application/javascript"
-class"BundledAsset"
-mtime"2011-08-07T15:58:20+04:00"_version"%46dde6621c301f4928e3b34efee9e3b5"id"%72f3662f064dfd6c3bd52c52ddd690a4"dependency_paths[{"hexdigest"%d368609c95b354d8bf9ba3cc9d131b0d"
-mtimeIu:	Timeλά€  @ι:@marshal_with_utc_coercionF"	path"6$root/app/assets/javascripts/jquery.tokeninput.js"pathname"6$root/app/assets/javascripts/jquery.tokeninput.js"logical_path"jquery.tokeninput.js:@compressedF:@created_atf1332513166.525984 ©Ή:@expires_in0
+"content_type"application/javascript"id"%43263b491b3447c161a87208c56c5cf8"
+class"BundledAsset"dependency_paths[{"
+mtimeu:	Timeλά€  @ι"	path"6$root/app/assets/javascripts/jquery.tokeninput.js"hexdigest"%d368609c95b354d8bf9ba3cc9d131b0d:@created_atf1332872132.354923 ·

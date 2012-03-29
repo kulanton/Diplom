@@ -1,7 +1,8 @@
 class DisciplinesController < ApplicationController
+  before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
-    @disciplines = Discipline.search(params[:search]).order(:name)
+    @disciplines = Discipline.includes(:repository_themes, :subjects => [:tests]).search(params[:search]).order(:name)
 
     respond_to do |format|
       format.html

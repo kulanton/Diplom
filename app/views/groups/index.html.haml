@@ -1,23 +1,24 @@
-%h1 Список групп
+%h1 Группы
 
-%table.table.table-striped
-  %tr
-    %th №
-    %th Блоки групп
-    %th Тесты
-    %th Сценарии
-    %th
-
-  - @groups.each do |group|
+%table{:class => "table table-striped table-bordered"}
+  %thead
     %tr
-      %td
-      %td= link_to group.name, :controller => 'tests', :discipline => params['discipline'], :group => group
-      %td
-      %td
-      %td.edit-delete
-        /= link_to 'Редактировать', edit_group_path(group), :class => "btn"
-        /= link_to 'Удалить', group, :confirm => 'Вы уверены?', :method => :delete, :class => "btn btn-danger"
+      %th Номер
+      - if @current_user && @current_user.admin?
+        %th.actions Действия
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= group.name
 
-%br
+        - if @current_user && @current_user.admin?
+          %td.actions
+            = link_to "<i class='icon-edit'></i>".html_safe, edit_group_path(group), :class => 'btn btn-mini'
+            = link_to "<i class='icon-trash icon-white'></i>".html_safe, group_path(group), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
 
-= link_to 'Новая группа', new_group_path, :class => 'btn'
+= link_to "Блоки групп", blocs_groups_path, :class => 'btn btn-success'
+
+- if @current_user && @current_user.admin?
+  = link_to "Новая группа", new_group_path, :class => 'btn btn-primary'
+
+.free-space

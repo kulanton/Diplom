@@ -1,7 +1,2 @@
-%h1 Editing script_theme
-
-= render 'form'
-
-= link_to 'Show', @script_theme
-\|
-= link_to 'Back', script_themes_path
+= form_for @script_theme, :html => { :class => "edit_script_theme form-horizontal", :id => "edit_script_theme" } do |f|
+  = render :partial => "form", :locals => {:f => f}

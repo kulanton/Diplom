@@ -1,40 +1,32 @@
-%p
-  %b Название:
-  = @script.name
-%p
-  %b Порядок вопросов:
-  = @script.order
-%p
-  %b Страница перенаправления:
-  = @script.redirect_page
-%p
-  %b Время теста:
-  = @script.time
-%p
-  %b Заблокирован?:
-  = @script.blocked ? "ДА" : "НЕТ"
-%p
-  %b Тест:
-  = link_to @script.test.name, @script.test
-%p
-  %b Вывод результатов тестирования:
-  - if @script.procents or @script.passed_themes or @script.detalized
-    %pre
-      = ""
-      - if @script.procents
-        %b Процент сданых вопросов
-      - if @script.passed_themes
-        %b Процент сданых тем
-      - if @script.detalized
-        %b Детальный отчет
-%p
-  %b Темы:
-  -@script.themes.each do |theme|
-    = link_to theme.name, theme
-%p
-  %b Подтемы:
-  -@script.sub_themes.each do |sub_theme|
-    = link_to sub_theme.name, sub_theme
+%label{:class => "label"}= t("activerecord.attributes.script.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%p= @script.name
+%label{:class => "label"}= t("activerecord.attributes.script.redirect_page", :default => t("activerecord.labels.redirect_page", :default => "Redirect page")) + ":"
+%p= @script.redirect_page
+%label{:class => "label"}= t("activerecord.attributes.script.time", :default => t("activerecord.labels.time", :default => "Time")) + ":"
+%p= @script.time
+%label{:class => "label"}= t("activerecord.attributes.script.blocked", :default => t("activerecord.labels.blocked", :default => "Blocked")) + ":"
+%p= @script.blocked ? "Да" : "Нет"
+%label{:class => "label"}= t("activerecord.attributes.script.order_themes", :default => t("activerecord.labels.order_themes", :default => "Order themes")) + ":"
+%p= @script.order_themes ? "Да" : "Нет"
+%label{:class => "label"}= t("activerecord.attributes.script.questions_to_pass", :default => t("activerecord.labels.questions_to_pass", :default => "Questions to pass")) + ":"
+%p= @script.questions_to_pass
+%label{:class => "label"}= t("activerecord.attributes.script.themes_to_pass", :default => t("activerecord.labels.themes_to_pass", :default => "Themes to pass")) + ":"
+%p= @script.themes_to_pass
+%label{:class => "label"}= t("activerecord.attributes.script.results", :default => t("activerecord.labels.results", :default => "Results")) + ":"
+%p= @script.results
+%label{:class => "label"}= t("activerecord.attributes.script.test_id", :default => t("activerecord.labels.test_id", :default => "Test")) + ":"
+%p= @script.test_id
+%label{:class => "label"}= t("activerecord.attributes.script.base_script_id", :default => t("activerecord.labels.base_script_id", :default => "Base script")) + ":"
+%p= @script.base_script_id
+- if !@script.script_themes.blank?
+  %label{:class => "label"} Темы
+  - @script.script_themes.each do |theme|
+    %p= link_to theme.name, theme
+    %label{:class => "label"} Подтемы
+    - theme.script_sub_themes.each do |sub_theme|
+      %p= link_to sub_theme.name, sub_theme
 
-= link_to 'Редактировать', edit_script_path(@script), :class => 'btn'
-= link_to 'Назад', scripts_path, :class => 'btn'
+.form-actions
+  = link_to "Назад", scripts_path, :class => 'btn'
+  = link_to "Редактировать", edit_script_path(@script), :class => 'btn'
+  = link_to "Удалить", script_path(@script), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-danger'

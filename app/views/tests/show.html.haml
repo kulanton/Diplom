@@ -1,49 +1,31 @@
-%p
-  %b Название:
-  = @test.name
-%p
-  %b Необходимость:
-  = @test.necessary ? "ДА" : "НЕТ"
-%p
-  %b Блокирован?:
-  = @test.block ? "ДА" : "НЕТ"
-%p
-  %b Количество попыток:
-  = @test.num_try
-%p
-  %b Период пересдачи:
-  = @test.period
-%p
-  %b Тип:
-  = @test.type
-%p
-  %b Тип авторизации:
-  = @test.auth_type
-%p
-  %b С ключем?:
-  = @test.w_key ? "ДА" : "НЕТ"
-%p
-  %b Доступен извне?:
-  = @test.ext_access ? "ДА" : "НЕТ"
-%p
-  %b Доступен в МГИУ?:
-  = @test.msiu_access ? "ДА" : "НЕТ"
-%p
-  %b Порядок:
-  = @test.order
-- if !@test.scripts.blank?
-  %table
-    %tr
-      %th Список сценариев
-      %th Список тем
-    - @test.scripts.each do |script|
-      %tr
-        %td= link_to script.name, script
-        %td
-          - script.themes.each do |theme|
-            = link_to theme.name, theme
-            %br
+%label{:class => "label"}= t("activerecord.attributes.test.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%p= @test.name
+%label{:class => "label"}= t("activerecord.attributes.test.necessary", :default => t("activerecord.labels.necessary", :default => "Necessary")) + ":"
+%p= @test.necessary
+%label{:class => "label"}= t("activerecord.attributes.test.block", :default => t("activerecord.labels.block", :default => "Block")) + ":"
+%p= @test.block
+%label{:class => "label"}= t("activerecord.attributes.test.num_try", :default => t("activerecord.labels.num_try", :default => "Num try")) + ":"
+%p= @test.num_try
+%label{:class => "label"}= t("activerecord.attributes.test.period", :default => t("activerecord.labels.period", :default => "Period")) + ":"
+%p= @test.period
+%label{:class => "label"}= t("activerecord.attributes.test.test_type", :default => t("activerecord.labels.test_type", :default => "Type")) + ":"
+%p= @test.type
+%label{:class => "label"}= t("activerecord.attributes.test.auth_type", :default => t("activerecord.labels.auth_type", :default => "Auth type")) + ":"
+%p= @test.auth_type
+%label{:class => "label"}= t("activerecord.attributes.test.w_key", :default => t("activerecord.labels.w_key", :default => "W key")) + ":"
+%p= @test.w_key
+%label{:class => "label"}= t("activerecord.attributes.test.ext_access", :default => t("activerecord.labels.ext_access", :default => "Ext access")) + ":"
+%p= @test.ext_access
+%label{:class => "label"}= t("activerecord.attributes.test.msiu_access", :default => t("activerecord.labels.msiu_access", :default => "Msiu access")) + ":"
+%p= @test.msiu_access
+%label{:class => "label"}= t("activerecord.attributes.test.order", :default => t("activerecord.labels.order", :default => "Order")) + ":"
+%p= @test.order
+%label{:class => "label"}= t("activerecord.attributes.test.scheduled_date", :default => t("activerecord.labels.scheduled_date", :default => "Scheduled date")) + ":"
+%p= @test.scheduled_date
+%label{:class => "label"}= t("activerecord.attributes.test.scheduled_pair", :default => t("activerecord.labels.scheduled_pair", :default => "Scheduled pair")) + ":"
+%p= @test.scheduled_pair
 
-= link_to 'Редактировать', edit_test_path(@test)
-\|
-= link_to 'Назад', tests_path
+.form-actions
+  = link_to "Назад", tests_path, :class => 'btn'
+  = link_to "Редактировать", edit_test_path(@test), :class => 'btn'
+  = link_to "Удалить", test_path(@test), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-danger'

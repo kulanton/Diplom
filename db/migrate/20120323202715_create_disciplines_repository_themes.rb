@@ -3,8 +3,6 @@ class CreateDisciplinesRepositoryThemes < ActiveRecord::Migration
     create_table :disciplines_repository_themes, :id => false do |t|
       t.integer :discipline_id
       t.integer :repository_theme_id
-
-      t.timestamps
     end
   end
 end

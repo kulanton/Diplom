@@ -200,6 +200,28 @@ ru:
       update: 'Сохранить'
       submit: 'Сохранить'
 
+  controllers:
+    disciplines:
+      new: "Новая дисциплина"
+      edit: "Редактор дисциплины"
+      create: "Новая дисциплина"
+    groups:
+      new: "Новая группа"
+      edit: "Редактор группы"
+      create: "Новая группа"
+    repository_themes:
+      new: "Новая тема"
+      edit: "Редактор темы"
+      create: "Новая тема"
+    tests:
+      new: "Новый тест"
+      edit: "Редактор теста"
+      create: "Новый тест"
+    scripts:
+      new: "Новый сценарий"
+      edit: "Редактор сценария"
+      create: "Новый сценарий"
+
   # In rails 3 errors is top-level namespace
   errors:
     format: "%{attribute} %{message}"
@@ -288,10 +310,11 @@ ru:
         format: "%{attribute} %{message}"
     models:
       user: "Пользователь"
-      country: "Страна"
-      genre: "Жанр"
-      person: "Персона"
-      film: "Фильм"
+      discipline: "Дисциплина"
+      group: "Группа"
+      test: "Тест"
+      script: "Сценарий"
+      
     attributes:
       user:
         login: "Имя пользователя"
@@ -299,70 +322,59 @@ ru:
         role: "Роль"
         password: "Пароль"
         password_confirmation: "Пароль (повторно)"
-      country:
-        name: "Название"
-      genre:
-        name: "Название"
-      person:
-        name: "Имя"
-        origin_name: "Имя (на английском)"
-        male: "Пол"
-        birthday: "Дата рождения"
-        avatar: "Фото"
-      film:
-        name: "Название"
-        origin_name: "Оригинальное название"
-        slogan: "Слоган"
-        country_id: "Страна"
-        genre_id: "Жанр"
-        director_id: "Режиссер"
-        length: "Продолжительность"
-        year: "Год создания"
-        cover: "Постер"
-        trailer_url: "Трейлер"
-        description: "Сюжет"
       test:
         name: "Название"
         necessary: "Необходимость"
         block: "С блокировкой?"
         num_try: "Количество попыток"
         period: "Период пересдачи"
-        type: "Тип теста"
+        test_type: "Тип теста"
         auth_type: "Тип авторизации"
         w_key: "С ключем?"
         ext_access: "Доступен извне?"
         msiu_access: "Доступен в МГИУ?"
-        disciplines_groups_id: "Дисциплина-Группа"
+        subjects: "Предмет"
+        scripts: "Сценарии"
         order: "Порядок"
-        theme_pct: "Процент тем"
-        question_pct: "Процент вопросов"
+        scheduled_date: "Планируемая дата"
+        scheduled_pair: "Планируемый № пары"
       script:
         name: "Название"
-        order: "Вопросы по порядку"
-        blocked: "Заблокирован"
+        blocked: "Заблокирован?"
         redirect_page: "Страница"
         time: "Время"
+        order_themes: "Темы по порядку?"
+        questions_to_pass: "Необходимо сдать вопросов"
+        themes_to_pass: "Необходимо сдать тем"
+        results: "Результаты"
+        script_themes: "Темы"
+        script_subthemes: "Подтемы"
         test_id: "Тест"
-        procents: "Процент сданых вопросов"
-        passed_themes: "Процент сданых тем"
-        detalized: "Детальный отчет"
-      theme:
+        base_script_id: "Родительский сценарий"
+      repository_theme:
         name: "Название"
-        script_id: "Сценарий"
-        discipline_id: "Дисциплина"
-      sub_theme:
+        path: "Путь"
+        count: "Количество вопросов"
+      script_theme:
+        name: "Название"
+        questions_to_pass: "Необходимо сдать вопросов"
+        subthemes_to_pass: "Необходимо сдать подтем"
+        order_subthemes: "Подтемы по порядку?"
+      script_sub_theme:
         name: "Название"
         start_num: "Начальный индекс вопросов"
         end_num: "Конечный индекс вопросов"
-        questions: "Задать вопросов"
-        answers: "Ожидать ответов"
+        questions_to_pass: "Необходимо сдать вопросов"
+        questions_count: "Задать вопросов"
+        order_questions: "Вопросы по порядку?"
         theme_id: "Тема"
-        order: "Вопросы по порядку?"
+        order_themes: "Темы по порядку?"
       discipline:
         name: "Название"
+        repository_themes: "Репоситорий тем"
+        tests: "Тесты"
       group:
         name: "Номер"
-        year: "Год"
   support:
     select:
       prompt: "Выберите: "

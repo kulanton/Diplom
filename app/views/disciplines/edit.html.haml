@@ -1,3 +1,2 @@
-%h1 Редактирования дисциплины
-
-= render 'form'
+= form_for @discipline, :html => { :class => "edit_discipline form-horizontal", :id => "edit_discipline" } do |f|
+  = render :partial => "form", :locals => {:f => f}

@@ -1,3 +1,2 @@
-%h1 Редактирование группы
-
-= render 'form'
+= form_for @group, :html => { :class => "edit_group form-horizontal", :id => "edit_group" } do |f|
+  = render :partial => "form", :locals => {:f => f}

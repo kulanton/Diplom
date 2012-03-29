@@ -1,28 +1,31 @@
-= form_for @script_theme do |f|
-  -if @script_theme.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@script_theme.errors.count, "error")} prohibited this script_theme from being saved:"
-      %ul
-        - @script_theme.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :repository_theme_id
-    = f.number_field :repository_theme_id
-  .field
-    = f.label :questions_to_pass
-    = f.number_field :questions_to_pass
-  .field
-    = f.label :subthemes_to_pass
-    = f.number_field :subthemes_to_pass
-  .field
-    = f.label :order_subthemes
-    = f.check_box :order_subthemes
-  .field
-    = f.label :script_id
-    = f.number_field :script_id
-  .actions
-    = f.submit 'Save'
+%fieldset
+  %legend
+    = controller.action_name.capitalize
+    /Script Theme
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label :repository_theme_id, :class => 'control-label'
+    .controls
+      = f.number_field :repository_theme_id, :class => 'number_field'
+  .control-group
+    = f.label :questions_to_pass, :class => 'control-label'
+    .controls
+      = f.number_field :questions_to_pass, :class => 'number_field'
+  .control-group
+    = f.label :subthemes_to_pass, :class => 'control-label'
+    .controls
+      = f.number_field :subthemes_to_pass, :class => 'number_field'
+  .control-group
+    = f.label :order_subthemes, :class => 'control-label'
+    .controls
+      = f.check_box :order_subthemes, :class => 'check_box'
+  .control-group
+    = f.label :script_id, :class => 'control-label'
+    .controls
+      = f.number_field :script_id, :class => 'number_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to "Cancel", script_themes_path, :class => 'btn'

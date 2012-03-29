@@ -1,7 +1,7 @@
 class CreateScriptSubThemes < ActiveRecord::Migration
   def change
     create_table :script_sub_themes do |t|
-      t.integer :name
+      t.string :name
       t.integer :start_num
       t.integer :end_num
       t.integer :questions_to_pass

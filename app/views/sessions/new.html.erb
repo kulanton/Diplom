@@ -1,16 +1,26 @@
-<h1>Log In</h1>
+<%= form_tag session_path, :class => 'form-horizontal' do -%>
+<fieldset>
+  <legend>Авторизация</legend>
+  <div class = "control-group">
+    <%= label_tag 'login', 'Логин', :class => 'control-label' %>
+    <div class = "controls">
+      <%= text_field_tag 'login', @login, :class => 'text_field' %></p>
+    </div>
+  </div>
 
-<%= form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
-<%= text_field_tag 'login', @login %></p>
-
-<p><%= label_tag 'password' %><br/>
-<%= password_field_tag 'password', nil %></p>
+  <div class = "control-group">
+    <%= label_tag 'password', 'Пароль', :class => 'control-label' %>
+    <div class = "controls">
+      <%= password_field_tag 'password', nil, :class => 'text_field' %></p>
+    </div>
+  </div>
 
 <!-- Uncomment this if you want this functionality
 <p><%= label_tag 'remember_me', 'Remember me' %>
 <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 -->
-
-<p><%= submit_tag 'Log in' %></p>
+  <div class = "form-actions">
+    <%= submit_tag 'Войти', :class => 'btn' %></p>
+  </div>
+</fieldset>
 <% end -%>

@@ -1,28 +1,28 @@
 %h1 Список сценариев
-
-%table.table.table-striped
-  %tr
-    %th Название
-    %th Порядок
-    %th Страница перенаправления
-    %th Время теста
-    %th Заблокирован
-    %th Тест
-    %th
-
-  - @scripts.each do |script|
+%table{:class => "table table-striped table-bordered"}
+  %thead
     %tr
-      %td= link_to script.name, script
-      %td= script.order
-      %td= script.redirect_page
-      %td= script.time
-      - if script.blocked
-        %td ДА
-      - else
-        %td НЕТ
-      %td= script.test.name
-      %td.delete= link_to 'Удалить', script, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
+      %th= t "activerecord.attributes.script.name"
+      %th= t "activerecord.attributes.script.script_themes"
+      %th= t "activerecord.attributes.script.script_subthemes"
+      %th Действия
+  %tbody
+    - @scripts.each do |script|
+      %tr
+        %td= link_to script.name, script_path(script)
+        %td
+          - script.script_themes.each do |script_theme|
+            = link_to script_theme.name, script_theme_path(script_theme)
+            %br
+        %td
+          - script.script_themes.each do |script_theme|
+            - script_theme.script_sub_themes.each do |script_sub_theme|
+              =link_to script_sub_theme.name, script_sub_theme_path(script_sub_theme)
+              %br
+        %td.actions
+          = link_to "<i class='icon-edit'></i>".html_safe, edit_script_path(script), :class => 'btn btn-mini'
+          = link_to "<i class='icon-trash icon-white'></i>".html_safe, script_path(script), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
 
-%br
+= link_to "Новый сценарий", new_script_path, :class => 'btn btn-primary'
 
-= link_to 'Новый сценарий', new_script_path, :class => 'btn'
+.free-space

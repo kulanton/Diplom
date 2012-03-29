@@ -19,10 +19,8 @@ ActiveRecord::Schema.define(:version => 20120323220252) do
   end
 
   create_table "disciplines_repository_themes", :id => false, :force => true do |t|
-    t.integer  "discipline_id"
-    t.integer  "repository_theme_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "discipline_id"
+    t.integer "repository_theme_id"
   end
 
   create_table "groups", :force => true do |t|
@@ -40,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20120323220252) do
   end
 
   create_table "script_sub_themes", :force => true do |t|
-    t.integer  "name"
+    t.string   "name"
     t.integer  "start_num"
     t.integer  "end_num"
     t.integer  "questions_to_pass"
@@ -95,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20120323220252) do
     t.boolean  "block"
     t.integer  "num_try"
     t.integer  "period"
-    t.integer  "type"
+    t.integer  "test_type"
     t.integer  "auth_type"
     t.boolean  "w_key"
     t.boolean  "ext_access"

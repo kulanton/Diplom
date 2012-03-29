@@ -2,16 +2,24 @@ Scenario::Application.routes.draw do
 
   get "subjects/index"
 
-  get "subject/index"
-
   resources :script_sub_themes
 
   resources :script_themes
 
   resources :repository_themes
+  
+  resources :tests
 
-  get "disciplines_groups/index"
-  #resource :disciplines_groups, :only => [:index]
+  resources :scripts
+
+  resources :disciplines
+
+  resources :groups do
+    collection do
+      get 'add_to_bloc'
+      get 'blocs'
+    end
+  end
 
   resources :users
 
@@ -27,26 +35,6 @@ Scenario::Application.routes.draw do
 
   match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
 
-
-  resources :tests
-
-  resources :scripts
-  
-  resources :questions
-  
-  resources :sub_themes
-  
-  resources :themes
-
-  resources :scenaries
-
-  resources :results
-
-  resources :estimations
-
-  resources :disciplines
-
-  resources :groups
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

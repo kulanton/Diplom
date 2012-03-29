@@ -1,60 +1,53 @@
-= form_for @test, :html => {:class => 'form-horizontal'} do |f|
-  -if @test.errors.any?
-    .div.error
-      %h2= "При сохранении произошли ошибки"
-      %ul
-        - @test.errors.full_messages.each do |msg|
-          %li= msg
-
-  %fieldset
-    .control-group
-      = f.label :name, :class => 'control-label'
-      .controls
-        = f.text_field :name, :class => 'input-xlarge'
-    .control-group
-      = f.label :necessary, :class => 'control-label'
-      .controls
-        = f.check_box :necessary, :class => 'checkbox'
-    .control-group
-      = f.label :block, :class => 'control-label'
-      .controls
-        = f.check_box :block, :class => 'checkbox'
-    .control-group
-      = f.label :num_try, :class => 'control-label'
-      .controls
-        = f.number_field :num_try, :class => 'input-xlarge'
-    .control-group
-      = f.label :period, :class => 'control-label'
-      .controls
-        = f.number_field :period, :class => 'input-xlarge'
-    .control-group
-      = f.label :type, :class => 'control-label'
-      .controls
-        = f.select :type, @test.types, :class => 'span5'
-    .control-group
-      = f.label :auth_type, :class => 'control-label'
-      .controls
-        = f.select :auth_type, @test.auth_types, :class => 'span5'
-    .control-group
-      = f.label :w_key, :class => 'control-label'
-      .controls
-        = f.check_box :w_key, :class => 'checkbox'
-    .control-group
-      = f.label :ext_access, :class => 'control-label'
-      .controls
-        = f.check_box :ext_access, :class => 'checkbox'
-    .control-group
-      = f.label :msiu_access, :class => 'control-label'
-      .controls
-        = f.check_box :msiu_access, :class => 'checkbox'
-    .control-group
-      = f.label :subject_tokens, "Дисциплина - Группа", :class => 'control-label'
-      .controls
-        = f.text_field :subject_tokens, "data-pre"=>@test.subjects.map(&:attributes).to_json
-    .control-group
-      = f.label :order, :class => 'control-label'
-      .controls
-        = f.number_field :order, :class => 'input-xlarge'
-    .form-actions
-      = f.submit 'Сохранить', :class => 'btn btn-primary'
-      = link_to 'Назад', tests_path, :class => 'btn'
+%fieldset
+  %legend= t "controllers.#{controller_name}.#{action_name}"
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label :necessary, :class => 'control-label'
+    .controls
+      = f.check_box :necessary, :class => 'check_box'
+  .control-group
+    = f.label :block, :class => 'control-label'
+    .controls
+      = f.check_box :block, :class => 'check_box'
+  .control-group
+    = f.label :num_try, :class => 'control-label'
+    .controls
+      = f.number_field :num_try, :class => 'number_field'
+  .control-group
+    = f.label :period, :class => 'control-label'
+    .controls
+      = f.number_field :period, :class => 'number_field'
+  .control-group
+    = f.label :test_type, :class => 'control-label'
+    .controls
+      = f.select :test_type, @test.types, :class => 'select'
+  .control-group
+    = f.label :auth_type, :class => 'control-label'
+    .controls
+      = f.select :auth_type, @test.auth_types, :class => 'number_field'
+  .control-group
+    = f.label :w_key, :class => 'control-label'
+    .controls
+      = f.check_box :w_key, :class => 'checkbox'
+  .control-group
+    = f.label :ext_access, :class => 'control-label'
+    .controls
+      = f.check_box :ext_access, :class => 'checkbox'
+  .control-group
+    = f.label :msiu_access, :class => 'control-label'
+    .controls
+      = f.check_box :msiu_access, :class => 'checkbox'
+  .control-group
+    = f.label :scheduled_date, :class => 'control-label'
+    .controls
+      = f.date_select :scheduled_date, :prompt => {:day => 'День', :month => 'Месяц', :year => 'Год'}
+  .control-group
+    = f.label :scheduled_pair, :class => 'control-label'
+    .controls
+      = f.number_field :scheduled_pair, :class => 'number_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to "Отмена", tests_path, :class => 'btn'

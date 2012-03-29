@@ -18,9 +18,9 @@ class TestsController < ApplicationController
 
   def new
     @test = Test.new
-    if !params[:discipline].nil? and !params[:group].nil?
-      @dg = DisciplinesGroups.where("discipline_id = ? AND group_id = ?", params[:discipline], params[:group]).first
-    end
+    #script = @test.scripts.build
+    #script_theme = script.script_themes.build
+    #script_theme.script_sub_themes.build
   end
 
 
@@ -31,6 +31,10 @@ class TestsController < ApplicationController
 
   def create
     @test = Test.new(params[:test])
+    #script = @test.scripts.build
+    #(params[:test][:scripts_attributes]["0"])
+    #script_theme = script.script_themes.build
+    #script_theme.script_sub_themes.build
 
     respond_to do |format|
       if @test.save
@@ -43,8 +47,7 @@ class TestsController < ApplicationController
     end
   end
 
-  # PUT /tests/1
-  # PUT /tests/1.json
+
   def update
     @test = Test.find(params[:id])
 
@@ -59,8 +62,7 @@ class TestsController < ApplicationController
     end
   end
 
-  # DELETE /tests/1
-  # DELETE /tests/1.json
+
   def destroy
     @test = Test.find(params[:id])
     @test.destroy

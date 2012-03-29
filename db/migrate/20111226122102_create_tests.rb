@@ -6,7 +6,7 @@ class CreateTests < ActiveRecord::Migration
       t.boolean :block
       t.integer :num_try
       t.integer :period
-      t.integer :type
+      t.integer :test_type
       t.integer :auth_type
       t.boolean :w_key
       t.boolean :ext_access

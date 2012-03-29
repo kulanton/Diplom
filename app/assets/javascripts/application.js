@@ -6,9 +6,33 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.tokeninput
-// require bootstrap
-//= require rails.validations
+//= require twitter/bootstrap
+//= require_tree .
+
+/*
+$(function() {
+  $("#btn-themes").click(function() {
+    return false;
+  });
+  $("#btn-questions").click(function() {
+    return false;
+  });
+  $("#btn-detaled").click(function() {
+    return false;
+  });
+});
+*/
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".partial").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
+}
 
 $(function() {
   $("#disciplines_search fieldset input").keyup(function() {
@@ -44,18 +68,6 @@ $(function() {
     preventDuplicates: true,
     theme: 'facebook',
     hintText: 'Введите название группы',
-    noResultsText: 'Не найдено',
-    searchingText: "Поиск..."
-  });
-});
-
-$(function() {
-  $("#test_subject_tokens").tokenInput("/subjects/index.json", {
-    crossDomain: false,
-    prePopulate: $("#test_subject_tokens").data("pre"),
-    theme: 'facebook',
-    tokenLimit: 1,
-    hintText: 'Введите название дисциплины или группы',
     noResultsText: 'Не найдено',
     searchingText: "Поиск..."
   });

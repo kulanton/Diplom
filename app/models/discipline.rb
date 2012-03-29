@@ -1,9 +1,10 @@
 class Discipline < ActiveRecord::Base
   has_many :subjects, :dependent => :destroy, :before_add => :year_assign
-  has_many :groups, :through => :subjects, :uniq => true
+  has_many :groups, :through => :subjects #, :uniq => true
   has_and_belongs_to_many :repository_themes
   
   validates_presence_of :name
+  validates_uniqueness_of :name
   
   attr_reader :repository_theme_tokens, :group_tokens
   

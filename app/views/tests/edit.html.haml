@@ -1,3 +1,2 @@
-%h1 Редактировать тест
-
-= render 'form'
+= form_for @test, :html => { :class => "edit_test form-horizontal", :id => "edit_test" } do |f|
+  = render :partial => "form", :locals => {:f => f}

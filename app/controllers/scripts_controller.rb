@@ -10,6 +10,8 @@ class ScriptsController < ApplicationController
 
   def new
     @script = Script.new
+    #script_theme = @script.script_themes.build
+    #script_theme.script_sub_themes.build
   end
 
   def edit

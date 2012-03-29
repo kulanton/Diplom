@@ -1,58 +1,55 @@
-= form_for @script, :html => {:class => 'form-horizontal'} do |f|
-  -if @script.errors.any?
-    .div.error
-      %h2= "При сохранении произошли ошибки"
-      %ul
-        - @script.errors.full_messages.each do |msg|
-          %li= msg
-
-  %fieldset
-    .control-group
-      = f.label :name, :class => 'control-label'
-      .controls
-        = f.text_field :name, :class => 'input-xlarge'
-    .control-group
-      = f.label :order, :class => 'control-label'
-      .controls
-        = f.check_box :order, :class => 'checkbox'
-    .control-group
-      = f.label :redirect_page, :class => 'control-label'
-      .controls
-        = f.text_field :redirect_page, :class => 'input-xlarge'
-    .control-group
-      = f.label :time, :class => 'control-label'
-      .controls
-        = f.number_field :time, :class => 'input-xlarge'
-    .control-group
-      = f.label :blocked, :class => 'control-label'
-      .controls
-        = f.check_box :blocked, :class => 'checkbox'
-    .control-group
-      = f.label :test_id, :class => 'control-label'
-      .controls
-        = f.select :test_id, Test.all.map{|t| [t.name, t.id]}
-    %p
-      Варианты вывода результатов:
-      .control-group
-        = f.label :procents, :class => 'control-label'
-        .controls
-          = f.check_box :procents, :class => 'checkbox'
-      .control-group
-        = f.label :passed_themes, :class => 'control-label'
-        .controls
-          = f.check_box :passed_themes, :class => 'checkbox'
-      .control-group
-        = f.label :detalized, :class => 'control-label'
-        .controls
-          = f.check_box :detalized, :class => 'checkbox'
-    .control-group
-      = f.label :theme_tokens, "Темы", :class => 'control-label'
-      .controls
-        = f.text_field :theme_tokens, "data-pre"=>@script.themes.map(&:attributes).to_json
-    .control-group
-      = f.label :sub_theme_tokens, "Подтемы", :class => 'control-label'
-      .controls
-        = f.text_field :sub_theme_tokens, "data-pre"=>@script.sub_themes.map(&:attributes).to_json
-    .form-actions
-      = f.submit 'Сохранить', :class => 'btn btn-primary'
-      = link_to 'Назад', scripts_path, :class => 'btn'
+%fieldset
+  %legend
+    = t "controllers.#{controller_name}.#{action_name}"
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label :redirect_page, :class => 'control-label'
+    .controls
+      = f.text_field :redirect_page, :class => 'text_field'
+  .control-group
+    = f.label :time, :class => 'control-label'
+    .controls
+      = f.number_field :time, :class => 'number_field'
+  .control-group
+    = f.label :blocked, :class => 'control-label'
+    .controls
+      = f.check_box :blocked, :class => 'check_box'
+  .control-group
+    = f.label :order_themes, :class => 'control-label'
+    .controls
+      = f.check_box :order_themes, :class => 'check_box'
+  .control-group
+    = f.label :questions_to_pass, :class => 'control-label'
+    .controls
+      = f.number_field :questions_to_pass, :class => 'number_field'
+  .control-group
+    = f.label :themes_to_pass, :class => 'control-label'
+    .controls
+      = f.number_field :themes_to_pass, :class => 'number_field'
+  .control-group
+    = f.label :results, :class => 'control-label'
+    .controls
+      /%div{:class => 'btn-group', 'data-toggle' => 'buttons-checkbox'}
+      /  %input{:type => 'button', :class => 'btn', :value => 'Темы', :id => 'btn-themes'}
+      /  /%button.btn{:id => 'btn-themes'} Темы
+      /  = hidden_field_tag :results_themes
+      /  %input{:type => 'button', :class => 'btn', :value => 'Вопросы', :id => 'btn-questions'}
+      /  /%button.btn{:id => 'btn-questions'} Вопросы
+      /  = hidden_field_tag :results_questions
+      /  %input{:type => 'button', :class => 'btn', :value => 'Детальный', :id => 'btn-detaled'}
+      /  /%button.btn{:id => 'btn-detaled'} Детально
+      /  = hidden_field_tag :results_detaled
+      = f.number_field :results, :class => 'number_field'
+  .control-group
+    = f.label :base_script_id, :class => 'control-label'
+    .controls
+      = f.number_field :base_script_id, :class => 'number_field'
+  = f.fields_for :script_themes do |builder|
+    = render "script_theme", :f => builder
+  %div.partial= link_to_add_fields "Добавить тему", f, :script_themes
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to "Отмена", scripts_path, :class => 'btn'

@@ -1,20 +1,25 @@
-%table.table.table-striped
-  %tr
-    %th Название
-    %th Репозиторий тем
-    %th Тесты
-    %th Действия
-
-  - @disciplines.each do |discipline|
+%table{:class => "table table-striped table-bordered"}
+  %thead
     %tr
-      %td= link_to discipline.name, :controller => 'groups', :action => 'index', :discipline => discipline
-      %td
-        - discipline.repository_themes.each do |theme|
-          = link_to theme.name, theme
-          %br
-      %td
-      %td.edit-delete
-        = link_to 'Редактировать', edit_discipline_path(discipline), :class => 'btn'
-        = link_to 'Удалить', discipline, :confirm => 'Вы уверены?', :method => :delete, :class => 'btn btn-danger'
-
-%br
+      %th= t("activerecord.attributes.discipline.name", :default => t("activerecord.labels.name", :default => "Название"))
+      %th= t("activerecord.attributes.discipline.repository_themes", :default => t("activerecord.labels.repository_themes", :default => "Репоситорий тем"))
+      %th= t("activerecord.attributes.discipline.tests", :default => t("activerecord.labels.tests", :default => "Тесты"))
+      - if @current_user && @current_user.admin?
+        %th Действия
+  %tbody
+    - @disciplines.each do |discipline|
+      %tr
+        %td= link_to discipline.name, blocs_groups_path(:discipline => discipline)
+        %td
+          - discipline.repository_themes.each do |theme|
+            = link_to theme.name, theme
+            %br
+        %td
+          - discipline.subjects.each do |subject|
+            - subject.tests.each do |test|
+              = link_to test.name, test
+              %br
+        - if @current_user && @current_user.admin?
+          %td.actions
+            = link_to "<i class='icon-edit'></i>".html_safe, edit_discipline_path(discipline), :class => 'btn btn-mini'
+            = link_to "<i class='icon-trash icon-white'></i>".html_safe, discipline_path(discipline), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 

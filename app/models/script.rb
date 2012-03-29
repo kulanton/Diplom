@@ -1,21 +1,8 @@
 class Script < ActiveRecord::Base
-  has_and_belongs_to_many :sub_themes
-  has_and_belongs_to_many :themes
   belongs_to :test
-
-  validates :name, :presence => true
-  validates :order, :presence => true
-  validates :time, :presence => true
+  has_many :script_themes, :dependent => :destroy
+  accepts_nested_attributes_for :script_themes, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   
-  attr_reader :theme_tokens
+  validates_presence_of :name, :redirect_page, :time, :results, :questions_to_pass, :themes_to_pass
   
-  def theme_tokens=(ids)
-    self.theme_ids = ids.split(",")
-  end
-  
-  attr_reader :sub_theme_tokens
-  
-  def sub_theme_tokens=(ids)
-    self.sub_theme_ids = ids.split(",")
-  end
 end

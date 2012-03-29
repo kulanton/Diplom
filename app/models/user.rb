@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
+  
+  def admin?
+    role==1
+  end
 
   protected
     

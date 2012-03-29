@@ -1,0 +1,70 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title= content_for?(:title) ? yield(:title) : "Редактор сценариев тестирования и визуализатор отчетов системы тестирования МГИУ"
+    = csrf_meta_tags
+
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+
+    = stylesheet_link_tag "application", :media => "all"
+
+    %link{:href => "images/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+    %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
+    %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+
+
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "/"}Scenario
+          .container-fluid.nav-collapse
+            %ul.nav
+              %li= link_to "Сценарии", scripts_path
+              %li= link_to "Тесты", tests_path
+              %li= link_to "Темы", repository_themes_path
+              %li= link_to "Группы", groups_path
+              %li= link_to "Дисциплины", disciplines_path
+            %p.navbar-text.pull-right
+              -if @current_user
+                Вы:
+                %strong= @current_user.login
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                %strong= link_to "Выход", logout_path, :id=>"logout"
+              -else
+                %strong= link_to "Вход", login_path, :id=>"login"
+
+    .container-fluid
+
+      .row-fluid
+        .span2
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Меню
+              %li= link_to "Сценарии", scripts_path
+              %li= link_to "Тесты", tests_path
+              %li= link_to "Темы", repository_themes_path
+              %li= link_to "Группы", groups_path
+              %li= link_to "Дисциплины", disciplines_path
+        .span10
+          -unless notice.blank?
+            .alert.alert-success
+              %a{:class => "close", 'data-dismiss' => "alert"} &times;
+              = notice
+          -unless flash[:error].blank?
+            .alert.alert-error
+              %a{:class => "close", 'data-dismiss' => "alert"} &times;
+              = flash[:error]
+          = yield
+    
+      %footer
+        %p &copy; Московский государственный индустриальный университет.
+
+    = javascript_include_tag "application"

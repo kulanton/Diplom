@@ -1,23 +1,21 @@
-%h1 Listing repository_themes
-
-%table
-  %tr
-    %th Name
-    %th Path
-    %th Count
-    %th
-    %th
-    %th
-
-  - @repository_themes.each do |repository_theme|
+%h1 Репозиторый тем
+%table{:class => "table table-striped"}
+  %thead
     %tr
-      %td= repository_theme.name
-      %td= repository_theme.path
-      %td= repository_theme.count
-      %td= link_to 'Show', repository_theme
-      %td= link_to 'Edit', edit_repository_theme_path(repository_theme)
-      %td= link_to 'Destroy', repository_theme, :confirm => 'Are you sure?', :method => :delete
+      %th= t("activerecord.attributes.repository_theme.name", :default => t("activerecord.labels.name", :default => "Название"))
+      %th= t("activerecord.attributes.repository_theme.path", :default => t("activerecord.labels.path", :default => "Путь"))
+      %th= t("activerecord.attributes.repository_theme.count", :default => t("activerecord.labels.count", :default => "Коллтчество вопросов"))
+      %th
+  %tbody
+    - @repository_themes.each do |repository_theme|
+      %tr
+        %td= link_to repository_theme.name, repository_theme_path(repository_theme)
+        %td= repository_theme.path
+        %td= repository_theme.count
+        %td.actions
+          = link_to "<i class='icon-edit'></i>".html_safe, edit_repository_theme_path(repository_theme), :class => 'btn btn-mini'
+          = link_to "<i class='icon-trash icon-white'></i>".html_safe, repository_theme_path(repository_theme), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
 
-%br
+= link_to "Новая тема", new_repository_theme_path, :class => 'btn btn-primary'
 
-= link_to 'New Repository theme', new_repository_theme_path
+.free-space
