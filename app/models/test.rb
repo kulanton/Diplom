@@ -1,7 +1,8 @@
 class Test < ActiveRecord::Base
-  has_and_belongs_to_many :subjects
+  has_and_belongs_to_many :discipline_groups, :join_table => 'discipline_group_tests', :foreign_key => 'discipline_year_block_id'
+  
   has_many :scripts, :dependent => :destroy
-  accepts_nested_attributes_for :scripts, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :scripts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 
   validates_presence_of :name, :num_try, :test_type, :auth_type, :period
   validates :num_try, :numericality=>{:only_integer=>true,:greater_than=>0},:allow_blank=>false

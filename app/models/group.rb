@@ -1,13 +1,8 @@
-class Group < ActiveRecord::Base
-  has_many :subjects, :dependent => :destroy
-  has_many :disciplines, :through => :subjects #, :uniq => true
+class Group < ActiveRecord::Base  
+  has_many :discipline_block_groups, :dependent => :destroy
+  has_many :discipline_year_blocks, :through => :discipline_block_groups
   
   validates_presence_of :name
   validates_uniqueness_of :name
   
-  # attr_reader :discipline_tokens
-  
-  # def discipline_tokens=(ids)
-  #   self.discipline_ids = ids.split(",")
-  # end
 end

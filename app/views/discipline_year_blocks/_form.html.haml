@@ -1,0 +1,23 @@
+%fieldset
+  %legend
+    = controller.action_name.capitalize
+    /Discipline Year Block
+  .control-group
+    = f.label :year, :class => 'control-label'
+    .controls
+      = f.text_field :year, :class => 'text_field'
+  .control-group
+    = f.label :discipline_token, "Дисциплина", :class => 'control-label'
+    .controls
+      = f.text_field :discipline_token, :class => 'text_field'
+  .control-group
+    = f.label :grouo_tokens, "Группы", :class => 'control-label'
+    .controls
+      = f.text_field :group_tokens, :class => 'text_field'
+  .control-group
+    = f.label :block_number, :class => 'control-label'
+    .controls
+      = f.number_field :block_number, :class => 'number_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to "Отмена", discipline_year_blocks_path, :class => 'btn'

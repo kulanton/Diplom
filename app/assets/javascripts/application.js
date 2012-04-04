@@ -62,12 +62,24 @@ $(function() {
 });
 
 $(function() {
-  $("#discipline_group_tokens").tokenInput("/groups.json", {
+  $("#discipline_year_block_group_tokens").tokenInput("/groups.json", {
     crossDomain: false,
-    prePopulate: $("#discipline_group_tokens").data("pre"),
+    prePopulate: $("#discipline_year_block_group_tokens").data("pre"),
     preventDuplicates: true,
     theme: 'facebook',
-    hintText: 'Введите название группы',
+    hintText: 'Введите номер группы',
+    noResultsText: 'Не найдено',
+    searchingText: "Поиск..."
+  });
+});
+
+$(function() {
+  $("#discipline_year_block_discipline_token").tokenInput("/disciplines.json", {
+    crossDomain: false,
+    prePopulate: $("#discipline_year_block_discipline_token").data("pre"),
+    preventDuplicates: true,
+    theme: 'facebook',
+    hintText: 'Введите номер группы',
     noResultsText: 'Не найдено',
     searchingText: "Поиск..."
   });

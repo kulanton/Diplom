@@ -10,7 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323220252) do
+ActiveRecord::Schema.define(:version => 20120330185626) do
+
+  create_table "discipline_block_groups", :force => true do |t|
+    t.integer  "discipline_year_block_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "discipline_group_tests", :id => false, :force => true do |t|
+    t.integer "test_id"
+    t.integer "discipline_year_block_id"
+  end
+
+  create_table "discipline_year_blocks", :force => true do |t|
+    t.integer  "discipline_id"
+    t.string   "year"
+    t.integer  "block_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "disciplines", :force => true do |t|
     t.string   "name"

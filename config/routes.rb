@@ -1,5 +1,7 @@
 Scenario::Application.routes.draw do
 
+  resources :discipline_year_blocks
+
   get "subjects/index"
 
   resources :script_sub_themes
