@@ -2,27 +2,20 @@
 %table{:class => "table table-striped"}
   %thead
     %tr
-      %th №
       %th= t "activerecord.attributes.discipline_year_block.groups"
       %th= t "activerecord.attributes.discipline_year_block.tests"
       %th= t "activerecord.attributes.discipline_year_block.scripts"
-      %th Действия
   %tbody
     - @discipline_year_blocks.each do |discipline_year_block|
       %tr
-        %td= discipline_year_block.block_number
         %td
-          - discipline_year_block.groups.each do |group|
-            = group.name
+          = discipline_year_block.groups.map(&:name).join(',')
+        %td
+          = discipline_year_block.tests.map(&:name).join(',')
         %td
           - discipline_year_block.tests.each do |test|
-            = test.name
-            %td
-            - test.scipts.each do |script|
-              = script.name
-        %td
-          = link_to "Показать", discipline_year_block_path(discipline_year_block), :class => 'btn btn-mini'
-          = link_to "Редактировать", edit_discipline_year_block_path(discipline_year_block), :class => 'btn btn-mini'
-          = link_to "Удалить", discipline_year_block_path(discipline_year_block), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-mini btn-danger' 
+            = test.scipts.map(&:name).join(',')
 
 = link_to "Новый блок групп", new_discipline_year_block_path, :class => 'btn btn-primary'
+
+.free-space

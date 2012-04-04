@@ -18,9 +18,6 @@ class TestsController < ApplicationController
 
   def new
     @test = Test.new
-    #script = @test.scripts.build
-    #script_theme = script.script_themes.build
-    #script_theme.script_sub_themes.build
   end
 
 
@@ -31,10 +28,6 @@ class TestsController < ApplicationController
 
   def create
     @test = Test.new(params[:test])
-    #script = @test.scripts.build
-    #(params[:test][:scripts_attributes]["0"])
-    #script_theme = script.script_themes.build
-    #script_theme.script_sub_themes.build
 
     respond_to do |format|
       if @test.save

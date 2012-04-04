@@ -22,3 +22,9 @@ td.id {width: 10px;}
 fieldset.partial, div.partial {
 	margin-left: 50px;
 }
+
+.btn-mini {
+	padding: 2px 6px;
+	font-size: 11px;
+	line-height: 14px;
+}

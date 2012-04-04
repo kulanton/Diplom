@@ -1,40 +1,43 @@
-%legend Сценарий
-.control-group
-  = f.label :name, :class => 'control-label'
-  .controls
-    = f.number_field :name, :class => 'number_field'
-.control-group
-  = f.label :redirect_page, :class => 'control-label'
-  .controls
-    = f.text_field :redirect_page, :class => 'text_field'
-.control-group
-  = f.label :time, :class => 'control-label'
-  .controls
-    = f.number_field :time, :class => 'number_field'
-.control-group
-  = f.label :blocked, :class => 'control-label'
-  .controls
-    = f.check_box :blocked, :class => 'check_box'
-.control-group
-  = f.label :order_themes, :class => 'control-label'
-  .controls
-    = f.check_box :order_themes, :class => 'check_box'
-.control-group
-  = f.label :questions_to_pass, :class => 'control-label'
-  .controls
-    = f.number_field :questions_to_pass, :class => 'number_field'
-.control-group
-  = f.label :themes_to_pass, :class => 'control-label'
-  .controls
-    = f.number_field :themes_to_pass, :class => 'number_field'
-.control-group
-  = f.label :results, :class => 'control-label'
-  .controls
-    = f.number_field :results, :class => 'number_field'
-.control-group
-  = f.label :_destroy, "Удалить", :class => 'control-label'
-  .controls
-    = f.check_box :_destroy, :class => 'checkbox'
 %fieldset.partial
+  %legend 
+    Сценарий
+    = link_to_remove_fields "Удалить", f
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.number_field :name, :class => 'number_field'
+  .control-group
+    = f.label :redirect_page, :class => 'control-label'
+    .controls
+      = f.text_field :redirect_page, :class => 'text_field'
+  .control-group
+    = f.label :time, :class => 'control-label'
+    .controls
+      = f.number_field :time, :class => 'number_field'
+  .control-group
+    = f.label :blocked, :class => 'control-label'
+    .controls
+      = f.check_box :blocked, :class => 'check_box'
+  .control-group
+    = f.label :order_themes, :class => 'control-label'
+    .controls
+      = f.check_box :order_themes, :class => 'check_box'
+  .control-group
+    = f.label :questions_to_pass, :class => 'control-label'
+    .controls
+      = f.number_field :questions_to_pass, :class => 'number_field'
+  .control-group
+    = f.label :themes_to_pass, :class => 'control-label'
+    .controls
+      = f.number_field :themes_to_pass, :class => 'number_field'
+  .control-group
+    = f.label :results, :class => 'control-label'
+    .controls
+      = f.number_field :results, :class => 'number_field'
+  .control-group
+    = f.label :_destroy, "Удалить", :class => 'control-label'
+    .controls
+      = f.check_box :_destroy, :class => 'checkbox'
   = f.fields_for :script_themes do |builder|
     = render "script_theme", :f => builder
+  %div.partial= link_to_add_fields "Добавить тему", f, :script_themes

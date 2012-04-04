@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def check_regular_user
     unless @current_user
-      flash[:error] = "Доступ для незарегистрированных пользователей запрещен"
+      #flash[:error] = "Доступ для незарегистрированных пользователей запрещен"
       #redirect_back_or_default '/'
       render 'sessions/new', :layout => 'login'
     end

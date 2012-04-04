@@ -355,6 +355,12 @@ ru:
         name: "Название"
         path: "Путь"
         count: "Количество вопросов"
+      discipline_year_block:
+        groups: "Блоки групп"
+        tests: "Тесты"
+        scripts: "Сценарии"
+        year: "Год"
+        block_number: "Номер блока"
       script_theme:
         name: "Название"
         questions_to_pass: "Необходимо сдать вопросов"

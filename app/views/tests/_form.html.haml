@@ -48,6 +48,9 @@
     = f.label :scheduled_pair, :class => 'control-label'
     .controls
       = f.number_field :scheduled_pair, :class => 'number_field'
+  = f.fields_for :scripts do |builder|
+    = render "script", :f => builder
+  %div.partial= link_to_add_fields "Добавить сценарий", f, :scripts
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to "Отмена", tests_path, :class => 'btn'
