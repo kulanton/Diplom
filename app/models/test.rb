@@ -1,5 +1,5 @@
 class Test < ActiveRecord::Base
-  has_and_belongs_to_many :discipline_groups, :join_table => 'discipline_group_tests', :foreign_key => 'discipline_year_block_id'
+  has_and_belongs_to_many :blocks
   
   has_many :scripts, :dependent => :destroy
   accepts_nested_attributes_for :scripts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true

@@ -1,0 +1,34 @@
+%h1 Блоки групп
+%table{:class => "table table-striped"}
+  %thead
+    %tr
+      %th= t "activerecord.attributes.block.groups"
+      %th= t "activerecord.attributes.block.tests"
+      %th= t "activerecord.attributes.block.scripts"
+  %tbody
+    - @blocks.each do |block|
+      %tr
+        %td
+          = block.groups.map(&:name).join(', ')
+          %br
+          = link_to image_tag('images/add.png', :border => '0'), add_group_block_path(block)
+        %td
+          - block.tests.each do |test|
+            = link_to test.name, test
+          %br
+          = link_to image_tag('images/add.png', :border => '0'), new_test_path(:block => block)
+        %td
+          - block.tests.each do |test|
+            - test.scipts.each do |script|
+              = link_to script.name, script
+          %br
+          = link_to image_tag('images/add.png', :border => '0'), new_script_path(:block => block)
+      /
+        %td
+          = link_to "Show", block_path(block), :class => 'btn btn-mini'
+          = link_to "Edit", edit_block_path(block), :class => 'btn btn-mini'
+          = link_to "Destroy", block_path(block), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-mini btn-danger' 
+
+= link_to "Новый блок", new_block_path, :class => 'btn btn-primary'
+
+.free-space

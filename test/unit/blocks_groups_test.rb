@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DisciplineBlockGroupTest < ActiveSupport::TestCase
+class BlocksGroupsTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

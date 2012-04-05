@@ -11,15 +11,6 @@ class GroupsController < ApplicationController
       end
     end
   end
-  
-  
-  def blocs
-    if params[:discipline].nil?
-      @subjects = Subject.includes(:group).group_by(&:bloc)
-    else
-      @subjects = Subject.includes(:group).group_by(&:bloc)
-    end
-  end
 
 
   def show
@@ -56,7 +47,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, :notice => 'Группа успешно создана.' }
+        format.html { redirect_to groups_path, :notice => 'Группа успешно создана.' }
         format.json { render :json => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }

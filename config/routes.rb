@@ -1,8 +1,10 @@
 Scenario::Application.routes.draw do
 
-  resources :discipline_year_blocks
-
-  get "subjects/index"
+  resources :blocks do
+    member do
+      get :add_group
+    end
+  end
 
   resources :script_sub_themes
 
@@ -16,12 +18,7 @@ Scenario::Application.routes.draw do
 
   resources :disciplines
 
-  resources :groups do
-    collection do
-      get 'add_to_bloc'
-      get 'blocs'
-    end
-  end
+  resources :groups
 
   resources :users
 

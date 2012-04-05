@@ -1,6 +1,6 @@
 class Discipline < ActiveRecord::Base
   has_and_belongs_to_many :repository_themes
-  has_many :blocks, :class_name => 'DisciplineYearBlock'
+  has_many :blocks
   
   validates_presence_of :name
   validates_uniqueness_of :name

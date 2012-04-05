@@ -1,6 +1,5 @@
 class Group < ActiveRecord::Base  
-  has_many :discipline_block_groups, :dependent => :destroy
-  has_many :discipline_year_blocks, :through => :discipline_block_groups
+  has_and_belongs_to_many :blocks
   
   validates_presence_of :name
   validates_uniqueness_of :name

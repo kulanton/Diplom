@@ -2,12 +2,10 @@
 
 one:
   discipline_id: 1
-  group_id: 1
   year: MyString
-  bloc: 1
+  block_num: 1
 
 two:
   discipline_id: 1
-  group_id: 1
   year: MyString
-  bloc: 1
+  block_num: 1

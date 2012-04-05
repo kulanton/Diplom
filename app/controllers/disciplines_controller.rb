@@ -46,7 +46,7 @@ class DisciplinesController < ApplicationController
 
     respond_to do |format|
       if @discipline.save
-        format.html { redirect_to @discipline, :notice => 'Дисциплина успешно создана.' }
+        format.html { redirect_to disciplines_path, :notice => 'Дисциплина успешно создана.' }
         format.json { render :json => @discipline, :status => :created, :location => @discipline }
       else
         format.html { render :action => "new" }

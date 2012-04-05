@@ -16,8 +16,6 @@
             = link_to "<i class='icon-edit'></i>".html_safe, edit_group_path(group), :class => 'btn btn-mini'
             = link_to "<i class='icon-trash icon-white'></i>".html_safe, group_path(group), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
 
-= link_to "Блоки групп", blocs_groups_path, :class => 'btn btn-success'
-
 - if @current_user && @current_user.admin?
   = link_to "Новая группа", new_group_path, :class => 'btn btn-primary'
 

@@ -221,6 +221,10 @@ ru:
       new: "Новый сценарий"
       edit: "Редактор сценария"
       create: "Новый сценарий"
+    blocks:
+      new: "Новый блок"
+      edit: "Редактор блока"
+      create: "Новый блок"
 
   # In rails 3 errors is top-level namespace
   errors:
@@ -355,12 +359,13 @@ ru:
         name: "Название"
         path: "Путь"
         count: "Количество вопросов"
-      discipline_year_block:
+      block:
         groups: "Блоки групп"
         tests: "Тесты"
         scripts: "Сценарии"
         year: "Год"
-        block_number: "Номер блока"
+        block_num: "Номер блока"
+        discipline_id: "Дисциплина"
       script_theme:
         name: "Название"
         questions_to_pass: "Необходимо сдать вопросов"
