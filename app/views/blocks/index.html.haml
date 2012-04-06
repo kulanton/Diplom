@@ -11,18 +11,18 @@
         %td
           = block.groups.map(&:name).join(', ')
           %br
-          = link_to image_tag('images/add.png', :border => '0'), add_group_block_path(block)
+          = link_to image_tag('add.png'), edit_block_path(block)
         %td
-          - block.tests.each do |test|
-            = link_to test.name, test
+          - block.examines.each do |examine|
+            = link_to examine.name, examine
           %br
-          = link_to image_tag('images/add.png', :border => '0'), new_test_path(:block => block)
+          = link_to image_tag('add.png'), new_examine_path(:block => block)
         %td
-          - block.tests.each do |test|
-            - test.scipts.each do |script|
+          - block.examines.each do |examine|
+            - examine.scipts.each do |script|
               = link_to script.name, script
           %br
-          = link_to image_tag('images/add.png', :border => '0'), new_script_path(:block => block)
+          = link_to image_tag('add.png'), new_script_path(:block => block)
       /
         %td
           = link_to "Show", block_path(block), :class => 'btn btn-mini'

@@ -19,4 +19,8 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "btn btn-success")
   end
+  
+  def results
+    [["Темы", 1], ["Вопросы", 2], ["Детальный", 3]]
+  end
 end

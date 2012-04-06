@@ -1,6 +1,6 @@
-class CreateTests < ActiveRecord::Migration
+class CreateExamines < ActiveRecord::Migration
   def change
-    create_table :tests do |t|
+    create_table :examines do |t|
       t.string :name
       t.boolean :necessary
       t.boolean :block
@@ -12,7 +12,7 @@ class CreateTests < ActiveRecord::Migration
       t.boolean :ext_access
       t.boolean :msiu_access
       t.integer :order
-      t.datetime :scheduled_date
+      t.date :scheduled_date
       t.integer :scheduled_pair
 
       t.timestamps

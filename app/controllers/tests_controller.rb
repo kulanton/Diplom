@@ -12,8 +12,9 @@ class TestsController < ApplicationController
 
   def new
     @test = Test.new
-    if params[:block]
-      @test.block_ids << params[:block]
+    if !params[:block].nil?
+      block = Block.where(:id => params[:block].to_i)
+      @test.blocks << block
     end
   end
 

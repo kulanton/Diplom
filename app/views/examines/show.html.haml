@@ -1,0 +1,31 @@
+%label{:class => "label"}= t("activerecord.attributes.examine.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%p= @examine.name
+%label{:class => "label"}= t("activerecord.attributes.examine.necessary", :default => t("activerecord.labels.necessary", :default => "Necessary")) + ":"
+%p= @examine.necessary
+%label{:class => "label"}= t("activerecord.attributes.examine.block", :default => t("activerecord.labels.block", :default => "Block")) + ":"
+%p= @examine.block
+%label{:class => "label"}= t("activerecord.attributes.examine.num_try", :default => t("activerecord.labels.num_try", :default => "Num try")) + ":"
+%p= @examine.num_try
+%label{:class => "label"}= t("activerecord.attributes.examine.period", :default => t("activerecord.labels.period", :default => "Period")) + ":"
+%p= @examine.period
+%label{:class => "label"}= t("activerecord.attributes.examine.test_type", :default => t("activerecord.labels.test_type", :default => "Test type")) + ":"
+%p= @examine.test_type
+%label{:class => "label"}= t("activerecord.attributes.examine.auth_type", :default => t("activerecord.labels.auth_type", :default => "Auth type")) + ":"
+%p= @examine.auth_type
+%label{:class => "label"}= t("activerecord.attributes.examine.w_key", :default => t("activerecord.labels.w_key", :default => "W key")) + ":"
+%p= @examine.w_key
+%label{:class => "label"}= t("activerecord.attributes.examine.ext_access", :default => t("activerecord.labels.ext_access", :default => "Ext access")) + ":"
+%p= @examine.ext_access
+%label{:class => "label"}= t("activerecord.attributes.examine.msiu_access", :default => t("activerecord.labels.msiu_access", :default => "Msiu access")) + ":"
+%p= @examine.msiu_access
+%label{:class => "label"}= t("activerecord.attributes.examine.order", :default => t("activerecord.labels.order", :default => "Order")) + ":"
+%p= @examine.order
+%label{:class => "label"}= t("activerecord.attributes.examine.scheduled_date", :default => t("activerecord.labels.scheduled_date", :default => "Scheduled date")) + ":"
+%p= @examine.scheduled_date
+%label{:class => "label"}= t("activerecord.attributes.examine.scheduled_pair", :default => t("activerecord.labels.scheduled_pair", :default => "Scheduled pair")) + ":"
+%p= @examine.scheduled_pair
+
+.form-actions
+  = link_to "Back", examines_path, :class => 'btn'
+  = link_to "Edit", edit_examine_path(@examine), :class => 'btn'
+  = link_to "Delete", examine_path(@examine), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'

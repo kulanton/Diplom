@@ -6,15 +6,15 @@
   .control-group
     = f.label :year, :class => 'control-label'
     .controls
-      = f.text_field :year, :class => 'text_field'
+      = f.select :year, @block.years
   .control-group
-    = f.label :discipline_token, "Дисциплина", :class => 'control-label'
+    = f.label :discipline_token, "Дисциплина"
     .controls
-      = f.text_field :discipline_token, :class => 'text_field'
+      = f.text_field :discipline_token, "data-pre"=>@block.discipline.to_a.map(&:attributes).to_json
   .control-group
-    = f.label :group_tokens, "Группы", :class => 'control-label'
+    = f.label :group_tokens, "Группы"
     .controls
-      = f.text_field :group_tokens, :class => 'text_field'
+      = f.text_field :group_tokens, "data-pre"=>@block.groups.map(&:attributes).to_json
   .control-group
     = f.label :block_num, :class => 'control-label'
     .controls

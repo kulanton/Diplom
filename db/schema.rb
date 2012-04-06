@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405084554) do
+ActiveRecord::Schema.define(:version => 20120405134854) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "discipline_id"
@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(:version => 20120405084554) do
     t.datetime "updated_at"
   end
 
+  create_table "blocks_examines", :id => false, :force => true do |t|
+    t.integer "block_id"
+    t.integer "examine_id"
+  end
+
   create_table "blocks_groups", :id => false, :force => true do |t|
     t.integer "block_id"
     t.integer "group_id"
-  end
-
-  create_table "blocks_tests", :id => false, :force => true do |t|
-    t.integer "block_id"
-    t.integer "test_id"
   end
 
   create_table "disciplines", :force => true do |t|
@@ -39,6 +39,24 @@ ActiveRecord::Schema.define(:version => 20120405084554) do
   create_table "disciplines_repository_themes", :id => false, :force => true do |t|
     t.integer "discipline_id"
     t.integer "repository_theme_id"
+  end
+
+  create_table "examines", :force => true do |t|
+    t.string   "name"
+    t.boolean  "necessary"
+    t.boolean  "block"
+    t.integer  "num_try"
+    t.integer  "period"
+    t.integer  "test_type"
+    t.integer  "auth_type"
+    t.boolean  "w_key"
+    t.boolean  "ext_access"
+    t.boolean  "msiu_access"
+    t.integer  "order"
+    t.date     "scheduled_date"
+    t.integer  "scheduled_pair"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "groups", :force => true do |t|
@@ -87,26 +105,8 @@ ActiveRecord::Schema.define(:version => 20120405084554) do
     t.integer  "questions_to_pass"
     t.integer  "themes_to_pass"
     t.integer  "results"
-    t.integer  "test_id"
+    t.integer  "examine_id"
     t.integer  "base_script_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tests", :force => true do |t|
-    t.string   "name"
-    t.boolean  "necessary"
-    t.boolean  "block"
-    t.integer  "num_try"
-    t.integer  "period"
-    t.integer  "test_type"
-    t.integer  "auth_type"
-    t.boolean  "w_key"
-    t.boolean  "ext_access"
-    t.boolean  "msiu_access"
-    t.integer  "order"
-    t.datetime "scheduled_date"
-    t.integer  "scheduled_pair"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

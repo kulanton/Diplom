@@ -9,7 +9,7 @@ class CreateScripts < ActiveRecord::Migration
       t.integer :questions_to_pass
       t.integer :themes_to_pass
       t.integer :results
-      t.integer :test_id
+      t.integer :examine_id
       t.integer :base_script_id
 
       t.timestamps

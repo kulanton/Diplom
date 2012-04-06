@@ -1,5 +1,7 @@
 Scenario::Application.routes.draw do
 
+  resources :examines
+
   resources :blocks do
     member do
       get :add_group

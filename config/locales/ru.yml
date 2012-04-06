@@ -213,7 +213,7 @@ ru:
       new: "Новая тема"
       edit: "Редактор темы"
       create: "Новая тема"
-    tests:
+    examines:
       new: "Новый тест"
       edit: "Редактор теста"
       create: "Новый тест"
@@ -326,7 +326,7 @@ ru:
         role: "Роль"
         password: "Пароль"
         password_confirmation: "Пароль (повторно)"
-      test:
+      examine:
         name: "Название"
         necessary: "Необходимость"
         block: "С блокировкой?"

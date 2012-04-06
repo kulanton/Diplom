@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  necessary: false
+  block: false
+  num_try: 1
+  period: 1
+  test_type: 1
+  auth_type: 1
+  w_key: false
+  ext_access: false
+  msiu_access: false
+  order: 1
+  scheduled_date: 2012-04-05
+  scheduled_pair: 1
+
+two:
+  name: MyString
+  necessary: false
+  block: false
+  num_try: 1
+  period: 1
+  test_type: 1
+  auth_type: 1
+  w_key: false
+  ext_access: false
+  msiu_access: false
+  order: 1
+  scheduled_date: 2012-04-05
+  scheduled_pair: 1

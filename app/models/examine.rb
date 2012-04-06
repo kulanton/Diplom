@@ -1,4 +1,4 @@
-class Test < ActiveRecord::Base
+class Examine < ActiveRecord::Base
   has_and_belongs_to_many :blocks
   
   has_many :scripts, :dependent => :destroy
@@ -15,5 +15,4 @@ class Test < ActiveRecord::Base
   def auth_types
     [["Портал", 1], ["Main Msiu", 2], ["ИДО", 3]]
   end
-  
 end

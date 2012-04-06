@@ -16,7 +16,8 @@
             %br
         %td
           - discipline.blocks.each do |block|
-            = block.tests
+            - block.examines.each do |examine|
+              = link_to examine.name, examine
         
         - if @current_user && @current_user.admin?
           %td.actions

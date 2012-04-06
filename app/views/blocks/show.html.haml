@@ -1,9 +1,10 @@
-%span{:class => "label"}= t ("activerecord.attributes.block.discipline_id") + ":"
-%p= @block.discipline_id
-%span{:class => "label"}= t ("activerecord.attributes.block.year") + ":"
+%span{:class => "label"}= "Дисциплина" + ":"
+%p= @block.discipline.name
+%span{:class => "label"}= "Год" + ":"
 %p= @block.year
-%span{:class => "label"}= t ("activerecord.attributes.block.block_num") + ":"
-%p= @block.block_num
+%span{:class => "label"}= "Группы" + ":"
+%p
+  = @block.groups.map(&:name).join(', ')
 
 .form-actions
   = link_to "Назад", blocks_path, :class => 'btn'

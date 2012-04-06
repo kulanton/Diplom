@@ -1,0 +1,3 @@
+= form_for @examine, :url => examine_path(@examine), :html => { :class => "edit_examine", :id => "edit_examine" } do |f|
+  %input{:name => "_method", :type => "hidden", :value =>"put"}
+  = render :partial => "form", :locals => {:f => f}
