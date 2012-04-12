@@ -25,7 +25,7 @@ class ExaminesController < ApplicationController
 
     respond_to do |format|
       if @examine.save
-        format.html { redirect_to @examine, :notice => 'Новый тест создан.' }
+        format.html { redirect_to blocks_url, :notice => 'Новый тест создан.' }
       else
         format.html { render :action => "new", :params => params[:block] }
       end
@@ -38,7 +38,7 @@ class ExaminesController < ApplicationController
 
     respond_to do |format|
       if @examine.update_attributes(params[:examine])
-        format.html { redirect_to @examine, :notice => 'Тест отредактирован.' }
+        format.html { redirect_to blocks_url, :notice => 'Тест отредактирован.' }
       else
         format.html { render :action => "edit" }
       end

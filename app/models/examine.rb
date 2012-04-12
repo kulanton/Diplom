@@ -1,4 +1,6 @@
 class Examine < ActiveRecord::Base
+  before_create :assign_ordinal
+
   has_and_belongs_to_many :blocks
   
   has_many :scripts, :dependent => :destroy
@@ -8,4 +10,14 @@ class Examine < ActiveRecord::Base
   validates :num_try, :numericality=>{:only_integer=>true},:allow_blank=>false
   validates :period, :numericality=>{:only_integer=>true},:allow_blank=>false
   
+  private
+  
+  def assign_ordinal
+    num = Examine.maximum('ordinal')
+    if num.nil?
+      self.ordinal = 1
+    else
+      self.ordinal = num + 1
+    end
+  end
 end
