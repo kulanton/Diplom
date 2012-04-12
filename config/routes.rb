@@ -1,6 +1,8 @@
 Scenario::Application.routes.draw do
 
-  resources :examines
+  resources :examines do
+    collection { post :sort }
+  end
 
   resources :blocks do
     member do
@@ -8,15 +10,13 @@ Scenario::Application.routes.draw do
     end
   end
 
-  resources :script_sub_themes
-
-  resources :script_themes
-
   resources :repository_themes
-  
-  resources :tests
 
-  resources :scripts
+  resources :scripts do
+    resources :script_themes do
+      resources :script_sub_themes
+    end
+  end
 
   resources :disciplines
 

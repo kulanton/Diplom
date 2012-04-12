@@ -1,8 +1,8 @@
-%label{:class => "label"}= t("activerecord.attributes.repository_theme.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.repository_theme.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
 %p= @repository_theme.name
-%label{:class => "label"}= t("activerecord.attributes.repository_theme.path", :default => t("activerecord.labels.path", :default => "Path")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.repository_theme.path", :default => t("activerecord.labels.path", :default => "Path")) + ":"
 %p= @repository_theme.path
-%label{:class => "label"}= t("activerecord.attributes.repository_theme.count", :default => t("activerecord.labels.count", :default => "Count")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.repository_theme.count", :default => t("activerecord.labels.count", :default => "Count")) + ":"
 %p= @repository_theme.count
 
 .form-actions

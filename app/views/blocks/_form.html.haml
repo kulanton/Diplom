@@ -6,19 +6,15 @@
   .control-group
     = f.label :year, :class => 'control-label'
     .controls
-      = f.select :year, @block.years
+      = f.text_field :year, :class => 'text_field'
   .control-group
-    = f.label :discipline_token, "Дисциплина"
+    = f.label :discipline_name, "Дисциплина", :class => 'control-label'
     .controls
-      = f.text_field :discipline_token, "data-pre"=>@block.discipline.to_a.map(&:attributes).to_json
+      = f.text_field :discipline_name
   .control-group
-    = f.label :group_tokens, "Группы"
+    = f.label :group_tokens, "Группы", :class => 'control-label'
     .controls
-      = f.text_field :group_tokens, "data-pre"=>@block.groups.map(&:attributes).to_json
-  .control-group
-    = f.label :block_num, :class => 'control-label'
-    .controls
-      = f.number_field :block_num, :class => 'number_field'
+      = f.text_field :group_tokens, "data-pre" => @block.groups.map(&:attributes).to_json
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to "Отмена", blocks_path, :class => 'btn'
+    = link_to "Отмена", blocks_path(:discipline => params[:discipline]), :class => 'btn'

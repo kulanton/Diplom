@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405134854) do
+ActiveRecord::Schema.define(:version => 20120409195159) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "discipline_id"
@@ -44,15 +44,14 @@ ActiveRecord::Schema.define(:version => 20120405134854) do
   create_table "examines", :force => true do |t|
     t.string   "name"
     t.boolean  "necessary"
-    t.boolean  "block"
+    t.boolean  "blocked"
     t.integer  "num_try"
     t.integer  "period"
     t.integer  "test_type"
-    t.integer  "auth_type"
     t.boolean  "w_key"
     t.boolean  "ext_access"
     t.boolean  "msiu_access"
-    t.integer  "order"
+    t.integer  "ordinal"
     t.date     "scheduled_date"
     t.integer  "scheduled_pair"
     t.datetime "created_at"

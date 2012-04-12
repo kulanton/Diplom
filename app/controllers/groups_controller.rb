@@ -15,25 +15,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @group }
-    end
-  end
-
-
-  def add_to_bloc
   end
 
 
   def new
     @group = Group.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @group }
-    end
   end
 
 
@@ -47,11 +33,9 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to groups_path, :notice => 'Группа успешно создана.' }
-        format.json { render :json => @group, :status => :created, :location => @group }
+        format.html { redirect_to groups_path, :notice => 'Новая группа создана.' }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @group.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -62,11 +46,9 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to @group, :notice => 'Группа успешно отредактирована.' }
-        format.json { head :ok }
+        format.html { redirect_to @group, :notice => 'Группа отредактирована.' }
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @group.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -78,7 +60,6 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to groups_url }
-      format.json { head :ok }
     end
   end
 end

@@ -1,22 +1,22 @@
-%label{:class => "label"}= t("activerecord.attributes.script.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.name") + ":"
 %p= @script.name
-%label{:class => "label"}= t("activerecord.attributes.script.redirect_page", :default => t("activerecord.labels.redirect_page", :default => "Redirect page")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.redirect_page") + ":"
 %p= @script.redirect_page
-%label{:class => "label"}= t("activerecord.attributes.script.time", :default => t("activerecord.labels.time", :default => "Time")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.time") + ":"
 %p= @script.time
-%label{:class => "label"}= t("activerecord.attributes.script.blocked", :default => t("activerecord.labels.blocked", :default => "Blocked")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.blocked") + ":"
 %p= @script.blocked ? "Да" : "Нет"
-%label{:class => "label"}= t("activerecord.attributes.script.order_themes", :default => t("activerecord.labels.order_themes", :default => "Order themes")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.order_themes") + ":"
 %p= @script.order_themes ? "Да" : "Нет"
-%label{:class => "label"}= t("activerecord.attributes.script.questions_to_pass", :default => t("activerecord.labels.questions_to_pass", :default => "Questions to pass")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.questions_to_pass") + ":"
 %p= @script.questions_to_pass
-%label{:class => "label"}= t("activerecord.attributes.script.themes_to_pass", :default => t("activerecord.labels.themes_to_pass", :default => "Themes to pass")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.themes_to_pass") + ":"
 %p= @script.themes_to_pass
-%label{:class => "label"}= t("activerecord.attributes.script.results", :default => t("activerecord.labels.results", :default => "Results")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.results") + ":"
 %p= @script.results
-%label{:class => "label"}= t("activerecord.attributes.script.test_id", :default => t("activerecord.labels.test_id", :default => "Test")) + ":"
-%p= @script.test_id
-%label{:class => "label"}= t("activerecord.attributes.script.base_script_id", :default => t("activerecord.labels.base_script_id", :default => "Base script")) + ":"
+%span{:class => "label"}= t("activerecord.attributes.script.examine_id") + ":"
+%p= @script.examine.name
+%span{:class => "label"}= t("activerecord.attributes.script.base_script_id", :default => t("activerecord.labels.base_script_id", :default => "Base script")) + ":"
 %p= @script.base_script_id
 - if !@script.script_themes.blank?
   %label{:class => "label"} Темы

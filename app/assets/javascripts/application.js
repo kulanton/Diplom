@@ -23,6 +23,39 @@ $(function() {
 });
 */
 
+$(function() {
+	$('#block_discipline_name').autocomplete({
+		source: '/disciplines.json'
+	});
+});
+
+function autocompleteField() {
+	$('.autocomplete-field').autocomplete({
+		source: '/repository_themes.json'
+	});
+};
+
+$(function() {
+	$('#datepicker').datepicker({
+		firstDay: 1,
+		dateFormat: 'dd.mm.yy',
+		dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+		monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декаберь']
+	});
+});
+
+$(function() {
+	$(".sortable").sortable({
+		update: function(){
+			$.post($(this).data('update-url'), $(this).sortable('serialize'));
+		},
+		axis: 'y',
+		items: 'li'
+	});
+	//$(".sortable").disableSelection();
+});
+
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".partial").hide();
@@ -77,7 +110,7 @@ $(function() {
   $("#block_discipline_token").tokenInput("/disciplines.json", {
     crossDomain: false,
     prePopulate: $("#block_discipline_token").data("pre"),
-    preventDuplicates: true,
+    tokenLimit: 1,
     theme: 'facebook',
     hintText: 'Введите номер группы',
     noResultsText: 'Не найдено',

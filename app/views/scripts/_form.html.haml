@@ -1,6 +1,7 @@
 %fieldset
   %legend
     = t "controllers.#{controller_name}.#{action_name}"
+    = hidden_field :examine, params[:examine]
   .control-group
     = f.label :name, :class => 'control-label'
     .controls

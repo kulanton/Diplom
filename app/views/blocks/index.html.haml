@@ -1,34 +1,39 @@
 %h1 Блоки групп
-%table{:class => "table table-striped"}
+- if @discipline
+  по дисциплине
+  %b=@discipline.name
+%table{:class => "table table-bordered"}
   %thead
     %tr
       %th= t "activerecord.attributes.block.groups"
-      %th= t "activerecord.attributes.block.tests"
+      %th= t "activerecord.attributes.block.examines"
       %th= t "activerecord.attributes.block.scripts"
+      %th.actions Действия
   %tbody
     - @blocks.each do |block|
       %tr
         %td
           = block.groups.map(&:name).join(', ')
+          .bottom= link_to "<i class='icon-plus'></i> группу".html_safe, edit_block_path(block), :class => 'btn btn-mini btn-success'
+        %td
+          %ul{:class => 'sortable', 'data-update-url' => "#{sort_examines_path}"}
+            - block.examines.each do |examine|
+              %li{:class => 'ui-state-default', :id => "examine_#{examine.id}"}
+                %span{:class => 'ui-icon ui-icon-arrowthick-2-n-s'}
+                =link_to examine.name, examine
+                /%span{:class => 'right'}= link_to "<i class='icon-plus'></i> сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini btn-success'
           %br
-          = link_to image_tag('add.png'), edit_block_path(block)
+          = link_to "<i class='icon-plus'></i> новый тест".html_safe, new_examine_path(:block => block), :class => 'btn btn-mini btn-success'
         %td
           - block.examines.each do |examine|
-            = link_to examine.name, examine
-          %br
-          = link_to image_tag('add.png'), new_examine_path(:block => block)
-        %td
-          - block.examines.each do |examine|
-            - examine.scipts.each do |script|
-              = link_to script.name, script
-          %br
-          = link_to image_tag('add.png'), new_script_path(:block => block)
-      /
-        %td
-          = link_to "Show", block_path(block), :class => 'btn btn-mini'
-          = link_to "Edit", edit_block_path(block), :class => 'btn btn-mini'
-          = link_to "Destroy", block_path(block), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-mini btn-danger' 
+            = examine.scripts.map(&:name).join(', ')
+            %br
+            = link_to "<i class='icon-plus'></i> новый сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini btn-success'
+        %td.actions
+          = link_to "<i class='icon-edit'></i>".html_safe, edit_block_path(block), :class => 'btn btn-mini'
+          = link_to "<i class='icon-trash icon-white'></i>".html_safe, block_path(block), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger'
 
-= link_to "Новый блок", new_block_path, :class => 'btn btn-primary'
+
+= link_to "Новый блок", new_block_path(:discipline => params[:discipline]), :class => 'btn btn-primary'
 
 .free-space

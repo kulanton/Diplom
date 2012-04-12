@@ -18,10 +18,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '2.0.4'
 end
 
 gem 'jquery-rails'
+
+#gem 'acts_as_list'
 
 #gem 'client_side_validations'
 

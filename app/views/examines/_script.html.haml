@@ -1,5 +1,5 @@
 %fieldset.partial
-  %legend 
+  %legend
     Сценарий
     = link_to_remove_fields "Удалить", f
   .control-group
@@ -46,4 +46,4 @@
   = f.fields_for :script_themes do |builder|
     = render "script_theme", :f => builder
     
-  %div.partial= link_to_add_fields "Добавить тему", f, :script_themes
+  %div= link_to_add_fields "Добавить тему", f, :script_themes

@@ -4,17 +4,19 @@
     %tr
       %th= t "activerecord.attributes.examine.name"
       %th= t "activerecord.attributes.examine.scripts"
-      %th= t "activerecord.attributes.examine.subjects"
+      %th= t "activerecord.attributes.examine.blocks"
       %th.actions Действия
   %tbody
     - @examines.each do |examine|
       %tr
-        %td= examine.id
         %td= link_to examine.name, examine_path(examine)
-        %td= examine.created_at
+        %td= examine.scripts.map(&:name).join(', ')
+        %td
+          - examine.blocks.each do |block|
+            = block.groups.map(&:name).join(', ')
         %td
           = link_to "<i class='icon-edit'></i>".html_safe, edit_examine_path(examine), :class => 'btn btn-mini'
-          = link_to "<i class='icon-trash icon-white'></i>".html_safe, examine_path(examine), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
+          = link_to "<i class='icon-trash icon-white'></i>".html_safe, examine_path(examine), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger'
 
 = link_to "Новый тест", new_examine_path, :class => 'btn btn-primary'
 

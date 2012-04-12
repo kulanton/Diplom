@@ -9,7 +9,7 @@
   .control-group
     = f.label :repository_theme_id, "Репозиторий тем", :class => 'control-label'
     .controls
-      = f.number_field :repository_theme_id, :class => 'number_field'
+      = f.text_field :repository_theme_id, {:class => 'autocomplete-field', :onfocus => 'autocompleteField();'}
   .control-group
     = f.label :questions_to_pass, "Необходимо сдать вопросов", :class => 'control-label'
     .controls
@@ -23,4 +23,4 @@
     .controls
       = f.check_box :order_subthemes, :class => 'check_box'
       
-  %div.partial= link_to_add_fields "Добавить подтему", f, :script_sub_themes
+  %div= link_to_add_fields "Добавить подтему", f, :script_sub_themes

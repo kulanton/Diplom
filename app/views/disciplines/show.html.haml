@@ -1,4 +1,4 @@
-%span{:class => "label"}= "Название" + ":"
+%span{:class => "label"}= t("activerecord.attributes.discipline.name", :default => t("activerecord.labels.name", :default => "Название")) + ":"
 %p= @discipline.name
 
 .form-actions

@@ -2,10 +2,10 @@
 %table{:class => "table table-striped"}
   %thead
     %tr
-      %th= t("activerecord.attributes.repository_theme.name", :default => t("activerecord.labels.name", :default => "Название"))
-      %th= t("activerecord.attributes.repository_theme.path", :default => t("activerecord.labels.path", :default => "Путь"))
-      %th= t("activerecord.attributes.repository_theme.count", :default => t("activerecord.labels.count", :default => "Коллтчество вопросов"))
-      %th
+      %th= t "activerecord.attributes.repository_theme.name"
+      %th= t "activerecord.attributes.repository_theme.path"
+      %th= t "activerecord.attributes.repository_theme.count"
+      %th.actions Действия
   %tbody
     - @repository_themes.each do |repository_theme|
       %tr

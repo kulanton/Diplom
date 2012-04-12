@@ -1,9 +1,4 @@
-module ApplicationHelper
-  def current_study_year
-    current_year = Time.now.year.to_i
-    current_year.to_s + "/" + (current_year-1).to_s
-  end
-  
+module ApplicationHelper  
   def title(page_title)
     content_for(:title) {page_title}
   end
@@ -18,9 +13,5 @@ module ApplicationHelper
       render(association.to_s.singularize, :f => builder)
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "btn btn-success")
-  end
-  
-  def results
-    [["Темы", 1], ["Вопросы", 2], ["Детальный", 3]]
   end
 end

@@ -24,4 +24,14 @@ class ApplicationController < ActionController::Base
       #render :text => "", :layout => 'application'
     end
   end
+  
+  def current_study_year
+    current_year = Time.now.year.to_i
+    current_month = Time.now.month.to_i
+    if current_month < 9
+      (current_year-1).to_s + "/" + current_year.to_s
+    else
+      current_year.to_s + "/" + (current_year+1).to_s
+    end
+  end
 end

@@ -2,35 +2,23 @@ class BlocksController < ApplicationController
 
   def index
     if params[:discipline].nil?
-      @blocks = Block.all
+      @blocks = Block.includes(:groups, :examines=>[:scripts]).all
     else
       @blocks = Block.where('discipline_id = ?', params[:discipline])
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @blocks }
+      @discipline = Discipline.find(params[:discipline])
     end
   end
 
 
   def show
     @block = Block.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @block }
-    end
   end
 
 
   def new
     @block = Block.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @block }
-    end
+    @block.year = current_study_year
+    @block.discipline_id = params[:discipline] unless params[:discipline].blank?
   end
 
 
@@ -44,11 +32,9 @@ class BlocksController < ApplicationController
 
     respond_to do |format|
       if @block.save
-        format.html { redirect_to @block, :notice => 'Block was successfully created.' }
-        format.json { render :json => @block, :status => :created, :location => @block }
+        format.html { redirect_to blocks_url, :notice => 'Новый блок создан.' }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @block.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -59,11 +45,9 @@ class BlocksController < ApplicationController
 
     respond_to do |format|
       if @block.update_attributes(params[:block])
-        format.html { redirect_to @block, :notice => 'Block was successfully updated.' }
-        format.json { head :ok }
+        format.html { redirect_to @block, :notice => 'Блок отредактирован.' }
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @block.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -75,7 +59,6 @@ class BlocksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to blocks_url }
-      format.json { head :ok }
     end
   end
 

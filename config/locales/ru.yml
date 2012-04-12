@@ -329,7 +329,7 @@ ru:
       examine:
         name: "Название"
         necessary: "Необходимость"
-        block: "С блокировкой?"
+        blocked: "С блокировкой?"
         num_try: "Количество попыток"
         period: "Период пересдачи"
         test_type: "Тип теста"
@@ -337,7 +337,7 @@ ru:
         w_key: "С ключем?"
         ext_access: "Доступен извне?"
         msiu_access: "Доступен в МГИУ?"
-        subjects: "Предмет"
+        blocks: "Блоки"
         scripts: "Сценарии"
         order: "Порядок"
         scheduled_date: "Планируемая дата"
@@ -353,7 +353,7 @@ ru:
         results: "Результаты"
         script_themes: "Темы"
         script_subthemes: "Подтемы"
-        test_id: "Тест"
+        examine_id: "Тест"
         base_script_id: "Родительский сценарий"
       repository_theme:
         name: "Название"
@@ -361,7 +361,7 @@ ru:
         count: "Количество вопросов"
       block:
         groups: "Блоки групп"
-        tests: "Тесты"
+        examines: "Тесты"
         scripts: "Сценарии"
         year: "Год"
         block_num: "Номер блока"
@@ -383,7 +383,7 @@ ru:
       discipline:
         name: "Название"
         repository_themes: "Репозиторий тем"
-        tests: "Тесты"
+        examines: "Тесты"
       group:
         name: "Номер"
   support:
