@@ -3,17 +3,19 @@ class DisciplinesController < ApplicationController
   before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
-    @disciplines = Discipline.includes(:repository_themes, :blocks => [:examines]).search(params[:search]).order(:name)
+    if params[:term]
+      @disciplines = Discipline.where("lower(name) LIKE lower(?)","%#{params[:term]}%")
+    elsif params[:q]
+      @disciplines = Discipline.where("lower(name) LIKE lower(?)","%#{params[:q]}%")
+    else
+      @disciplines = Discipline.includes(:repository_themes, :blocks => [:examines]).search(params[:search]).order(:name)
+    end
 
     respond_to do |format|
       format.html
-      format.js do
-        @disciplines = Discipline.where("lower(name) LIKE lower(?)","%#{params[:term]}%").all
-        render :json => @disciplines.map(&:name)
-      end
       format.json do
-        @disciplines = Discipline.where("lower(name) LIKE lower(?)","%#{params[:q]}%").all
-        render :json => @disciplines.map(&:attributes)
+        render :json => @disciplines.map(&:attributes)  if params[:q]
+        render :json => @disciplines.map(&:name)  if params[:term]
       end
     end
   end
