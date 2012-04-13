@@ -7,6 +7,7 @@ Scenario::Application.routes.draw do
   resources :blocks do
     member do
       get :add_group
+      post :add_examines
     end
   end
 

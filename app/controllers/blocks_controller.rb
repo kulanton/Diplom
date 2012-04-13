@@ -65,4 +65,10 @@ class BlocksController < ApplicationController
 
   def add_group
   end
+  
+  def add_examines
+    block = Block.find(params[:id])
+    block.examine_ids = params[:examine_ids]
+    redirect_to blocks_url
+  end
 end

@@ -23,7 +23,9 @@
                 =link_to examine.name, examine
                 /%span{:class => 'right'}= link_to "<i class='icon-plus'></i> сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini btn-success'
           %br
-          = link_to "<i class='icon-plus'></i> новый тест".html_safe, new_examine_path(:block => block), :class => 'btn btn-mini btn-success'
+          %div{:id => "addTest_#{block.id}", :class => "modal hide fade", :style => 'display: none;'}
+            = render 'add_test_modal', :block => block
+          = link_to "<i class='icon-plus'></i> новый тест".html_safe, "#addTest_#{block.id}", 'data-toggle' => 'modal', :class => 'btn btn-mini btn-success'
         %td
           - block.examines.each do |examine|
             = examine.scripts.map(&:name).join(', ')

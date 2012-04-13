@@ -17,4 +17,9 @@ $ ->
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
+  $('.modal').modal
+    backdrop: true
+    keyboard: true
+    show: false
+
   false
