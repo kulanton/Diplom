@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     unless @current_user && @current_user.admin?
       flash[:error] = "Доступ запрещен"
       redirect_back_or_default '/'
-      #render :text => "", :layout => 'application'
+      #render :text => "", :layout => 'login'
     end
   end
   
@@ -33,5 +33,14 @@ class ApplicationController < ActionController::Base
     else
       current_year.to_s + "/" + (current_year+1).to_s
     end
+  end
+  
+  def select_year
+    current_study_year_start, current_study_year_end = current_study_year.split('/').map{|s| s.to_i}
+    res = []
+    for i in -2..2
+      res << "#{current_study_year_start+i}/#{current_study_year_end+i}"
+    end
+    res
   end
 end

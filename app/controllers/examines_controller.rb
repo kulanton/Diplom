@@ -1,4 +1,5 @@
 class ExaminesController < ApplicationController
+  before_filter :check_admin_user, :except=>['show', 'sort']
 
   def index
     @examines = Examine.all
@@ -22,27 +23,24 @@ class ExaminesController < ApplicationController
 
   def create
     @examine = Examine.new(params[:examine])
+    params[:block] = @examine.block_ids
 
-    respond_to do |format|
       if @examine.save
-        format.html { redirect_to blocks_url, :notice => 'Новый тест создан.' }
+        redirect_to blocks_url, :notice => 'Новый тест создан.'
       else
-        format.html { render :action => "new", :params => params[:block] }
+        render :action => "new"
       end
-    end
   end
 
 
   def update
     @examine = Examine.find(params[:id])
 
-    respond_to do |format|
       if @examine.update_attributes(params[:examine])
-        format.html { redirect_to blocks_url, :notice => 'Тест отредактирован.' }
+        redirect_to blocks_url, :notice => 'Тест отредактирован.'
       else
-        format.html { render :action => "edit" }
+        render :action => "edit"
       end
-    end
   end
 
 
@@ -50,9 +48,7 @@ class ExaminesController < ApplicationController
     @examine = Examine.find(params[:id])
     @examine.destroy
 
-    respond_to do |format|
-      format.html { redirect_to examines_url }
-    end
+    redirect_to examines_url
   end
   
   

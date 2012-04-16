@@ -2,6 +2,7 @@ $ ->
   $('#discipline_repository_theme_tokens').tokenInput '/repository_themes.json'
     crossDomain: false
     prePopulate: $('#discipline_repository_theme_tokens').data('pre')
+    queryParam: 'name'
     preventDuplicates: true
     theme: 'facebook'
     hintText: 'Введите название дисциплины'

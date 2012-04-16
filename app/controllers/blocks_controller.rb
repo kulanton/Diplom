@@ -1,11 +1,12 @@
 class BlocksController < ApplicationController
+  before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
-    if params[:discipline].nil?
+    if params[:discipline_id].nil?
       @blocks = Block.includes(:groups, :examines=>[:scripts]).all
     else
-      @blocks = Block.where('discipline_id = ?', params[:discipline])
-      @discipline = Discipline.find(params[:discipline])
+      @blocks = Block.where('discipline_id = ?', params[:discipline_id])
+      @discipline = Discipline.find(params[:discipline_id])
     end
   end
 
@@ -18,7 +19,7 @@ class BlocksController < ApplicationController
   def new
     @block = Block.new
     @block.year = current_study_year
-    @block.discipline_id = params[:discipline] unless params[:discipline].blank?
+    @block.discipline_id = params[:discipline_id] unless params[:discipline_id].blank?
   end
 
 
@@ -61,7 +62,12 @@ class BlocksController < ApplicationController
       format.html { redirect_to blocks_url }
     end
   end
-
+  
+  def year
+    respond_to do |format|
+      format.json { render :json => select_year }
+    end
+  end
 
   def add_group
   end

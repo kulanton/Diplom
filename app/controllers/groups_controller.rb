@@ -1,14 +1,16 @@
 class GroupsController < ApplicationController
+  before_filter :check_admin_user
 
   def index
-    @groups = Group.order(:name)
+    if params[:name]
+      @groups = Group.where("lower(name) LIKE lower(?)", "%#{params[:name]}%")
+    else
+      @groups = Group.order(:name)
+    end
 
     respond_to do |format|
       format.html
-      format.json do
-        @groups = Group.where("lower(name) LIKE lower(?)", "%#{params[:q]}%").all
-        render :json => @groups.map(&:attributes)
-      end
+      format.json { render :json => @groups.map(&:attributes) }
     end
   end
 

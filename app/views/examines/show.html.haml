@@ -27,12 +27,14 @@
   %b= @examine.msiu_access ? "Да" : "Нет"
 %p
   %span{:class => "label"}= t("activerecord.attributes.examine.scheduled_date") + ":"
-  %b= l @examine.scheduled_date, :format => :long
+  - if @examine.scheduled_date
+    %b= l @examine.scheduled_date, :format => :long
 %p
   %span{:class => "label"}= t("activerecord.attributes.examine.scheduled_pair") + ":"
   %b= @examine.scheduled_pair
 
 .form-actions
   = link_to "Назад", examines_path, :class => 'btn'
-  = link_to "Редактировать", edit_examine_path(@examine), :class => 'btn'
-  = link_to "Удалить", examine_path(@examine), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-danger'
+  - if @current_user && @current_user.admin?
+    = link_to "Редактировать", edit_examine_path(@examine), :class => 'btn'
+    = link_to "Удалить", examine_path(@examine), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-danger'

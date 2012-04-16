@@ -1,5 +1,7 @@
 Scenario::Application.routes.draw do
 
+  root :to => 'disciplines#index'
+
   resources :examines do
     collection { post :sort }
   end
@@ -9,6 +11,7 @@ Scenario::Application.routes.draw do
       get :add_group
       post :add_examines
     end
+    collection { get :year }
   end
 
   resources :repository_themes
@@ -34,8 +37,6 @@ Scenario::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
 
   match 'logout' => 'sessions#destroy', :as => :logout
-
-  match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
 
 
   # The priority is based upon order of creation:
@@ -87,7 +88,6 @@ Scenario::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'disciplines#index'
 
   # See how all your routes lay out with "rake routes"
 

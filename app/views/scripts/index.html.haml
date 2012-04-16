@@ -5,7 +5,8 @@
       %th= t "activerecord.attributes.script.name"
       %th= t "activerecord.attributes.script.script_themes"
       %th= t "activerecord.attributes.script.script_subthemes"
-      %th.actions Действия
+      - if @current_user && @current_user.admin?
+        %th.actions Действия
   %tbody
     - @scripts.each do |script|
       %tr
@@ -19,9 +20,10 @@
             - script_theme.script_sub_themes.each do |script_sub_theme|
               =link_to script_sub_theme.name, script_sub_theme_path(script_sub_theme)
               %br
-        %td.actions
-          = link_to "<i class='icon-edit'></i>".html_safe, edit_script_path(script), :class => 'btn btn-mini'
-          = link_to "<i class='icon-trash icon-white'></i>".html_safe, script_path(script), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
+        - if @current_user && @current_user.admin?
+          %td.actions
+            = link_to "<i class='icon-edit'></i>".html_safe, edit_script_path(script), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'
+            = link_to "<i class='icon-trash icon-white'></i>".html_safe, script_path(script), :method => :delete, :confirm => "#{ t "web-app-theme.confirm"}", :class => 'btn btn-mini btn-danger', 'rel' => 'tooltip', 'title' => 'Удалить'
 
 = link_to "Новый сценарий", new_script_path, :class => 'btn btn-primary'
 

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  include Authorization::StatefulRoles
+
   set_table_name 'users'
 
   validates :login, :presence   => true,
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   #
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_in_state :first, :active, :conditions => {:login => login.downcase} # need to get the salt
+    u = find_by_login(login.downcase) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
@@ -51,14 +51,11 @@ class User < ActiveRecord::Base
   end
   
   def admin?
-    role==1
+    role == 1
   end
 
   protected
     
-  def make_activation_code
-	self.deleted_at = nil
-    self.activation_code = self.class.make_token
-  end
+
 
 end

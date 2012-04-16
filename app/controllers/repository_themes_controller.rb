@@ -1,10 +1,11 @@
 class RepositoryThemesController < ApplicationController
+  before_filter :check_admin_user
 
   def index
     if params[:term]
       @repository_themes = RepositoryTheme.where("lower(name) LIKE lower(?)", "%#{params[:term]}%")
-    elsif params[:q]
-      @repository_themes = RepositoryTheme.where("lower(name) LIKE lower(?)", "%#{params[:q]}%")
+    elsif params[:name]
+      @repository_themes = RepositoryTheme.where("lower(name) LIKE lower(?)", "%#{params[:name]}%")
     else
       @repository_themes = RepositoryTheme.all
     end
@@ -12,7 +13,7 @@ class RepositoryThemesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render :json => @repository_themes.map(&:attributes) if params[:q]
+        render :json => @repository_themes.map(&:attributes) if params[:name]
         render :json => @repository_themes.map(&:name) if params[:term]
       end
     end

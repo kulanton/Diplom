@@ -1,7 +1,6 @@
 %fieldset
   %legend= t "controllers.#{controller_name}.#{action_name}"
-  - if params[:block]
-    = hidden_field_tag 'examine[block_ids][]', params[:block]
+  = hidden_field_tag 'examine[block_ids][]', params[:block]
   .control-group
     = f.label :name, :class => 'control-label'
     .controls

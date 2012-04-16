@@ -1,4 +1,5 @@
 class ScriptsController < ApplicationController
+  before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
     @scripts = Script.includes(:examine).all

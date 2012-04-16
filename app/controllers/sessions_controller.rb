@@ -18,8 +18,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      flash[:notice]="Вход выполнен"
-      redirect_to root_path
+      redirect_back_or_default('/', :notice => "Вход выполнен.")
     else
       note_failed_signin
       @login       = params[:login]
@@ -30,9 +29,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    
-    render 'sessions/new', :layout => 'login'
-    #redirect_back_or_default('/', :notice => "Выход выполнен.")
+    redirect_back_or_default('/', :notice => "Выход выполнен.")
   end
 
 protected

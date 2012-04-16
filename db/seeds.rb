@@ -1,7 +1,5 @@
 u=User.new(:login=>"admin", :password=>"qwerty", :password_confirmation=>"qwerty", :email=>"admin@msiu.ru", :name => "Администратор")
-u.save
 u.role = 1
-u.state = "active"
 u.save
 
 

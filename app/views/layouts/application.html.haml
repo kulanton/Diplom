@@ -46,9 +46,9 @@
               %li.nav-header Меню
               %li= link_to "Дисциплины", disciplines_path
               %li= link_to "Блоки", blocks_path
-              %li= link_to "Тесты", examines_path
+              %li= link_to "Тесты", examines_path if @current_user && @current_user.admin?
               %li= link_to "Сценарии", scripts_path
-              %li= link_to "Темы", repository_themes_path
+              %li= link_to "Темы", repository_themes_path if @current_user && @current_user.admin?
         .span10
           -unless notice.blank?
             .alert.alert-success

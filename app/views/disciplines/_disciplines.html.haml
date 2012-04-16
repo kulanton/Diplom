@@ -9,17 +9,23 @@
   %tbody
     - @disciplines.each do |discipline|
       %tr
-        %td= link_to discipline.name, blocks_path(:discipline => discipline)
+        %td= link_to discipline.name, blocks_path(:discipline_id => discipline)
         %td
-          - discipline.repository_themes.each do |theme|
-            = link_to theme.name, examines_path(:theme => theme)
+          - discipline.repository_themes.each do |repository_theme|
+            = link_to repository_theme.name, disciplines_path(:repository_theme_id => repository_theme)
             %br
         %td
+          - i = discipline.blocks.size
           - discipline.blocks.each do |block|
+            - j = block.examines.size
             - block.examines.each do |examine|
               = link_to examine.name, examine
+              - if i > 0 and j > 1
+                = ', '
+              - j -= 1
+            - i -= 1
         
         - if @current_user && @current_user.admin?
           %td.actions
-            = link_to "<i class='icon-edit'></i>".html_safe, edit_discipline_path(discipline), :class => 'btn btn-mini'
-            = link_to "<i class='icon-trash icon-white'></i>".html_safe, discipline_path(discipline), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Вы уверены?")}", :class => 'btn btn-mini btn-danger' 
+            = link_to "<i class='icon-edit'></i>".html_safe, edit_discipline_path(discipline), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'
+            = link_to "<i class='icon-trash icon-white'></i>".html_safe, discipline_path(discipline), :method => :delete, :confirm => "#{ t "web-app-theme.confirm" }", :class => 'btn btn-mini btn-danger', 'rel' => 'tooltip', 'title' => 'Удалить'
