@@ -22,7 +22,7 @@
               %li{:class => 'ui-state-default', :id => "examine_#{examine.id}"}
                 %span{:class => 'ui-icon ui-icon-arrowthick-2-n-s'}
                 =link_to examine.name, examine
-                %span{:class => 'right'}= link_to "<i class='icon-plus'></i> сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini btn-success'
+                %span{:class => 'link'}= link_to "<i class='icon-plus'></i> сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini'
           %br
           %div{:id => "addTest_#{block.id}", :class => "modal hide fade", :style => 'display: none;'}
             = render 'add_test_modal', :block => block
@@ -30,8 +30,6 @@
         %td
           - block.examines.each do |examine|
             = examine.scripts.map(&:name).join(', ')
-            %br
-            = link_to "<i class='icon-plus'></i> новый сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini btn-success'
         - if @current_user && @current_user.admin?
           %td.actions
             = link_to "<i class='icon-edit'></i>".html_safe, edit_block_path(block), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'

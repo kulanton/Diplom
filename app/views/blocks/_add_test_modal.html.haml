@@ -2,14 +2,16 @@
   = link_to '×', '', 'data-dismiss' => 'modal', :class => 'close'
   %h3 Добавить тесты к блоку групп
 %div{:class => 'modal-body'}
+  - examines = Examine.where('id NOT IN (?)', block.examines)
+  - count = examines.size
   = form_tag add_examines_block_path(block), :method => 'post', :class => 'form-horizontal' do
-    - for examine in Examine.all
+    - for examine in examines
       .control-group
         = check_box_tag 'examine_ids[]', examine.id, block.examines.include?(examine), :id => "block_examine_#{examine.id}"
         = examine.name
-    /= hidden_field 'block[id]', block.id
-
-    = submit_tag "Добавить тесты", :class => 'btn'
+    -#= hidden_field 'block[id]', block.id
+    - if count > 0
+      = submit_tag "Добавить тесты", :class => 'btn'
   
 %div{:class => 'modal-footer'}
   = link_to 'Создать новый тест', new_examine_path(:block => block), :class => 'btn btn-primary'

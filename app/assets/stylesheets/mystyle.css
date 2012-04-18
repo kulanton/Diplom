@@ -9,7 +9,7 @@ td.id {width: 10px;}
 
 .container.center {width: 600px;}
 
-li span.right { margin: 0; padding: 0;}
+.sortable li span.link { margin: -2px 50px; }
 div.bottom {  }
 
 /*#autocomplete-field {width: 250px}*/
@@ -33,6 +33,7 @@ hr.small {margin: 0; padding: 0;}
 fieldset.partial, div.partial {
 	margin-left: 50px;
 }
+
 /*
 .btn-mini {
 	padding: 2px 6px;

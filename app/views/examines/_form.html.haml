@@ -1,6 +1,6 @@
 %fieldset
   %legend= t "controllers.#{controller_name}.#{action_name}"
-  = hidden_field_tag 'examine[block_ids][]', params[:block]
+  = hidden_field_tag 'examine[block_ids][]', params[:block], :id => "examine_block_ids_#{params[:block]}"
   .control-group
     = f.label :name, :class => 'control-label'
     .controls
@@ -20,7 +20,9 @@
   .control-group
     = f.label :period, :class => 'control-label'
     .controls
-      = f.number_field :period, :class => 'number_field'
+      %div{:class => 'input-append'}
+        = f.number_field :period, :class => 'number_field'
+        %span{:class => 'add-on'}> мин.
   .control-group
     = f.label :test_type, :class => 'control-label'
     .controls
