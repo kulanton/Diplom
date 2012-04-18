@@ -1,4 +1,5 @@
 class ExaminesController < ApplicationController
+  before_filter :check_regular_user
   before_filter :check_admin_user, :except=>['show', 'sort']
 
   def index

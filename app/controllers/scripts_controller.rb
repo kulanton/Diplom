@@ -1,4 +1,5 @@
 class ScriptsController < ApplicationController
+  before_filter :check_regular_user
   before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
