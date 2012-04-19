@@ -10,6 +10,12 @@ class Examine < ActiveRecord::Base
   validates :num_try, :numericality=>{:only_integer=>true},:allow_blank=>false
   validates :period, :numericality=>{:only_integer=>true},:allow_blank=>false
   
+  EXAMINE_TYPES = ['для слушателей подготовительного факультета',
+                   'для учащихся подшефных школ',
+                   'для самостоятельного тестирования студентов',
+                   'промежуточные тесты контроля знаний для студентов',
+                   'экзаменационные тесты для студентов']
+  
   private
   
   def assign_ordinal

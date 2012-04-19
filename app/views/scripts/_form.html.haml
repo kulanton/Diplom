@@ -33,17 +33,14 @@
   .control-group
     = f.label :results, :class => 'control-label'
     .controls
-      /%div{:class => 'btn-group', 'data-toggle' => 'buttons-checkbox'}
-      /  %input{:type => 'button', :class => 'btn', :value => 'Темы', :id => 'btn-themes'}
-      /  /%button.btn{:id => 'btn-themes'} Темы
-      /  = hidden_field_tag :results_themes
-      /  %input{:type => 'button', :class => 'btn', :value => 'Вопросы', :id => 'btn-questions'}
-      /  /%button.btn{:id => 'btn-questions'} Вопросы
-      /  = hidden_field_tag :results_questions
-      /  %input{:type => 'button', :class => 'btn', :value => 'Детальный', :id => 'btn-detaled'}
-      /  /%button.btn{:id => 'btn-detaled'} Детально
-      /  = hidden_field_tag :results_detaled
-      = f.number_field :results, :class => 'number_field'
+      %div{:class => 'btn-group', 'data-toggle' => 'buttons-checkbox'}
+        %input{:type => 'button', :class => 'btn', :value => 'Темы', :id => 'btn-themes'}
+        = hidden_field_tag :results_themes
+        %input{:type => 'button', :class => 'btn', :value => 'Вопросы', :id => 'btn-questions'}
+        = hidden_field_tag :results_questions
+        %input{:type => 'button', :class => 'btn', :value => 'Детальный', :id => 'btn-detaled'}
+        = hidden_field_tag :results_detaled
+      /= f.select :results, results
   .control-group
     = f.label :base_script_id, :class => 'control-label'
     .controls

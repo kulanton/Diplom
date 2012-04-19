@@ -7,6 +7,10 @@ td.id {width: 10px;}
 .sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.2em; height: 18px; }
 .sortable li span { position: absolute; margin-left: -1.3em; }
 
+.span2-my {
+  width: 174px;
+}
+
 .container.center {width: 600px;}
 
 .sortable li span.link { margin: -2px 50px; }
@@ -18,8 +22,8 @@ hr.small {margin: 0; padding: 0;}
 
 .field_with_errors .message {
 	color: #dc143c;
-	display: inline;
-	margin: 10px;
+	/*display: inline;
+	margin: 10px;*/
 }
 
 .field_with_errors input {
@@ -31,7 +35,15 @@ hr.small {margin: 0; padding: 0;}
 }
 
 fieldset.partial, div.partial {
-	margin-left: 50px;
+	margin-left: 35px;
+}
+
+.first-row {
+  width: 56%;
+}
+
+.second-row{
+  width: 44%;
 }
 
 /*

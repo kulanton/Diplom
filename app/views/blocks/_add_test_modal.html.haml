@@ -12,6 +12,8 @@
     -#= hidden_field 'block[id]', block.id
     - if count > 0
       = submit_tag "Добавить тесты", :class => 'btn'
+    - else
+      %b Нет неприкрепленных тестов. Создайте новый.
   
 %div{:class => 'modal-footer'}
   = link_to 'Создать новый тест', new_examine_path(:block => block), :class => 'btn btn-primary'
