@@ -4,7 +4,8 @@ class BlocksController < ApplicationController
 
   def index
     if params[:discipline_id].nil?
-      @blocks = Block.includes(:groups, :examines=>[:scripts]).all
+      @blocks = Block.includes(:discipline, :groups, :examines=>[:scripts]).all
+      @block_disciplines = @blocks.group_by { |b| b.discipline.name }
     else
       @blocks = Block.where('discipline_id = ?', params[:discipline_id])
       @discipline = Discipline.find(params[:discipline_id])

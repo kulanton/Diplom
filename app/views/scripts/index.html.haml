@@ -13,12 +13,12 @@
         %td= link_to script.name, script_path(script)
         %td
           - script.script_themes.each do |script_theme|
-            = link_to script_theme.name, script_theme_path(script_theme)
+            = script_theme.name
             %br
         %td
           - script.script_themes.each do |script_theme|
             - script_theme.script_sub_themes.each do |script_sub_theme|
-              =link_to script_sub_theme.name, script_sub_theme_path(script_sub_theme)
+              = script_sub_theme.name
               %br
         - if @current_user && @current_user.admin?
           %td.actions

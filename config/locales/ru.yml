@@ -387,6 +387,7 @@ ru:
         name: "Название"
         repository_themes: "Репозиторий тем"
         examines: "Тесты"
+        blocks: "Блоки групп"
       group:
         name: "Номер"
   support:

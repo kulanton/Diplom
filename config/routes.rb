@@ -14,7 +14,9 @@ Scenario::Application.routes.draw do
     collection { get :year }
   end
 
-  resources :repository_themes
+  resources :repository_themes do
+    collection {get :discipline_themes}
+  end
 
   resources :scripts do
     resources :script_themes do

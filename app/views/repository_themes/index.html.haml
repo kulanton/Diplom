@@ -1,20 +1,21 @@
-%h1 Репозиторый тем
-%table{:class => "table table-striped"}
+%h1 Репозиторий тем
+
+%table{:class => 'table table-stripped'}
   %thead
     %tr
-      %th= t "activerecord.attributes.repository_theme.name"
-      %th= t "activerecord.attributes.repository_theme.path"
-      %th= t "activerecord.attributes.repository_theme.count"
-      %th.actions Действия
+      %th{:style => 'width: 70%;'} Дисциплина
+      %th{:style => 'width: 13%; text-align: center;'} Колличество тем
+      %th{:style => 'width: 17%; text-align: center;'} Колличество вопросов
   %tbody
-    - @repository_themes.each do |repository_theme|
-      %tr
-        %td= link_to repository_theme.name, repository_theme_path(repository_theme)
-        %td= repository_theme.path
-        %td= repository_theme.count
-        %td.actions
-          = link_to "<i class='icon-edit'></i>".html_safe, edit_repository_theme_path(repository_theme), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'
-          = link_to "<i class='icon-trash icon-white'></i>".html_safe, repository_theme_path(repository_theme), :method => :delete, :confirm => "#{ t "web-app-theme.confirm" }", :class => 'btn btn-mini btn-danger', 'rel' => 'tooltip', 'title' => 'Удалить' 
+    - @disciplines.each do |discipline|
+      - unless discipline.repository_themes.blank?
+        %tr
+          %td= link_to discipline.name, discipline_themes_repository_themes_path(:discipline_id => discipline)
+          %td{:style => 'text-align: center;'}= discipline.repository_themes.size
+          %td{:style => 'text-align: center;'}
+            - count = 0
+            - discipline.repository_themes.each {|repository_theme| count += repository_theme.count}
+            = count
 
 = link_to "Новая тема", new_repository_theme_path, :class => 'btn btn-primary'
 

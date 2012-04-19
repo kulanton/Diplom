@@ -7,7 +7,7 @@ class RepositoryThemesController < ApplicationController
     elsif params[:name]
       @repository_themes = RepositoryTheme.where("lower(name) LIKE lower(?)", "%#{params[:name]}%")
     else
-      @repository_themes = RepositoryTheme.all
+      @disciplines = Discipline.includes(:repository_themes).order(:name)
     end
 
     respond_to do |format|
@@ -17,6 +17,11 @@ class RepositoryThemesController < ApplicationController
         render :json => @repository_themes.map(&:name) if params[:term]
       end
     end
+  end
+  
+  
+  def discipline_themes
+    @repository_themes = RepositoryTheme.includes(:disciplines).where('disciplines.id = ?', params[:discipline_id])
   end
 
 
