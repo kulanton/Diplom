@@ -12,9 +12,9 @@
               = f.text_field :name, :class => 'text_field'
         %td.second-row
           .control-group
-            = f.label :repository_theme_id, "Репозиторий тем", :class => 'control-label'
+            = f.label :repository_theme_name, "Репозиторий тем", :class => 'control-label'
             .controls
-              = f.text_field :repository_theme_id, {:class => 'autocomplete-field', :onfocus => 'autocompleteField()'}
+              = f.text_field :repository_theme_name, {:class => 'autocomplete-field', :onfocus => 'autocompleteField()'}
       %tr
         %td
           .control-group

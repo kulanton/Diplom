@@ -11,11 +11,11 @@
       %tr
         %td= link_to discipline.name, blocks_path(:discipline_id => discipline)
         %td
-          - discipline.blocks.each_with_index do |block, index|
+          - discipline.blocks.each do |block|
             - i = discipline.blocks.size
-            = "Блок #{index+1}: "
+            = "Блок #{block.block_num}: "
             - block.groups.each do |group|
-              = link_to group.name, group
+              = link_to group.name, examines_path(:group_id => group)
               - if i > 1
                 = ', '
               - i -= 1

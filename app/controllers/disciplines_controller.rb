@@ -8,13 +8,14 @@ class DisciplinesController < ApplicationController
     elsif params[:name]
       @disciplines = Discipline.where("lower(name) LIKE lower(?)","%#{params[:name]}%")
     elsif params[:repository_theme_id]
-      @disciplines = Discipline.includes(:repository_themes, :blocks => [:examines]).search(params[:search]).where(:repository_themes => {:id => params[:repository_theme_id]})
+      @disciplines = Discipline.includes(:repository_themes, :blocks => :examines).search(params[:search]).where(:repository_themes => {:id => params[:repository_theme_id]})
     else
-      @disciplines = Discipline.includes(:repository_themes, :blocks => [:examines]).search(params[:search]).order(:name)
+      @disciplines = Discipline.includes(:repository_themes, :blocks => :examines).search(params[:search])
     end
 
     respond_to do |format|
       format.html
+      format.js
       format.json do
         render :json => @disciplines.map(&:attributes)  if params[:name]
         render :json => @disciplines.map(&:name)  if params[:term]

@@ -7,9 +7,9 @@
     .controls
       = f.text_field :name, :class => 'text_field'
   .control-group
-    = f.label :repository_theme_id, "Репозипотий тем", :class => 'control-label'
+    = f.label :repository_theme_name, "Репозипотий тем", :class => 'control-label'
     .controls
-      = f.number_field :repository_theme_id, :class => 'number_field'
+      = f.number_field :repository_theme_name, {:class => 'autocomplete-field', :onfocus => 'autocompleteField()'}
   .control-group
     = f.label :questions_to_pass, "Необходимо сдать вопросов", :class => 'control-label'
     .controls

@@ -11,6 +11,11 @@ td.id {width: 10px;}
   width: 174px;
 }
 
+
+.span-my {
+  width: 100px;
+}
+
 .container.center {width: 600px;}
 
 .sortable li span.link { margin: -2px 50px; }
@@ -22,8 +27,6 @@ hr.small {margin: 0; padding: 0;}
 
 .field_with_errors .message {
 	color: #dc143c;
-	/*display: inline;
-	margin: 10px;*/
 }
 
 .field_with_errors input {

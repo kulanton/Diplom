@@ -25,5 +25,7 @@ $ ->
     backdrop: true
     keyboard: true
     show: false
+    
+  $('#accordionblock').collapse
 
   false

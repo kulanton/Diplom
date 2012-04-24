@@ -29,6 +29,7 @@
             %ul.nav
               %li
             %p.navbar-text.pull-right
+              = select_tag :current_year, options_for_select(years), :class => 'span-my'
               -if @current_user
                 Вы:
                 %strong= @current_user.login
@@ -46,9 +47,9 @@
               %li.nav-header Меню
               %li= link_to "Дисциплины", disciplines_path
               %li= link_to "Блоки", blocks_path
-              %li= link_to "Тесты - Сценарии", scripts_path
-              %li= link_to "Темы", repository_themes_path if @current_user && @current_user.admin?
-              %li= link_to "Отчёты", ''
+              %li= link_to "Темы", repository_themes_path
+              %li= link_to "Поиск", search_path
+              %li= link_to "Отчёты", reports_path
         .span10
           -unless notice.blank?
             .alert.alert-success

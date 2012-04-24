@@ -1,5 +1,3 @@
-%h1 Темы
-
 %table{:class => "table table-striped"}
   %thead
     %tr
@@ -10,14 +8,11 @@
   %tbody
     - @repository_themes.each do |repository_theme|
       %tr
-        %td= link_to repository_theme.name, repository_theme_path(repository_theme)
+        %td= link_to repository_theme.name, examines_path(:repository_theme_id => repository_theme)
         %td= repository_theme.path
         %td= repository_theme.count
         %td.actions
           = link_to "<i class='icon-edit'></i>".html_safe, edit_repository_theme_path(repository_theme), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'
           = link_to "<i class='icon-trash icon-white'></i>".html_safe, repository_theme_path(repository_theme), :method => :delete, :confirm => "#{ t "web-app-theme.confirm" }", :class => 'btn btn-mini btn-danger', 'rel' => 'tooltip', 'title' => 'Удалить' 
-
-= link_to "Новая тема", new_repository_theme_path(:discipline_id => params[:discipline_id]), :class => 'btn btn-primary'
-= link_to "Назад", repository_themes_path, :class => 'btn'
 
 .free-space

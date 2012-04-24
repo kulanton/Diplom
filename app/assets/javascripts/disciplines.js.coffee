@@ -10,9 +10,7 @@ $ ->
     searchingText: "Поиск..."
     
   $('#disciplines_search fieldset input').keyup ->
-    $.get $('#disciplines_search').attr('action'), $('#disciplines_search').serialize(), (data) ->
-      $('#disciplines').html($(data).find('#disciplines'))
-      false
+    $.get $('#disciplines_search').attr('action'), $('#disciplines_search').serialize(), null, 'script'
     false
 
   $("#disciplines_search").submit ->

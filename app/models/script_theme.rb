@@ -1,4 +1,6 @@
 class ScriptTheme < ActiveRecord::Base
+  default_scope order(:name)
+
   belongs_to :repository_theme
   belongs_to :script
   has_many :script_sub_themes, :dependent => :destroy

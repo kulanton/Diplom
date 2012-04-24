@@ -1,6 +1,8 @@
 %h1 Репозиторий тем
 
-%table{:class => 'table table-stripped'}
+%div{:id => 'discipline-themes', 'data-url' => "#{repository_themes_path}"}
+
+%table{:class => 'table table-stripped table-condensed'}
   %thead
     %tr
       %th{:style => 'width: 70%;'} Дисциплина
@@ -10,7 +12,7 @@
     - @disciplines.each do |discipline|
       - unless discipline.repository_themes.blank?
         %tr
-          %td= link_to discipline.name, discipline_themes_repository_themes_path(:discipline_id => discipline)
+          %td= link_to discipline.name, '', :class => 'discipline', 'data-params' => "discipline_id=#{discipline.id}"
           %td{:style => 'text-align: center;'}= discipline.repository_themes.size
           %td{:style => 'text-align: center;'}
             - count = 0

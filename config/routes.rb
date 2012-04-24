@@ -1,5 +1,9 @@
 Scenario::Application.routes.draw do
 
+  match 'reports' => 'reports#index', :as => :reports
+
+  match 'search' => 'search#index', :as => :search
+
   root :to => 'disciplines#index'
 
   resources :examines do
@@ -8,7 +12,7 @@ Scenario::Application.routes.draw do
 
   resources :blocks do
     member do
-      get :add_group
+      post :add_groups
       post :add_examines
     end
     collection { get :year }

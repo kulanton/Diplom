@@ -3,7 +3,14 @@ class ExaminesController < ApplicationController
   before_filter :check_admin_user, :except=>['show', 'sort']
 
   def index
-    @examines = Examine.all
+    if params[:repository_theme_id]
+      @examines = Examine.includes(:scripts => [:script_themes => :repository_theme]).where('repository_themes.id = ?', params[:repository_theme_id])
+    elsif params[:group_id]
+      @group = Group.unscoped.find(params[:group_id])
+      @disciplines = Discipline.unscoped.includes(:blocks => :groups).where(:blocks => {:groups => {:id => @group.id}})
+    else
+      @examines = Examine.all
+    end
   end
 
 

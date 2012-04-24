@@ -354,6 +354,7 @@ ru:
         questions_to_pass: "Необходимо сдать вопросов"
         themes_to_pass: "Необходимо сдать тем"
         results: "Результаты"
+        repository_themes: "Репозиторий тем"
         script_themes: "Темы"
         script_subthemes: "Подтемы"
         examine_id: "Тест"

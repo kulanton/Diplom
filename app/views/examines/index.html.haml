@@ -1,24 +1,24 @@
 %h1 Список тестов
-%table{:class => "table table-striped"}
-  %thead
-    %tr
-      %th= t "activerecord.attributes.examine.name"
-      %th= t "activerecord.attributes.examine.scripts"
-      %th= t "activerecord.attributes.examine.blocks"
-      - if @current_user && @current_user.admin?
-        %th.actions Действия
-  %tbody
-    - @examines.each do |examine|
-      %tr
-        %td= link_to examine.name, examine_path(examine)
-        %td= examine.scripts.map(&:name).join(', ')
-        %td
-          - examine.blocks.each do |block|
-            = block.groups.map(&:name).join(', ')
-        - if @current_user && @current_user.admin?
-          %td
-            = link_to "<i class='icon-edit'></i>".html_safe, edit_examine_path(examine), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'
-            = link_to "<i class='icon-trash icon-white'></i>".html_safe, examine_path(examine), :method => :delete, :confirm => "#{ t "web-app-theme.confirm" }", :class => 'btn btn-mini btn-danger', 'rel' => 'tooltip', 'title' => 'Удалить'
+- if @group
+  по дисциплинам для группы
+  %b= @group.name
+  %br
+  %br
+- if @disciplines
+  - @disciplines.each_with_index do |discipline, index|
+    - if discipline.blocks
+      - for block in discipline.blocks
+        - if block.examines
+          #accordion-examine.accordion
+            .accordion-group
+              %h5.accordion-heading= link_to discipline.name, "#accordion#{index+1}", :class => 'accordion-toggle', 'data-toggle' => 'collapse', 'data-parent' => '#accordion-examine'
+            %div{:class => 'accordion-body collapse', :id => "accordion#{index+1}"}
+              %div{:class => 'accordion-inner'}
+                = render 'examines', :examines => block.examines
+
+-else
+  = render 'examines', :examines => @examines
+
 
 = link_to "Новый тест", new_examine_path, :class => 'btn btn-primary'
 
