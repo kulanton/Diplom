@@ -33,4 +33,4 @@
         - if @current_user && @current_user.admin?
           %td.actions
             = link_to "<i class='icon-edit'></i>".html_safe, edit_discipline_path(discipline), :class => 'btn btn-mini', :rel => 'tooltip', :title => 'Редактировать'
-            = link_to "<i class='icon-trash icon-white'></i>".html_safe, discipline_path(discipline), :method => :delete, :confirm => "#{t "web-app-theme.confirm"}", :class => 'btn btn-mini btn-danger', :rel => 'tooltip', :title => 'Удалить'
+            = link_to "<i class='icon-trash icon-white'></i>".html_safe, discipline_path(discipline), :method => :delete, :confirm => "#{t "web-app-theme.confirm"}", :class => 'btn btn-mini btn-danger', 'my-rel' => 'tooltip', :title => 'Удалить'

@@ -2,19 +2,19 @@
 - if @discipline
   по дисциплине
   %b= @discipline.name
+  = render 'blocks', :blocks => @blocks
+
 - if @block_disciplines
-  #accordionblock.accordion
+  #block.accordion
     - index = 0
     - @block_disciplines.sort.each do |discipline, blocks|
       - index += 1
-      %div{:class => 'accordion-group'}
-        %h5.accordion-heading= link_to discipline, "#accordion#{index}", :class => 'accordion-toggle', 'data-toggle' => 'collapse', 'data-parent' => '#accordionblock'
-      %div{:class => 'accordion-body collapse', :id => "accordion#{index}"}
-        %div{:class => 'accordion-inner'}
-          = render 'blocks', :blocks => blocks
-          
-- else
-  = render 'blocks', :blocks => @blocks
+      .accordion-group
+        .accordion-heading
+          %b= link_to discipline, "#accordion#{index}", :class => 'accordion-toggle', 'data-toggle' => 'collapse', 'data-parent' => '#block'
+        %div{:class => 'accordion-body collapse', :id => "accordion#{index}"}
+          .accordion-inner
+            = render 'blocks', :blocks => blocks
   
 
 = link_to "Новый блок", new_block_path(:discipline_id => params[:discipline_id]), :class => 'btn btn-primary'

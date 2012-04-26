@@ -4,16 +4,21 @@ td.actions, th.actions {width: 63px; vertical-align: middle;}
 td.id {width: 10px;}
 
 .sortable { list-style-type: none; margin: 0; padding: 0; }
-.sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.2em; height: 18px; }
+.sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.2em; height: 18px;}
 .sortable li span { position: absolute; margin-left: -1.3em; }
 
 .span2-my {
   width: 174px;
 }
 
-
 .span-my {
   width: 100px;
+}
+
+.sortable li a.btn.btn-mini.btn-success.add-script {
+  margin-top: -2px;
+  color: #fff;
+  float:right;
 }
 
 .container.center {width: 600px;}

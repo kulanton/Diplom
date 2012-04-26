@@ -3,7 +3,7 @@
     %tr
       %th= t "activerecord.attributes.block.groups"
       %th= t "activerecord.attributes.block.examines"
-      %th{:style => 'width: 46%;'}= t "activerecord.attributes.block.scripts"
+      %th= t "activerecord.attributes.block.scripts"
       - if @current_user && @current_user.admin?
         %th.actions Действия
   %tbody
@@ -19,8 +19,8 @@
             - block.examines.each do |examine|
               %li{:class => 'ui-state-default', :id => "examine_#{examine.id}"}
                 %span{:class => 'ui-icon ui-icon-arrowthick-2-n-s'}
-                =link_to examine.name, examine, :rel => 'tooltip', :title => "#{l examine.scheduled_date}"
-                %span{:class => 'link'}= link_to "<i class='icon-plus'></i> сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini'
+                = link_to examine.name, examine, :rel => 'tooltip', :title => "#{l examine.scheduled_date}"
+                = link_to "<i class='icon-plus'></i> сценарий".html_safe, new_script_path(:examine => examine), :class => 'btn btn-mini btn-success add-script'
           %br
           %div{:id => "addTest_#{block.id}", :class => "modal hide fade", :style => 'display: none;'}
             = render 'add_test_modal', :block => block
@@ -31,5 +31,5 @@
               = link_to script.name, script
         - if @current_user && @current_user.admin?
           %td.actions
-            = link_to "<i class='icon-edit'></i>".html_safe, edit_block_path(block), :class => 'btn btn-mini', 'rel' => 'tooltip', 'title' => 'Редактировать'
-            = link_to "<i class='icon-trash icon-white'></i>".html_safe, block_path(block), :method => :delete, :confirm => "#{ t "web-app-theme.confirm" }", :class => 'btn btn-mini btn-danger', 'rel' => 'tooltip', 'title' => 'Удалить'
+            = link_to "<i class='icon-edit'></i>".html_safe, edit_block_path(block), :class => 'btn btn-mini', :rel => 'tooltip', :title => 'Редактировать'
+            = link_to "<i class='icon-trash icon-white'></i>".html_safe, block_path(block), :method => :delete, :confirm => "#{t "web-app-theme.confirm"}", :class => 'btn btn-mini btn-danger', 'my-rel' => 'tooltip', :title => 'Удалить'

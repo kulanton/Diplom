@@ -28,12 +28,12 @@
             = f.label :results, "Вывод результатов", :class => 'control-label'
             .controls
               %div{:class => 'btn-group', 'data-toggle' => 'buttons-checkbox'}
-                %input{:type => 'button', :class => 'btn', :value => 'Темы', :id => 'btn-themes'}
-                = hidden_field_tag :results_themes
-                %input{:type => 'button', :class => 'btn', :value => 'Вопросы', :id => 'btn-questions'}
-                = hidden_field_tag :results_questions
-                %input{:type => 'button', :class => 'btn', :value => 'Детальный', :id => 'btn-detaled'}
-                = hidden_field_tag :results_detaled
+                %button{:class => 'btn', :id => 'btn-themes'}Темы
+                = hidden_field_tag :results_themes, params[:results_themes], :id => 'results-themes'
+                %button{:class => 'btn', :id => 'btn-questions'}Вопросы
+                = hidden_field_tag :results_questions, params[:results_questions], :id => 'results-questions'
+                %button{:class => 'btn', :id => 'btn-detaled'}Детальный
+                = hidden_field_tag :results_detaled, params[:results_detaled], :id => 'results-detaled'
       %tr
         %td
           .control-group

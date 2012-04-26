@@ -5,7 +5,7 @@ class Block < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :examines, :order => :ordinal
   
-  validates_presence_of :year
+  validates_presence_of :year, :discipline_name
   
   attr_reader :group_tokens
   

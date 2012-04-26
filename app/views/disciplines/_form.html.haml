@@ -1,8 +1,9 @@
 %fieldset
-  %legend= t "controllers.#{controller_name}.#{action_name}"
-  -if @discipline.errors.any?
-    .alert.alert-error
-      %h6 При сохранении произошли ошибки
+  %legend
+    = t "controllers.#{controller_name}.#{action_name}"
+    - if @discipline.errors.any?
+      .alert.alert-error
+        %h6 При сохранении произошли ошибки
   .control-group
     = f.label :name, :class => 'control-label'
     .controls
