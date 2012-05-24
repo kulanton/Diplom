@@ -3,20 +3,27 @@
   по дисциплине
   %b= @discipline.name
   = render 'blocks', :blocks => @blocks
-
-- if @block_disciplines
-  #block.accordion
-    - index = 0
-    - @block_disciplines.sort.each do |discipline, blocks|
-      - index += 1
-      .accordion-group
-        .accordion-heading
-          %b= link_to discipline, "#accordion#{index}", :class => 'accordion-toggle', 'data-toggle' => 'collapse', 'data-parent' => '#block'
-        %div{:class => 'accordion-body collapse', :id => "accordion#{index}"}
-          .accordion-inner
-            = render 'blocks', :blocks => blocks
   
-
-= link_to "Новый блок", new_block_path(:discipline_id => params[:discipline_id]), :class => 'btn btn-primary'
+  = link_to "Новый блок", new_block_path(:discipline_id => params[:discipline_id]), :class => 'btn btn-primary'
+  
+- if @groups
+  %table{:class => 'table table-bordered'}
+    %thead
+      %tr
+        %th Группа
+        %th Блоки
+    %tbody
+      - @groups.each do |group|
+        %tr
+          %td= link_to group.name, examines_path(:group_id => group.id)
+          %td
+            - i = group.blocks.count
+            - group.blocks.each_with_index do |block, index|
+              = "Блок #{index+1} ("
+              = link_to block.discipline.name, blocks_path(:discipline_id => block.discipline.id)
+              = ")"
+              - if i > 1
+                = ','
+              - i -= 1
 
 .free-space

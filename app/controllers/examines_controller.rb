@@ -16,6 +16,11 @@ class ExaminesController < ApplicationController
 
   def show
     @examine = Examine.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @examine}
+    end
   end
 
 
@@ -32,6 +37,7 @@ class ExaminesController < ApplicationController
   def create
     @examine = Examine.new(params[:examine])
     params[:block] = @examine.block_ids
+    block = @examine.block_ids.first
 
       if @examine.save
         redirect_to blocks_url, :notice => 'Новый тест создан.'

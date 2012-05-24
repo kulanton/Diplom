@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414205916) do
+ActiveRecord::Schema.define(:version => 20120522183818) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "discipline_id"
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(:version => 20120414205916) do
     t.integer  "results"
     t.integer  "examine_id"
     t.integer  "base_script_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.string   "lastname"
+    t.string   "middlename"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

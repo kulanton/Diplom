@@ -5,16 +5,16 @@
   %br
   %br
 - if @disciplines
-  - @disciplines.each_with_index do |discipline, index|
-    - if discipline.blocks
-      - for block in discipline.blocks
-        - if block.examines
-          #accordion-examine.accordion
+  #accordion-examine.accordion
+    - @disciplines.each_with_index do |discipline, index|
+      - if discipline.blocks
+        - for block in discipline.blocks
+          - if block.examines
             .accordion-group
               %h5.accordion-heading= link_to discipline.name, "#accordion#{index+1}", :class => 'accordion-toggle', 'data-toggle' => 'collapse', 'data-parent' => '#accordion-examine'
-            %div{:class => 'accordion-body collapse', :id => "accordion#{index+1}"}
-              %div{:class => 'accordion-inner'}
-                = render 'examines', :examines => block.examines
+              %div{:class => 'accordion-body collapse', :id => "accordion#{index+1}"}
+                .accordion-inner
+                  = render 'examines', :examines => block.examines
 
 -else
   = render 'examines', :examines => @examines

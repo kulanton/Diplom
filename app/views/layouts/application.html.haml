@@ -29,8 +29,6 @@
             %ul.nav
               %li
             %p.navbar-text.pull-right
-              Год:
-              = select_tag :current_year, options_for_select(years), :class => 'span-my'
               -if @current_user
                 Вы:
                 %strong= @current_user.login

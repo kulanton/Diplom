@@ -31,11 +31,11 @@
               = f.select :results, Examine::RESULTS.map{|result| [result, i+=1]}
             -#
               %div{:class => 'btn-group', 'data-toggle' => 'buttons-checkbox'}
-                %button{:class => 'btn', :id => 'btn-themes'}Темы
+                %button{:type => 'button', :class => 'btn', :id => 'btn-themes'}Темы
                 = hidden_field_tag :results_themes, params[:results_themes], :id => 'results-themes'
-                %button{:class => 'btn', :id => 'btn-questions'}Вопросы
+                %button{:type => 'button', :class => 'btn', :id => 'btn-questions'}Вопросы
                 = hidden_field_tag :results_questions, params[:results_questions], :id => 'results-questions'
-                %button{:class => 'btn', :id => 'btn-detaled'}Детальный
+                %button{:type => 'button', :class => 'btn', :id => 'btn-detaled'}Детальный
                 = hidden_field_tag :results_detaled, params[:results_detaled], :id => 'results-detaled'
       %tr
         %td

@@ -8,7 +8,7 @@ class Examine < ActiveRecord::Base
   has_many :scripts, :dependent => :destroy
   accepts_nested_attributes_for :scripts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 
-  validates_presence_of :name, :num_try, :period #, :test_type
+  validates_presence_of :name, :num_try, :period, :test_type
   validates :num_try, :numericality=>{:only_integer=>true},:allow_blank=>false
   validates :period, :numericality=>{:only_integer=>true},:allow_blank=>false
   
@@ -17,6 +17,12 @@ class Examine < ActiveRecord::Base
                    'для самостоятельного тестирования студентов',
                    'промежуточные тесты контроля знаний для студентов',
                    'экзаменационные тесты для студентов']
+
+  RESULTS = ['Результат по вопросам', 'Результат по темам', 'Детальный результат']
+  
+  def to_xml(options={})
+    super(:except => [:id, :created_at, :updated_at, :ordinal, :examine_id, :base_script_id, :script_id, :script_theme_id], :include => {:scripts => {:include => {:script_themes => {:include => :script_sub_themes}}}})
+  end
   
   private
   

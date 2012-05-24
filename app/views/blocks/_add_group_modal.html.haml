@@ -1,13 +1,14 @@
-%div{:class => 'modal-header'}
+.modal-header
   = link_to '×', '', 'data-dismiss' => 'modal', :class => 'close'
   %h3 Добавить группы к блоку
-%div{:class => 'modal-body'}
+.modal-body
   - groups = Group.all
   = form_tag add_groups_block_path(block), :method => 'post', :class => 'form-horizontal' do
     - for group in groups
-      .control-group
+      .item
         = check_box_tag 'group_ids[]', group.id, block.groups.include?(group), :id => "block_group_#{group.id}"
         = group.name
-    -#= hidden_field 'block[id]', block.id
-    = submit_tag "Добавить группы", :class => 'btn'
+
+    .modal-footer
+      = submit_tag "Добавить группы", :class => 'btn btn-primary'
 

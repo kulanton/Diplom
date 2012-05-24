@@ -24,7 +24,7 @@ class Block < ActiveRecord::Base
   private
   
   def assign_block_num
-    num = Block.maximum('block_num')
+    num = Block.where(:discipline_id => self.discipline_id).maximum('block_num')
     if num.nil?
       self.block_num = 1
     else

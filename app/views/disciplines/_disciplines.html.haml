@@ -11,20 +11,20 @@
       %tr
         %td= link_to discipline.name, blocks_path(:discipline_id => discipline)
         %td
-          - discipline.blocks.each do |block|
-            - i = discipline.blocks.size
-            = "Блок #{block.block_num}: "
+          - discipline.blocks.each_with_index do |block, index|
+            - i = block.groups.count
+            = "Блок #{index+1}:"
             - block.groups.each do |group|
               = link_to group.name, examines_path(:group_id => group)
               - if i > 1
-                = ', '
+                = ','
               - i -= 1
             %br
         %td
           - discipline.blocks.each do |block|
             - i = block.examines.size
             - block.examines.each do |examine|
-              = link_to examine.name, examine, :rel => 'tooltip', :title => "#{l examine.scheduled_date}"
+              = link_to examine.name, examine, :rel => 'tooltip', :title => "#{l examine.scheduled_date if examine.scheduled_date}"
               - if i > 1
                 = ', '
               - i -= 1

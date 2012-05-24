@@ -3,12 +3,18 @@ class BlocksController < ApplicationController
   before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
-    if params[:discipline_id].nil?
-      @blocks = Block.includes(:discipline, :groups, :examines => :scripts).all
-      @block_disciplines = @blocks.group_by { |b| b.discipline.name }
-    else
+    if params[:discipline_id]
       @blocks = Block.includes(:groups, :examines => :scripts).where('discipline_id = ?', params[:discipline_id])
       @discipline = Discipline.find(params[:discipline_id])
+    else
+      @groups = Group.joins(:blocks => :discipline).uniq
+      @blocks = Block.includes(:discipline, :groups, :examines => :scripts).all
+      @block_disciplines = @blocks.group_by { |b| b.discipline.name }
+    end
+    @examine = Examine.new
+    respond_to do |format|
+       format.html
+       format.js
     end
   end
 
@@ -33,12 +39,10 @@ class BlocksController < ApplicationController
   def create
     @block = Block.new(params[:block])
 
-    respond_to do |format|
-      if @block.save
-        format.html { redirect_to blocks_url, :notice => 'Новый блок создан.' }
-      else
-        format.html { render :action => "new" }
-      end
+    if @block.save
+      redirect_to blocks_url(:discipline_id => @block.discipline_id), :notice => 'Новый блок создан.'
+    else
+      render :action => "new"
     end
   end
 
@@ -46,12 +50,10 @@ class BlocksController < ApplicationController
   def update
     @block = Block.find(params[:id])
 
-    respond_to do |format|
-      if @block.update_attributes(params[:block])
-        format.html { redirect_to @block, :notice => 'Блок отредактирован.' }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @block.update_attributes(params[:block])
+      redirect_to @block, :notice => 'Блок отредактирован.'
+    else
+      render :action => "edit"
     end
   end
 
@@ -60,9 +62,7 @@ class BlocksController < ApplicationController
     @block = Block.find(params[:id])
     @block.destroy
 
-    respond_to do |format|
-      format.html { redirect_to blocks_url }
-    end
+    redirect_to blocks_url(:discipline_id => @block.discipline_id)
   end
   
   def year
@@ -74,12 +74,12 @@ class BlocksController < ApplicationController
   def add_groups
     block = Block.find(params[:id])
     block.group_ids = params[:group_ids]
-    redirect_to blocks_url
+    redirect_to blocks_url(:discipline_id => block.discipline_id)
   end
   
   def add_examines
     block = Block.find(params[:id])
     block.examine_ids = params[:examine_ids]
-    redirect_to blocks_url
+    redirect_to blocks_url(:discipline_id => block.discipline_id)
   end
 end

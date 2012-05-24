@@ -1,5 +1,6 @@
 $ ->
-  $('#block_group_tokens').tokenInput '/groups.json'
+  discipline_id = $('#block_discipline_name').data('discipline-id')
+  $('#block_group_tokens').tokenInput "/groups.json?discipline_id=#{discipline_id}",
     crossDomain: false
     prePopulate: $('#block_group_tokens').data('pre')
     queryParam: 'name'

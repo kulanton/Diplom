@@ -6,7 +6,9 @@ class ScriptTheme < ActiveRecord::Base
   has_many :script_sub_themes, :dependent => :destroy
   accepts_nested_attributes_for :script_sub_themes, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   
-  validates_presence_of :name, :questions_to_pass, :subthemes_to_pass
+  validates_presence_of :name
+  validates :questions_to_pass, :presence => true, :if => "subthemes_to_pass.nil?"
+  validates :subthemes_to_pass, :presence => true, :if => "questions_to_pass.nil?"
   
   def repository_theme_name
     repository_theme.name if repository_theme

@@ -1,6 +1,7 @@
 Scenario::Application.routes.draw do
 
   match 'reports' => 'reports#index', :as => :reports
+  match 'reports/show' => 'reports#show', :as => :show_reports
 
   match 'search' => 'search#index', :as => :search
 
@@ -35,10 +36,6 @@ Scenario::Application.routes.draw do
   resources :users
 
   resource :session, :only => [:new, :create, :destroy]
-
-  match 'signup' => 'users#new', :as => :signup
-
-  match 'register' => 'users#create', :as => :register
 
   match 'login' => 'sessions#new', :as => :login
 

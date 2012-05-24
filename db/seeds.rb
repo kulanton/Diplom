@@ -2,6 +2,19 @@ u=User.new(:login=>"admin", :password=>"qwerty", :password_confirmation=>"qwerty
 u.role = 1
 u.save
 
+Student.create(:lastname => "Куликов", :name => "Антон", :middlename => "Валериевич")
+Student.create(:lastname => "Ахмылов", :name => "Антон", :middlename => "Юрьевич")
+Student.create(:lastname => "Войнов", :name => "Максим", :middlename => "Александрович")
+Student.create(:lastname => "Дорофеев", :name => "Сергей", :middlename => "Иванович")
+Student.create(:lastname => "Дьяченков", :name => "Андрей", :middlename => "Александрович")
+Student.create(:lastname => "Мазов", :name => "Иван", :middlename => "Александрович")
+Student.create(:lastname => "Метейко", :name => "Татьяна", :middlename => "Николаевна")
+Student.create(:lastname => "Моцпан", :name => "Максим", :middlename => "Сергеевич")
+Student.create(:lastname => "Орленко", :name => "Николай", :middlename => "Иванович")
+Student.create(:lastname => "Сараев", :name => "Никита", :middlename => "Геннадьевич")
+Student.create(:lastname => "Шацков", :name => "Антон", :middlename => "Игоревич")
+Student.create(:lastname => "Шинаков", :name => "Александр", :middlename => "Николаевич")
+
 
 vv = RepositoryTheme.create(:name => "Введение", :path => "/intro", :count => "100")
 oi = RepositoryTheme.create(:name => "Определенные интегралы", :path => "/def_int", :count => "150")

@@ -208,26 +208,32 @@ ru:
       new: "Новая дисциплина"
       edit: "Редактор дисциплины"
       create: "Новая дисциплина"
+      update: "Редактор дисциплины"
     groups:
       new: "Новая группа"
       edit: "Редактор группы"
       create: "Новая группа"
+      update: "Редактор группы"
     repository_themes:
       new: "Новая тема"
       edit: "Редактор темы"
       create: "Новая тема"
+      update: "Редактор темы"
     examines:
       new: "Новый тест"
       edit: "Редактор теста"
       create: "Новый тест"
+      update: "Редактор теста"
     scripts:
       new: "Новый сценарий"
       edit: "Редактор сценария"
       create: "Новый сценарий"
+      update: "Редактор сценария"
     blocks:
       new: "Новый блок"
       edit: "Редактор блока"
       create: "Новый блок"
+      update: "Редактор блока"
 
   # In rails 3 errors is top-level namespace
   errors:
@@ -368,7 +374,7 @@ ru:
         examines: "Тесты"
         scripts: "Сценарии"
         year: "Год"
-        block_num: "Номер блока"
+        block_num: "#"
         discipline_id: "Дисциплина"
       script_theme:
         name: "Название"

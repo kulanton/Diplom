@@ -11,7 +11,7 @@
   .control-group
     = f.label :discipline_name, "Дисциплина", :class => 'control-label'
     .controls
-      = f.text_field :discipline_name
+      = f.text_field :discipline_name, "data-discipline-id" => params[:discipline_id]
   .control-group
     = f.label :group_tokens, "Группы", :class => 'control-label'
     .controls
