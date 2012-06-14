@@ -5,7 +5,7 @@
       .alert.alert-error
         %h6 При сохранении произошли ошибки
   = hidden_field :examine, params[:examine]
-  %table
+  %table{:id => 'mytable'}
     %tbody
       %tr
         %td.first-row
@@ -62,7 +62,7 @@
 
   = f.fields_for :script_themes do |builder|
     = render "script_theme", :f => builder
-  %div.partial= link_to_add_fields "Добавить тему", f, :script_themes
+  .partial= link_to_add_fields "Добавить тему", f, :script_themes
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to "Отмена", scripts_path, :class => 'btn'

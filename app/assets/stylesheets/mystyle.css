@@ -52,16 +52,23 @@ hr.small {margin: 0; padding: 0;}
 
 fieldset.partial, div.partial {
 	margin-left: 35px;
+	margin-bottom: 1px;
 }
 
 .first-row {
   width: 56%;
   padding: 0;
+  margin: 0;
 }
 
 .second-row{
   width: 44%;
   padding: 0;
+  margin: 0;
+}
+
+td.second-row div.control-group, td.first-row div.control-group {
+  margin-bottom: 5px;
 }
 
 div.modal.hide.fade.new-examine {

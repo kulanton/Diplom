@@ -12,8 +12,8 @@
         %td= link_to examine.name, examine_path(examine)
         %td= examine.scripts.map(&:name).join(', ')
         %td
-          - examine.blocks.each do |block|
-            = "Блок #{block.block_num}: "
+          - examine.blocks.each_with_index do |block, i|
+            = "Блок #{i+1}: "
             = block.groups.map(&:name).join(', ')
             %br
         - if @current_user && @current_user.admin?

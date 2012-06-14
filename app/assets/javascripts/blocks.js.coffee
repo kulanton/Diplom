@@ -21,6 +21,7 @@ $ ->
     items: 'li'
     update: ->
       $.post $(this).data('update-url'), $(this).sortable('serialize')
+      $.get $(".scripts_#{$(this).data('block-id')}").data('url'), $(".scripts_#{$(this).data('block-id')}").data('params'), null, 'script'
 
   $('.modal').modal
     backdrop: true

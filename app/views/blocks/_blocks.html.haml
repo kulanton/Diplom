@@ -16,7 +16,7 @@
             = render 'add_group_modal', :block => block
           = link_to "<i class='icon-plus'></i> группу".html_safe, "#addGroup_#{block.id}", 'data-toggle' => 'modal', :class => 'btn btn-mini btn-success'
         %td
-          %ul{:class => 'sortable', 'data-update-url' => "#{sort_examines_path}"}
+          %ul{:class => 'sortable', 'data-update-url' => "#{sort_examines_path}", 'data-block-id' => "#{block.id}"}
             - block.examines.each do |examine|
               %li{:class => 'my ui-state-default', :id => "examine_#{examine.id}"}
                 %span{:class => 'ui-icon ui-icon-arrowthick-2-n-s'}
@@ -28,7 +28,7 @@
           = link_to "<i class='icon-plus'></i> тесты".html_safe, "#addExamine_#{block.id}", 'data-toggle' => 'modal', :class => 'btn btn-mini btn-success'
           = link_to "Создать новый тест".html_safe, "#newExamine_#{block.id}", 'data-toggle' => 'modal', :class => 'btn btn-mini btn-success'
         %td
-          .scripts{'data-url' => "#{blocks_path}", 'data-params' => "block_id=#{block.id}"}
+          %div{:class => "scripts_#{block.id}", 'data-url' => "#{blocks_path}", 'data-params' => "block_id=#{block.id}"}
             = render 'scripts', :block => block
 
         - if @current_user && @current_user.admin?

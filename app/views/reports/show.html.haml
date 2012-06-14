@@ -1,5 +1,8 @@
 - if @discipline
-  %h3 Отчет по дисциплине #{@discipline.name}
+  %h2 Отчет
+  %b по дисциплине: #{@discipline.name}
+  %br
+  %br
   
   #accordion-groups.accordion
     - @discipline.blocks.each do |block|
@@ -11,7 +14,10 @@
               .accordion-inner
                 = render 'group_report', :examines => block.examines, :students => @students
 - elsif @group
-  %h3 Отчет по группе #{@group.name}
+  %h2 Отчет
+  %b по группе: #{@group.name}
+  %br
+  %br
   
   #accordion-disciplines.accordion
     - @group.blocks.each do |block|

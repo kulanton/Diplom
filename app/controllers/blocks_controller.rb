@@ -3,7 +3,9 @@ class BlocksController < ApplicationController
   before_filter :check_admin_user, :except=>['index', 'show']
 
   def index
-    if params[:discipline_id]
+    if params[:block_id]
+      @block = Block.includes(:examines => :scripts).find(params[:block_id])
+    elsif params[:discipline_id]
       @blocks = Block.includes(:groups, :examines => :scripts).where('discipline_id = ?', params[:discipline_id])
       @discipline = Discipline.find(params[:discipline_id])
     else
@@ -79,7 +81,18 @@ class BlocksController < ApplicationController
   
   def add_examines
     block = Block.find(params[:id])
-    block.examine_ids = params[:examine_ids]
+    examines_ids = []
+     for e_id in params[:examine_ids]
+       unless block.examine_ids.include?(e_id.to_i)
+         examines_ids << e_id
+       end
+     end
+    for e_id in examines_ids
+      e = Examine.find(e_id).dup
+      e.name += "(копия для #{block.discipline.name})"
+      e.save
+      block.examines << e
+    end
     redirect_to blocks_url(:discipline_id => block.discipline_id)
   end
 end

@@ -4,6 +4,7 @@ class ExaminesController < ApplicationController
 
   def index
     if params[:repository_theme_id]
+      @repository_theme = RepositoryTheme.find(params[:repository_theme_id])
       @examines = Examine.includes(:scripts => [:script_themes => :repository_theme]).where('repository_themes.id = ?', params[:repository_theme_id])
     elsif params[:group_id]
       @group = Group.unscoped.find(params[:group_id])
@@ -37,10 +38,10 @@ class ExaminesController < ApplicationController
   def create
     @examine = Examine.new(params[:examine])
     params[:block] = @examine.block_ids
-    block = @examine.block_ids.first
+    block = @examine.blocks.first
 
       if @examine.save
-        redirect_to blocks_url, :notice => 'Новый тест создан.'
+        redirect_to blocks_url(:discipline_id => block.discipline_id), :notice => 'Новый тест создан.'
       else
         render :action => "new"
       end
@@ -49,9 +50,10 @@ class ExaminesController < ApplicationController
 
   def update
     @examine = Examine.find(params[:id])
+    block = @examine.blocks.first
 
       if @examine.update_attributes(params[:examine])
-        redirect_to blocks_url, :notice => 'Тест отредактирован.'
+        redirect_to blocks_url(:discipline_id => block.discipline_id), :notice => 'Тест отредактирован.'
       else
         render :action => "edit"
       end

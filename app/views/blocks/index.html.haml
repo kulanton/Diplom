@@ -2,7 +2,7 @@
 - if @discipline
   по дисциплине
   %b= @discipline.name
-  = render 'blocks', :blocks => @blocks
+  #blocks= render 'blocks', :blocks => @blocks
   
   = link_to "Новый блок", new_block_path(:discipline_id => params[:discipline_id]), :class => 'btn btn-primary'
   

@@ -32,6 +32,16 @@
 %p
   %span{:class => "label"}= t("activerecord.attributes.examine.scheduled_pair") + ":"
   %b= @examine.scheduled_pair
+%p
+  %span{:class => "label"} Сценарии:
+  - @examine.scripts.each do |script|
+    %b= script.name
+    %span{:class => "label"} Темы:
+    - script.script_themes.each do |script_theme|
+      %b= script_theme.name
+      %span{:class => "label"} Подтемы:
+      %b= script_theme.script_sub_themes.map{|sst| sst.name}
+  
 
 .form-actions
   = link_to "Назад", examines_path, :class => 'btn'
