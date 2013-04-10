@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   protect_from_forgery
@@ -19,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def check_admin_user
     unless @current_user && @current_user.admin?
-      flash[:error] = "Доступ запрещен"
+      flash[:error] = 'Доступ запрещен'
       redirect_back_or_default '/'
       #render :text => "", :layout => 'login'
     end
@@ -44,3 +45,4 @@ class ApplicationController < ActionController::Base
     res
   end
 end
+

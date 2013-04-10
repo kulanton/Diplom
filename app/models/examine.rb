@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 class Examine < ActiveRecord::Base
   default_scope order(:ordinal, :scheduled_date)
 
-  #before_create :assign_ordinal
+  #before_create :assign_ordinal 
 
   has_and_belongs_to_many :blocks
   

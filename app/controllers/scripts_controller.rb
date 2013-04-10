@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ScriptsController < ApplicationController
   before_filter :check_regular_user
   before_filter :check_admin_user, :except=>['index', 'show']
@@ -55,3 +56,4 @@ class ScriptsController < ApplicationController
     end
   end
 end
+

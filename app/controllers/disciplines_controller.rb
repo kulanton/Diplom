@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class DisciplinesController < ApplicationController
   before_filter :check_regular_user
   before_filter :check_admin_user, :except=>['index', 'show']
@@ -32,7 +33,6 @@ class DisciplinesController < ApplicationController
   def new
     @discipline = Discipline.new
   end
-
 
   def edit
     @discipline = Discipline.find(params[:id])

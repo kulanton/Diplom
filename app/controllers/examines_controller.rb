@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ExaminesController < ApplicationController
   before_filter :check_regular_user
   before_filter :check_admin_user, :except=>['show', 'sort']
@@ -23,7 +24,6 @@ class ExaminesController < ApplicationController
       format.xml {render :xml => @examine}
     end
   end
-
 
   def new
     @examine = Examine.new

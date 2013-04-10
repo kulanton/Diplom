@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class BlocksController < ApplicationController
   before_filter :check_regular_user
   before_filter :check_admin_user, :except=>['index', 'show']
@@ -96,3 +97,4 @@ class BlocksController < ApplicationController
     redirect_to blocks_url(:discipline_id => block.discipline_id)
   end
 end
+

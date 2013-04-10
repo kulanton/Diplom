@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
@@ -19,7 +20,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/', :notice => "Вход выполнен.")
+      redirect_back_or_default('/', :notice => 'Вход выполнен.')
     else
       note_failed_signin
       @login       = params[:login]
@@ -30,7 +31,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    redirect_back_or_default('/', :notice => "Выход выполнен.")
+    redirect_back_or_default('/', :notice => 'Выход выполнен.')
   end
 
 protected

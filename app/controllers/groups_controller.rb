@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class GroupsController < ApplicationController
   before_filter :check_admin_user
 
@@ -66,3 +67,4 @@ class GroupsController < ApplicationController
     end
   end
 end
+
