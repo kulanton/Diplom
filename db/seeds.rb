@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 u=User.new(:login=>"admin", :password=>"qwerty", :password_confirmation=>"qwerty", :email=>"admin@msiu.ru", :name => "Администратор")
 u.role = 1
 u.save
