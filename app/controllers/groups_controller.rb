@@ -4,8 +4,9 @@ class GroupsController < ApplicationController
 
   def index
     if params[:name]
-      used_groups = Group.includes(:blocks).where('blocks.discipline_id = ?', params[:discipline_id])
-      @groups = Group.where("lower(groups.name) LIKE lower(?) AND id NOT IN (?)", "%#{params[:name]}%", used_groups)
+      used_groups = {} || Group.includes(:blocks).where('blocks.discipline_id = ?', params[:discipline_id])
+      # @groups = Group.where("name LIKE ? AND id NOT IN (?)", "%#{params[:name]}%", used_groups)
+      @groups = Group.where("name LIKE ?", "%#{params[:name]}%")
     else
       @groups = Group.order(:name)
     end

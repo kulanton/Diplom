@@ -83,6 +83,7 @@ class BlocksController < ApplicationController
   def add_examines
     block = Block.find(params[:id])
     examines_ids = []
+    params[:examine_ids] = {} || params[:examine_ids]
      for e_id in params[:examine_ids]
        unless block.examine_ids.include?(e_id.to_i)
          examines_ids << e_id
